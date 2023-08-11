@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={theinhardt.variable}>
       <body>
-        <main>{children}</main>
+        <main className="h-full w-full">{children}</main>
       </body>
     </html>
   );

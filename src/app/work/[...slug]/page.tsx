@@ -1,5 +1,6 @@
-import Heading from '@/app/components/Heading';
-import ProjectNavigation from '@/app/components/ProjectNavigation';
+import ImageGallery from '@/app/components/ImageGallery';
+import ProjectInformationMobile from '@/app/components/project/ProjectInformationMobile';
+import ProjectTopArea from '@/app/components/project/ProjectTopArea';
 import NotFound from '@/app/not-found';
 
 import {
@@ -34,10 +35,8 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <>
-      <div className='flex justify-between'>
-        <Heading title={project.title} subtitle={project.subtitle} />
-        <ProjectNavigation prev={prev} next={next} category={project.category.title} />
-      </div>
+      <ProjectTopArea project={project} prev={prev} next={next} />
+      <ProjectInformationMobile text={project.text} specs={project.specs} />
     </>
   );
 }

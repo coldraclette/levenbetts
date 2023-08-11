@@ -169,46 +169,41 @@ export const project = {
       of: [
         {
           type: 'image',
+          name: 'image',
+          title: 'Image',
+          options: {
+            hotspot: true,
+          },
           fields: [
             {
-              title: 'Image',
-              name: 'image',
-              type: 'image',
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+              description:
+                'Important for SEO and accessiblity. Describe what the image is about.',
+              validation: (Rule: any) =>
+                Rule.error(
+                  'You have to fill out the alternative text.'
+                ).required(),
               options: {
-                hotspot: true,
+                isHighlighted: true,
               },
-              fields: [
-                {
-                  name: 'alt',
-                  type: 'string',
-                  title: 'Alternative text',
-                  description:
-                    'Important for SEO and accessiblity. Describe what the image is about.',
-                  validation: (Rule: any) =>
-                    Rule.error(
-                      'You have to fill out the alternative text.'
-                    ).required(),
-                  options: {
-                    isHighlighted: true,
-                  },
-                },
-              ],
             },
           ],
-          preview: {
-            select: {
-              image: 'image',
-              alt: 'image.alt',
-            },
-            prepare({ image, alt }: any) {
-              return {
-                title: alt,
-                media: image,
-              };
-            },
-          },
         },
       ],
+      preview: {
+        select: {
+          image: 'image',
+          alt: 'image.alt',
+        },
+        prepare({ image, alt }: any) {
+          return {
+            title: alt,
+            media: image,
+          };
+        },
+      },
     },
     {
       name: 'seoTitle',

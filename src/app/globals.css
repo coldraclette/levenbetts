@@ -8,5 +8,11 @@ html {
 }
 
 body {
-  @apply font-sans;
+  @apply h-full w-full font-sans text-[15px] leading-[17px] text-black md:text-lg md:leading-5;
+}
+
+@media screen and (min-width: 768px) {
+  .column-count-2 {
+    column-count: 2;
+  }
 }

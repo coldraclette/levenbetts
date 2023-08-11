@@ -9,6 +9,9 @@ module.exports = {
     fontFamily: {
       sans: ['var(--font-sans)', 'sans-serif'],
     },
+    colors: {
+      black: '#11144A',
+    },
   },
   plugins: [],
 };

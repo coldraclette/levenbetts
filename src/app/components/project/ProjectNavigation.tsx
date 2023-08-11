@@ -1,12 +1,13 @@
 import Link from 'next/link';
 
-import ArrowLeft from '../../../public/icons/Arrow-left.svg';
-import ArrowRight from '../../../public/icons/Arrow-right.svg';
+import ArrowLeft from '../../../../public/icons/Arrow-left.svg';
+import ArrowRight from '../../../../public/icons/Arrow-right.svg';
 
 interface ProjectNavigationProps {
   prev: ProjectNavigationItemProps;
   next: ProjectNavigationItemProps;
   category: string;
+  onDetailsClick: () => void;
 }
 
 interface ProjectNavigationItemProps {
@@ -22,10 +23,16 @@ export default function ProjectNavigation({
   prev,
   next,
   category,
+  onDetailsClick,
 }: ProjectNavigationProps) {
   return (
     <div className="flex items-center gap-10 self-start">
-      <p>project details</p>
+      <p
+        className="hidden cursor-pointer md:block"
+        onClick={() => onDetailsClick()}
+      >
+        project details
+      </p>
       <div className="flex gap-5">
         <Link href={`/work/${category}/${prev.slug.current}`}>
           <ArrowLeft />
