@@ -55,7 +55,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={theinhardt.variable}>
-      <body>{children}</body>
+      <body>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

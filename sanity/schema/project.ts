@@ -33,7 +33,6 @@ export const project = {
       type: 'string',
       group: 'projectGroup',
       description: 'The subtitle of the project. E.g. location',
-      validation: (Rule: any) => Rule.required(),
     },
     {
       title: 'Slug',
@@ -64,7 +63,9 @@ export const project = {
           { title: 'Current', value: 'current' },
           { title: 'Complete', value: 'complete' },
         ],
+        direction: 'horizontal',
       },
+      initialValue: 'current',
     },
     {
       title: 'Category',
@@ -123,6 +124,7 @@ export const project = {
       group: 'projectGroup',
       description:
         'Check this if you want to show a different image on the landing page.',
+      initialValue: false,
     },
     {
       title: 'Landing Page Image',
