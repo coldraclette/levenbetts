@@ -22,7 +22,7 @@ export const structure = (S: any) =>
       //   ),
 
       ...S.documentTypeListItems().filter(
-        (listItem: any) => ![""].includes(listItem.getId())
+        (listItem: any) => !['category'].includes(listItem.getId())
       ),
     ]);
 

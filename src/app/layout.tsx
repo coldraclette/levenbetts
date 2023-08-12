@@ -2,6 +2,7 @@ import './globals.css';
 
 import Theinhardt from 'next/font/local';
 
+import Navigation from './components/Navigation';
 import { siteConfig } from './site.config';
 
 const theinhardt = Theinhardt({
@@ -56,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={theinhardt.variable}>
       <body className="md:h-screen md:overflow-hidden">
+        <Navigation />
         <main className="h-full w-full">{children}</main>
       </body>
     </html>
