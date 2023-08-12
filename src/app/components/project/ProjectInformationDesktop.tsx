@@ -11,12 +11,19 @@ export default function ProjectInformationDesktop({
   specs,
 }: ProjectInformationDesktopProps) {
   return (
-    <div className="hidden md:flex md:px-[22px]">
-      <div className="grid grid-cols-1 gap-4 md:h-full md:grid-cols-3">
-        <div className="column-count-2 h-full md:col-span-2">
+    <div className="hidden h-[60vh] md:flex md:px-[22px]">
+      <div className="grid h-full max-h-full w-full grid-cols-3 gap-4 overflow-auto">
+        <div
+          style={{
+            columnCount: 2,
+            columnFill: 'auto',
+          }}
+          className="col-span-2"
+        >
           <TextContent text={text} />
         </div>
-        <div className="h-full md:col-span-1">
+
+        <div className="h-full overflow-auto">
           <TextContent text={specs} />
         </div>
       </div>
