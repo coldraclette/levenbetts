@@ -36,7 +36,7 @@ export default function Navigation() {
   );
 
   return (
-    <nav className="grid relative z-10 h-20 grid-cols-[1fr_2fr_3fr] gap-2 p-4 md:p-[22px]">
+    <nav className="grid relative z-10 h-20 grid-cols-[1fr_1fr_4fr] gap-2 p-4 md:p-[22px]">
       <div>
         <h1>
           <Link href="/">LEVENBETTS</Link>
