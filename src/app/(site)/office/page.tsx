@@ -4,7 +4,6 @@ import TextContent from '../components/TextContent';
 
 export default async function Page() {
   const data = await getOfficePageData();
-  console.log(data);
   return (
     <div>
       <div className="mt-5 hidden h-[60vh] px-[22px] md:flex">
