@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Heading from '@/app/components/Heading';
-import { ProjectNavigationItemProps, TextProps } from '@/app/types/types';
+import Heading from '@/app/(site)/components/Heading';
+import { ProjectNavigationItemProps, TextProps } from '@/app/(site)/types/types';
 
 import ImageGallery from '../ImageGallery';
 import ProjectInformationDesktop from './ProjectInformationDesktop';

@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 
-import { urlForImage } from '../../../sanity/lib/image';
+import { urlForImage } from '../../../../sanity/lib/image';
 import useHorizontalScroll from '../hooks/useHorizontalScroll';
 
 interface ImageGalleryProps {
@@ -38,7 +38,7 @@ export default function ImageGallery({
               height={800}
               priority
               className={`w-auto object-contain ${
-                detailsOpen ? 'h-[30vh]' : 'h-[80vh]'
+                detailsOpen ? 'h-[40vh]' : 'h-[83vh]'
               }`}
             />
           </div>

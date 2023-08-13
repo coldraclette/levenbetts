@@ -1,12 +1,11 @@
-import ImageGallery from '@/app/components/ImageGallery';
-import ProjectInformationMobile from '@/app/components/project/ProjectInformationMobile';
-import ProjectTopArea from '@/app/components/project/ProjectTopArea';
-import NotFound from '@/app/not-found';
+import ProjectInformationMobile from '@/app/(site)/components/project/ProjectInformationMobile';
+import ProjectTopArea from '@/app/(site)/components/project/ProjectTopArea';
 
 import {
   getProjectNavigation,
   getSingleProjectData,
-} from '../../../../sanity/sanity.query';
+} from '../../../../../sanity/sanity.query';
+import NotFound from '../../not-found';
 import ResearchPage from './researchPage';
 
 interface PageProps {

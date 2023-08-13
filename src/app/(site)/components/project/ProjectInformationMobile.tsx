@@ -1,5 +1,5 @@
 
-import { TextProps } from '@/app/types/types';
+import { TextProps } from '@/app/(site)/types/types';
 import TextContent from '../TextContent';
 
 interface ProjectInformationMobileProps {

@@ -1,5 +1,25 @@
 import { client } from './lib/client';
 
+export async function getProjectsOverviewWithCategoryData(category: string) {
+  const projectsOverview = await client.fetch(
+    `*[_type == $category][0] {
+        projects[]->{
+          _id,
+          title,
+          subtitle,
+          slug,
+          projectImage,
+          category->{
+            _id,
+            title
+          }
+        }
+      }`,
+    { category }
+  );
+  return projectsOverview;
+}
+
 export async function getSingleProjectData(slug: string) {
   const project = await client.fetch(
     `*[_type == "project" && slug.current == $slug][0] {
@@ -45,4 +65,26 @@ export async function getProjectNavigation(slug: string, categoryRef: string) {
     prev: projects[prevIndex],
     next: projects[nextIndex],
   };
+}
+
+export async function getOfficePageData() {
+  const officePage = await client.fetch(
+    `*[_type == "officePage"][0] {
+        text,
+        additionalText,
+        images,
+      }`
+  );
+
+  return officePage;
+}
+
+export async function getAwardsPageData() {
+  const awardsPage = await client.fetch(
+    `*[_type == "awardsPage"][0] {
+        awards,
+      }`
+  );
+
+  return awardsPage;
 }

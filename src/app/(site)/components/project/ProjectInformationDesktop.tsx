@@ -11,7 +11,7 @@ export default function ProjectInformationDesktop({
   specs,
 }: ProjectInformationDesktopProps) {
   return (
-    <div className="hidden h-[60vh] md:flex md:px-[22px]">
+    <div className="mt-5 hidden h-[40vh] px-[22px] md:flex">
       <div className="grid h-full max-h-full w-full grid-cols-3 gap-4 overflow-auto">
         <div
           style={{

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import ArrowLeft from '../../../../public/icons/Arrow-left.svg';
-import ArrowRight from '../../../../public/icons/Arrow-right.svg';
+import ArrowLeft from '../../../../../public/icons/Arrow-left.svg';
+import ArrowRight from '../../../../../public/icons/Arrow-right.svg';
 
 interface ProjectNavigationProps {
   prev: ProjectNavigationItemProps;

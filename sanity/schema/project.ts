@@ -6,7 +6,7 @@ export const project = {
   title: 'Projects',
   name: 'project',
   type: 'document',
-  icon: PackageIcon,
+  icon: PackageIcon as any,
   groups: [
     {
       name: 'projectGroup',
@@ -75,6 +75,7 @@ export const project = {
       description: 'The category of the project.',
       to: [{ type: 'category' }],
       validation: (Rule: any) => Rule.required(),
+      readonly: true,
     },
     {
       title: 'Text',
@@ -84,7 +85,6 @@ export const project = {
       description: 'The text of the project.',
       of: [{ type: 'block' }],
     },
-
     {
       title: 'Specs',
       name: 'specs',
@@ -232,11 +232,12 @@ export const project = {
       title: 'title',
       subtitle: 'subtitle',
       media: 'projectImage',
+      category: 'category.title',
     },
-    prepare({ title, subtitle, media }: any) {
+    prepare({ title, subtitle, media, category }: any) {
       return {
         title,
-        subtitle,
+        subtitle: `${category} | ${subtitle}`,
         media: media,
       };
     },
