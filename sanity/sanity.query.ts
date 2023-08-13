@@ -88,3 +88,66 @@ export async function getAwardsPageData() {
 
   return awardsPage;
 }
+
+export async function getPeoplePageData() {
+  const peoplePage = await client.fetch(
+    `*[_type == "peoplePage"][0] {
+        text,
+        additionalText,
+        images,
+      }`
+  );
+
+  return peoplePage;
+}
+
+// function to fetch all projects and group them under complete or current
+export async function getProjectListData() {
+  const projects = await client.fetch(
+    `*[_type == "project"] | order(_createdAt asc) {
+        _id,
+        title,
+        subtitle,
+        slug,
+        status,
+        category->{
+          _id,
+          title
+        }
+      }`
+  );
+
+  const currentProjects = projects.filter(
+    (project: any) => project.status === 'current'
+  );
+  const completeProjects = projects.filter(
+    (project: any) => project.status === 'complete'
+  );
+
+  return {
+    current: currentProjects,
+    complete: completeProjects,
+  };
+}
+
+export async function getLandingPageData() {
+  const landingPage = await client.fetch(
+    `*[_type == "landingPage"][0] {
+        projects[]->{
+          _id,
+          slug,
+          projectImage,
+          landingPageImage,
+          category->{
+            _id,
+            title
+          },
+        },
+        seoTitle,
+        seoDescription,
+        seoImage
+      }`
+  );
+
+  return landingPage;
+}

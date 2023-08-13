@@ -36,7 +36,7 @@ export default function Navigation() {
   );
 
   return (
-    <nav className="grid h-20 grid-cols-[1fr_2fr_3fr] gap-2 p-4 md:p-[22px]">
+    <nav className="grid relative z-10 h-20 grid-cols-[1fr_2fr_3fr] gap-2 p-4 md:p-[22px]">
       <div>
         <h1>
           <Link href="/">LEVENBETTS</Link>
@@ -84,7 +84,7 @@ export default function Navigation() {
           onClick={() => setIsWorkOpen(!isWorkOpen)}
         >
           <span>work</span>
-          <div className="flex gap-5">
+          <div className="flex gap-5 gap-y-1">
             {activeCategory && (
               <div>
                 <Link
@@ -100,7 +100,7 @@ export default function Navigation() {
                 (isWorkOpen ? 'block' : 'hidden') + ' group-hover:block'
               }
             >
-              <div className="text-grey flex flex-wrap gap-5">
+              <div className="text-grey flex flex-wrap gap-5 gap-y-1">
                 {categories.map((cat) => {
                   if (cat !== activeCategory) {
                     return (

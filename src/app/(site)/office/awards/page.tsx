@@ -1,6 +1,8 @@
 import { getAwardsPageData } from '../../../../../sanity/sanity.query';
 import AwardList from '../../components/AwardList';
 
+export const revalidate = 60;
+
 export default async function Page() {
   const data = await getAwardsPageData();
   if (!data) {

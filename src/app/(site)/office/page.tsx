@@ -2,11 +2,13 @@ import { getOfficePageData } from '../../../../sanity/sanity.query';
 import SmallerImageGallery from '../components/SmallerImageGallery';
 import TextContent from '../components/TextContent';
 
+export const revalidate = 60;
+
 export default async function Page() {
   const data = await getOfficePageData();
   return (
     <div>
-      <div className="mt-5 hidden h-[60vh] px-[22px] md:flex">
+      <div className="mt-5 hidden h-[60vh] px-4 md:flex md:px-[22px]">
         <div className="grid h-full max-h-full w-full grid-cols-3 gap-4 overflow-auto">
           <div
             style={{

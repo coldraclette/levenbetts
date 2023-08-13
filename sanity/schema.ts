@@ -9,9 +9,12 @@ import { educationOverview } from './schema/educationOverview';
 import { furnitureOverview } from './schema/furnitureOverview';
 import { housesOverview } from './schema/housesOverview';
 import { housingOverview } from './schema/housingOverview';
+import { landingPage } from './schema/landingPage';
 import { librariesOverview } from './schema/librariesOverview';
 import { officePage } from './schema/officePage';
+import { peoplePage } from './schema/peoplePage';
 import { project } from './schema/project';
+import { projectListPage } from './schema/projectListPage';
 import { publicationsOverview } from './schema/publicationsOverview';
 import { workspacesOverview } from './schema/workspacesOverview';
 
@@ -31,5 +34,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     housingOverview,
     officePage,
     awardsPage,
+    peoplePage,
+    projectListPage,
+    landingPage,
   ],
 };

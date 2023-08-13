@@ -38,7 +38,7 @@ export default function ImageGallery({
               height={800}
               priority
               className={`w-auto object-contain ${
-                detailsOpen ? 'h-[40vh]' : 'h-[83vh]'
+                detailsOpen ? 'h-[30vh]' : 'h-[83vh]'
               }`}
             />
           </div>

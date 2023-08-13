@@ -33,7 +33,7 @@ export default function SmallerImageGallery({ images }: ImageGalleryProps) {
               width={1200}
               height={800}
               priority
-              className="h-[40vh] w-auto object-contain"
+              className="h-[30vh] w-auto object-contain"
             />
           </div>
         );
