@@ -37,15 +37,14 @@ export default function BackgroundGallery({
             <Link
               key={_id}
               href={`/work/${category.title}/${slug.current}`}
-              className={`relative h-full flex-shrink-0`}
+              className={`relative h-screen w-screen  flex-shrink-0`}
             >
               <Image
                 src={urlForImage(imageUrl)}
                 alt={landingPageImage?.alt || projectImage?.alt}
-                width={2400}
-                height={1600}
+                fill
                 priority
-                className="h-screen w-screen"
+                className="object-cover"
               />
             </Link>
           );
