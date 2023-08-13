@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { urlForImage } from '../../../../sanity/lib/image';
 import useHorizontalScrollSnap from '../hooks/useHorizontalScrollSnap';
+import useHorizontalScroll from '../hooks/useHorizontalScroll';
 
 interface BackgroundGalleryProps {
   projects: Project[];
@@ -23,7 +24,7 @@ export default function BackgroundGallery({
   projects,
 }: BackgroundGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  useHorizontalScrollSnap(containerRef);
+  useHorizontalScroll(containerRef);
 
   return (
     <div

@@ -45,7 +45,7 @@ export default function Navigation() {
 
       <div className="relative">
         <div className="group inline-block cursor-pointer">
-          <Link href="/">office</Link>
+          <Link href="/office">office</Link>
           <div className="flex gap-5">
             {activeOfficeCategory && (
               <div>
