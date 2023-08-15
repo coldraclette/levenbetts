@@ -1,5 +1,5 @@
 import { getLandingPageData } from '../../../sanity/sanity.query';
-import BackgroundGallery from './components/BackgroundGallery';
+import FullscreenGallery from './components/FullscreenGallery';
 
 export const revalidate = 60;
 
@@ -8,5 +8,5 @@ export default async function Page() {
   if (!data) return;
 
   const { projects } = data;
-  return <BackgroundGallery projects={projects} />;
+  return <FullscreenGallery projects={projects} />;
 }

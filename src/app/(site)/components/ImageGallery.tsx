@@ -2,6 +2,8 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
+import useEmblaCarousel from 'embla-carousel-react';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 import { urlForImage } from '../../../../sanity/lib/image';
 import useHorizontalScroll from '../hooks/useHorizontalScroll';
@@ -15,35 +17,40 @@ export default function ImageGallery({
   images,
   detailsOpen,
 }: ImageGalleryProps) {
-  const galleryRef = useRef<HTMLDivElement>(null);
+  const wheelGesturesOptions: any = {
+    wheelDraggingClass: '',
+    forceWheelAxis: 'y',
+  };
 
-  useHorizontalScroll(galleryRef);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: false, dragFree: true },
+    [WheelGesturesPlugin(wheelGesturesOptions)]
+  );
 
   if (!images) {
     return null;
   }
 
   return (
-    <div
-      ref={galleryRef}
-      className={`gallery-container absolute bottom-0 flex gap-[15px] overflow-x-auto whitespace-nowrap`}
-    >
-      {images.map((image): any => {
-        return (
-          <div key={image._key} className={`relative h-full flex-shrink-0`}>
-            <Image
-              src={urlForImage(image)}
-              alt={image.alt}
-              width={1200}
-              height={800}
-              priority
-              className={`w-auto object-contain ${
-                detailsOpen ? 'h-[30vh]' : 'h-[83vh]'
-              }`}
-            />
-          </div>
-        );
-      })}
+    <div ref={emblaRef} className={`absolute bottom-0 overflow-hidden`}>
+      <div className="flex gap-[15px]">
+        {images.map((image): any => {
+          return (
+            <div key={image._key} className={`relative h-full flex-shrink-0`}>
+              <Image
+                src={urlForImage(image)}
+                alt={image.alt}
+                width={1200}
+                height={800}
+                priority
+                className={`w-auto object-contain ${
+                  detailsOpen ? 'h-[30vh]' : 'h-[83vh]'
+                }`}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

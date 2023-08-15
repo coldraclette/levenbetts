@@ -1,48 +1,53 @@
 'use client';
 
-import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import useEmblaCarousel from 'embla-carousel-react';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 import { urlForImage } from '../../../../sanity/lib/image';
-import useHorizontalScroll from '../hooks/useHorizontalScroll';
 
 interface ImageGalleryProps {
   projects: any[];
 }
 
 export default function OverviewImageGallery({ projects }: ImageGalleryProps) {
-  const galleryRef = useRef<HTMLDivElement>(null);
+  const wheelGesturesOptions: any = {
+    wheelDraggingClass: '',
+    forceWheelAxis: 'y',
+  };
 
-  useHorizontalScroll(galleryRef);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, dragFree: true },
+    [WheelGesturesPlugin(wheelGesturesOptions)]
+  );
 
   if (!projects) {
     return null;
   }
 
   return (
-    <div
-      ref={galleryRef}
-      className={`gallery-container absolute bottom-0 flex gap-[15px] overflow-x-auto whitespace-nowrap`}
-    >
-      {projects.map((project) => {
-        return (
-          <Link
-            href={`${project.category.title}/${project.slug.current}`}
-            key={project._id}
-            className={`relative h-full flex-shrink-0`}
-          >
-            <Image
-              src={urlForImage(project.projectImage)}
-              alt={project.projectImage.alt}
-              width={1200}
-              height={800}
-              priority
-              className={`h-[83vh] w-auto object-contain`}
-            />
-          </Link>
-        );
-      })}
+    <div ref={emblaRef} className={`absolute bottom-0 overflow-hidden`}>
+      <div className="flex gap-[15px]">
+        {projects.map((project) => {
+          return (
+            <Link
+              href={`${project.category.title}/${project.slug.current}`}
+              key={project._id}
+              className={`relative h-full flex-shrink-0`}
+            >
+              <Image
+                src={urlForImage(project.projectImage)}
+                alt={project.projectImage.alt}
+                width={1200}
+                height={800}
+                priority
+                className={`h-[83vh] w-auto object-contain`}
+              />
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }
