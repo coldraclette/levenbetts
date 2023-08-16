@@ -8,6 +8,7 @@ interface ProjectNavigationProps {
   next: ProjectNavigationItemProps;
   category: string;
   onDetailsClick: () => void;
+  detailsOpen: boolean;
 }
 
 interface ProjectNavigationItemProps {
@@ -23,6 +24,7 @@ export default function ProjectNavigation({
   prev,
   next,
   category,
+  detailsOpen,
   onDetailsClick,
 }: ProjectNavigationProps) {
   return (
@@ -31,7 +33,7 @@ export default function ProjectNavigation({
         className="hidden cursor-pointer md:block"
         onClick={() => onDetailsClick()}
       >
-        project details
+        {detailsOpen ? 'close' : 'project details'}
       </p>
       <div className="flex gap-5">
         <Link href={`/work/${category}/${prev.slug.current}`}>

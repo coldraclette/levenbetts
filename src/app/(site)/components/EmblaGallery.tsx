@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Autoplay from 'embla-carousel-autoplay';
@@ -7,42 +8,39 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 import { urlForImage } from '../../../../sanity/lib/image';
+import { OptionsProps } from '../types/types';
 
-interface BackgroundGalleryProps {
+interface EmblaGalleryProps {
   projects: Project[];
+  options: OptionsProps;
 }
 
 interface Project {
   _id: string;
   slug: { current: string };
-  landingPageImage: any;
+  landingPageImage?: any;
   projectImage: any;
   category: any;
 }
 
-export default function FullscreenGallery({
-  projects,
-}: BackgroundGalleryProps) {
-  const autoplayOptions: any = {
-    delay: 4000,
-    rootNode: (emblaRoot: any) => emblaRoot.parentElement,
-  };
-  const wheelGesturesOptions: any = {
-    wheelDraggingClass: '',
-    forceWheelAxis: 'y',
-  };
+export default function EmblaGallery({ projects, options }: EmblaGalleryProps) {
+  const [emblaRef, emblaApi] = useEmblaCarousel(options.embla, [
+    Autoplay({
+      ...options.autoplay,
+      rootNode: (emblaRoot: any) => emblaRoot.parentElement,
+    }),
+    WheelGesturesPlugin(options.wheelGestures),
+  ]);
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, inViewThreshold: 0.2 },
-    [Autoplay(autoplayOptions), WheelGesturesPlugin(wheelGesturesOptions)]
-  );
+  useEffect(() => {
+    if (emblaApi && !options.setAutoplay) {
+      emblaApi.plugins().autoplay?.stop();
+    }
+  }, [emblaApi, options.setAutoplay]);
 
   return (
-    <div
-      ref={emblaRef}
-      className="absolute top-0 h-full w-full overflow-hidden"
-    >
-      <div className="flex h-full">
+    <div ref={emblaRef} className={options.styling.emblaWrapper}>
+      <div className={options.styling.emblaContainer}>
         {projects.map(
           ({
             _id,
@@ -56,14 +54,14 @@ export default function FullscreenGallery({
               <Link
                 key={_id}
                 href={`/work/${category.title}/${slug.current}`}
-                className="relative min-w-0 flex-[0_0_100%]"
+                className={options.styling.emblaSlide}
               >
                 <Image
                   src={urlForImage(imageUrl)}
                   alt={landingPageImage?.alt || projectImage?.alt}
                   fill
                   priority
-                  className="h-full w-full object-cover"
+                  className={options.styling.emblaSlideInner}
                 />
               </Link>
             );

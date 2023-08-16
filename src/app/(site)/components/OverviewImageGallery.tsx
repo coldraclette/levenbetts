@@ -27,15 +27,19 @@ export default function OverviewImageGallery({ projects }: ImageGalleryProps) {
   }
 
   return (
-    <div ref={emblaRef} className={`absolute bottom-0 overflow-hidden`}>
+    <div
+      ref={emblaRef}
+      className={`embla-carousel absolute bottom-0 overflow-hidden`}
+    >
       <div className="flex gap-[15px]">
         {projects.map((project) => {
           return (
             <Link
               href={`${project.category.title}/${project.slug.current}`}
               key={project._id}
-              className={`relative h-full flex-shrink-0`}
+              className="relative h-full flex-shrink-0"
             >
+              <h2 className="mb-3">{project.title}</h2>
               <Image
                 src={urlForImage(project.projectImage)}
                 alt={project.projectImage.alt}

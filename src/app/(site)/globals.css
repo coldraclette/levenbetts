@@ -17,3 +17,35 @@ body {
     column-count: 2;
   }
 }
+
+/* When work menu is active, all links are black */
+.work-active.work-clicked a {
+  @apply text-black;
+}
+
+/* When any link in an active work menu is hovered, set all links to grey */
+.work-active.work-clicked:hover a {
+  @apply text-grey;
+}
+
+/* When a specific link in an active work menu is hovered, set only that link to black */
+.work-active.work-clicked a:hover {
+  @apply text-black;
+}
+
+/* When hovering over 'work' without it being active, set all links to grey */
+.work:hover .work-nav a {
+  @apply text-grey;
+}
+
+.work-nav {
+  @apply text-grey;
+}
+
+.work-nav a:hover {
+  @apply text-black;
+}
+
+.embla-carousel a:first-of-type h2 {
+  @apply pl-5;
+}

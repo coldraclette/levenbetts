@@ -50,12 +50,13 @@ export default function ProjectTopArea({
           next={next}
           category={project.category.title}
           onDetailsClick={toggleDetails}
+          detailsOpen={detailsOpen}
         />
       </div>
       {detailsOpen && (
         <ProjectInformationDesktop text={project.text} specs={project.specs} />
       )}
-      <ImageGallery images={project.images} detailsOpen={detailsOpen} />
+      <ImageGallery onImageClick={() => setDetailsOpen(false)} images={project.images} detailsOpen={detailsOpen} />
     </div>
   );
 }

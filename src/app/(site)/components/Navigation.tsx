@@ -1,26 +1,27 @@
 'use client';
 
-import { use, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+import { getCategories } from '../../../../sanity/sanity.query';
+
+type Category = {
+  _id: string;
+  title: string;
+};
 
 export default function Navigation() {
   const pathname = usePathname();
   const [isWorkOpen, setIsWorkOpen] = useState<boolean>(false);
+  const [workClicked, setWorkClicked] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
 
-  const categories = [
-    'houses',
-    'adaptations',
-    'arts',
-    'cities',
-    'education',
-    'furniture',
-    'housing',
-    'libraries',
-    'workspaces',
-    'publication',
-    'research',
-  ];
+  useEffect(() => {
+    getCategories().then((data) => {
+      setCategories(data);
+    });
+  }, []);
 
   const officeCategories = [
     { slug: 'awards', label: 'awards' },
@@ -29,49 +30,57 @@ export default function Navigation() {
   ];
 
   const activeCategory = categories.find((cat) =>
-    pathname.includes(`/work/${cat}`)
+    pathname.includes(`/work/${cat.title}`)
   );
+
   const activeOfficeCategory = officeCategories.find((cat) =>
     pathname.includes(`/office/${cat.slug}`)
   );
 
-  return (
-    <nav className="grid relative z-10 h-20 grid-cols-[1fr_1fr_1fr] gap-2 p-4 md:p-[22px]">
-      <div>
-        <h1>
-          <Link href="/">LEVENBETTS</Link>
-        </h1>
-      </div>
+  const toggleWorkMenu = () => {
+    setIsWorkOpen(!isWorkOpen);
+    setWorkClicked(!workClicked);
+  };
 
-      <div className="relative">
-        <div className="group inline-block cursor-pointer">
-          <Link href="/office">office</Link>
-          <div className="flex gap-5">
-            {activeOfficeCategory && (
-              <div>
-                <Link
-                  href={`/office/${activeOfficeCategory.slug}`}
-                  className="hover:text-black"
-                >
-                  {activeOfficeCategory.label}
-                </Link>
-              </div>
-            )}
-            <div className="hidden group-hover:block">
-              <div className="text-grey flex flex-wrap gap-5">
-                {officeCategories.map((cat) => {
-                  if (cat.slug !== activeOfficeCategory?.slug) {
-                    return (
-                      <Link
-                        key={cat.slug}
-                        href={`/office/${cat.slug}`}
-                        className="hover:text-black"
-                      >
-                        {cat.label}
-                      </Link>
-                    );
-                  }
-                })}
+  return (
+    <nav className="relative z-10 grid h-20 grid-cols-[minmax(200px,_615px)_1fr] p-4 md:p-[22px]">
+      <div className="grid grid-cols-2">
+        <div>
+          <h1>
+            <Link href="/">LEVENBETTS</Link>
+          </h1>
+        </div>
+
+        <div className="relative">
+          <div className="group inline-block cursor-pointer">
+            <Link href="/office">office</Link>
+            <div className="flex gap-5">
+              {activeOfficeCategory && (
+                <div>
+                  <Link
+                    href={`/office/${activeOfficeCategory.slug}`}
+                    className="hover:text-black"
+                  >
+                    {activeOfficeCategory.label}
+                  </Link>
+                </div>
+              )}
+              <div className="hidden group-hover:block">
+                <div className="flex flex-wrap gap-5 text-grey">
+                  {officeCategories.map((cat) => {
+                    if (cat.slug !== activeOfficeCategory?.slug) {
+                      return (
+                        <Link
+                          key={cat.slug}
+                          href={`/office/${cat.slug}`}
+                          className="hover:text-black"
+                        >
+                          {cat.label}
+                        </Link>
+                      );
+                    }
+                  })}
+                </div>
               </div>
             </div>
           </div>
@@ -81,17 +90,17 @@ export default function Navigation() {
       <div className="relative">
         <div
           className="group inline-block cursor-pointer"
-          onClick={() => setIsWorkOpen(!isWorkOpen)}
+          onClick={() => toggleWorkMenu()}
         >
           <span>work</span>
           <div className="flex gap-5 gap-y-1">
             {activeCategory && (
               <div>
                 <Link
-                  href={`/work/${activeCategory}`}
+                  href={`/work/${activeCategory.title}`}
                   className="hover:text-black"
                 >
-                  {activeCategory}
+                  {activeCategory.title}
                 </Link>
               </div>
             )}
@@ -100,19 +109,26 @@ export default function Navigation() {
                 (isWorkOpen ? 'block' : 'hidden') + ' group-hover:block'
               }
             >
-              <div className="text-grey flex flex-wrap gap-5 gap-y-1">
-                {categories.map((cat) => {
-                  if (cat !== activeCategory) {
-                    return (
-                      <Link
-                        key={cat}
-                        href={`/work/${cat}`}
-                        className="hover:text-black"
-                      >
-                        {cat}
-                      </Link>
-                    );
+              <div
+                className={`work-nav flex flex-wrap gap-5 gap-y-1 ${
+                  isWorkOpen ? 'work-active ' : ''
+                }
+                ${workClicked ? 'work-clicked' : ''}
+                `}
+              >
+                {categories.map(({ _id, title }) => {
+                  let isActiveCategory;
+                  if (activeCategory) {
+                    isActiveCategory = title === activeCategory.title;
                   }
+
+                  return (
+                    !isActiveCategory && (
+                      <Link key={_id} href={`/work/${title}`}>
+                        {title}
+                      </Link>
+                    )
+                  );
                 })}
               </div>
             </div>

@@ -23,7 +23,7 @@ export default function AwardList({ awards }: AwardListProps) {
   return (
     <div ref={scrollContainerRef} className="overflow-x-auto ">
       <div
-        className="w-max max-w-[615px] space-y-4 p-4"
+        className="w-max max-w-[615px] space-y-4 p-4 pl-0"
         style={{
           columnWidth: '615px',
           columnGap: '1rem',

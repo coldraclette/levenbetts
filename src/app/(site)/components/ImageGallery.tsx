@@ -11,11 +11,13 @@ import useHorizontalScroll from '../hooks/useHorizontalScroll';
 interface ImageGalleryProps {
   images: any[];
   detailsOpen?: boolean;
+  onImageClick?: () => void;
 }
 
 export default function ImageGallery({
   images,
   detailsOpen,
+  onImageClick,
 }: ImageGalleryProps) {
   const wheelGesturesOptions: any = {
     wheelDraggingClass: '',
@@ -46,6 +48,7 @@ export default function ImageGallery({
                 className={`w-auto object-contain ${
                   detailsOpen ? 'h-[30vh]' : 'h-[83vh]'
                 }`}
+                onClick={onImageClick}
               />
             </div>
           );

@@ -35,23 +35,6 @@ export const project = {
       description: 'The subtitle of the project. E.g. location',
     },
     {
-      title: 'Slug',
-      name: 'slug',
-      type: 'slug',
-      group: 'projectGroup',
-      validation: (Rule: any) => Rule.required(),
-      options: {
-        source: 'title',
-        maxLength: 200,
-        slugify: (input: any) =>
-          input
-            .toLowerCase()
-            .replace(/\s+/g, '-')
-            .replace(/[^a-z0-9-]/g, '')
-            .slice(0, 200),
-      },
-    },
-    {
       title: 'Project status',
       name: 'status',
       type: 'string',
@@ -68,14 +51,40 @@ export const project = {
       initialValue: 'current',
     },
     {
+      // boolean field "create project page" yes and no
+      title: 'Create project page',
+      name: 'createProjectPage',
+      type: 'boolean',
+      group: 'projectGroup',
+      description:
+        'Check this if you want to create a project page for this project.',
+      initialValue: false,
+    },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      group: 'projectGroup',
+      hidden: ({ parent }: any) => !parent.createProjectPage,
+      options: {
+        source: 'title',
+        maxLength: 200,
+        slugify: (input: any) =>
+          input
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[^a-z0-9-]/g, '')
+            .slice(0, 200),
+      },
+    },
+    {
       title: 'Category',
       name: 'category',
       type: 'reference',
       group: 'projectGroup',
       description: 'The category of the project.',
       to: [{ type: 'category' }],
-      validation: (Rule: any) => Rule.required(),
-      readonly: true,
+      hidden: ({ parent }: any) => !parent.createProjectPage,
     },
     {
       title: 'Text',
@@ -84,6 +93,7 @@ export const project = {
       group: 'projectGroup',
       description: 'The text of the project.',
       of: [{ type: 'block' }],
+      hidden: ({ parent }: any) => !parent.createProjectPage,
     },
     {
       title: 'Specs',
@@ -92,6 +102,7 @@ export const project = {
       group: 'projectGroup',
       description: 'The specs of the project.',
       of: [{ type: 'block' }],
+      hidden: ({ parent }: any) => !parent.createProjectPage,
     },
     {
       title: 'Project Overview Image',
@@ -99,9 +110,7 @@ export const project = {
       type: 'image',
       group: 'projectGroup',
       description: 'This image will be used in the work overview pages.',
-      options: {
-        hotspot: true,
-      },
+      hidden: ({ parent }: any) => !parent.createProjectPage,
       fields: [
         {
           name: 'alt',
@@ -118,6 +127,30 @@ export const project = {
       ],
     },
     {
+      title: 'Landing Page Mobile Image',
+      name: 'landingPageMobileImage',
+      type: 'image',
+      group: 'projectGroup',
+      description:
+        'This image will be used in the landing page for mobile, if the project is selected to be shown on the landing page.',
+      hidden: ({ parent }: any) => !parent.createProjectPage,
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description:
+            'Important for SEO and accessiblity. Describe what the image is about.',
+          validation: (Rule: any) =>
+            Rule.error('You have to fill out the alternative text.').required(),
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
+    },
+
+    {
       title: 'Show another image on the landing page?',
       name: 'showLandingPageImage',
       type: 'boolean',
@@ -125,6 +158,7 @@ export const project = {
       description:
         'Check this if you want to show a different image on the landing page.',
       initialValue: false,
+      hidden: ({ parent }: any) => !parent.createProjectPage,
     },
     {
       title: 'Landing Page Image',
@@ -157,13 +191,15 @@ export const project = {
           ],
         },
       ],
-      hidden: ({ parent }: any) => !parent.showLandingPageImage,
+      hidden: ({ parent }: any) =>
+        !parent.createProjectPage && !parent.showLandingPageImage,
     },
     {
       title: 'Images',
       name: 'images',
       type: 'array',
       group: 'projectGroup',
+      hidden: ({ parent }: any) => !parent.createProjectPage,
       description:
         'These images will be used in the project page. There can be more than one image.',
       of: [

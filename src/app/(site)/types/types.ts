@@ -14,3 +14,24 @@ export interface ProjectNavigationItemProps {
   };
   title: string;
 }
+
+export interface OptionsProps {
+  setAutoplay: boolean;
+  embla: {
+    loop: boolean;
+    inViewThreshold?: number;
+  };
+  autoplay: {
+    delay: number;
+  };
+  wheelGestures: {
+    wheelDraggingClass: string;
+    forceWheelAxis: 'x' | 'y';
+  };
+  styling: {
+    emblaWrapper: string;
+    emblaContainer: string;
+    emblaSlide: string;
+    emblaSlideInner: string;
+  }
+}

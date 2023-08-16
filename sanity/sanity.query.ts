@@ -2,7 +2,7 @@ import { client } from './lib/client';
 
 export async function getProjectsOverviewWithCategoryData(category: string) {
   const projectsOverview = await client.fetch(
-    `*[_type == $category][0] {
+    `*[_type == "category" && title == $category ][0] {
         projects[]->{
           _id,
           title,
@@ -150,4 +150,28 @@ export async function getLandingPageData() {
   );
 
   return landingPage;
+}
+
+export async function getCategories() {
+  const categories = await client.fetch(
+    `*[_type == "category"] | order(title asc) {
+        _id,
+        title
+      }`
+  );
+
+  const sortPriority = ['workspaces', 'publications'];
+
+  categories.sort((a: any, b: any) => {
+    const indexA = sortPriority.indexOf(a.title);
+    const indexB = sortPriority.indexOf(b.title);
+
+    if (indexA === -1 && indexB === -1) return 0;
+    if (indexA === -1) return -1;
+    if (indexB === -1) return 1;
+
+    return indexA - indexB;
+  });
+
+  return categories;
 }

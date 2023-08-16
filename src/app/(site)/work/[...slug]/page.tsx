@@ -6,7 +6,7 @@ import {
   getSingleProjectData,
 } from '../../../../../sanity/sanity.query';
 import NotFound from '../../not-found';
-import ResearchPage from './researchPage';
+import ResearchPage from '../researchPage';
 
 interface PageProps {
   params: {
