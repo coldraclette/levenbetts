@@ -48,7 +48,9 @@ export default async function Page({ params }: any) {
         {data.projects &&
           data.projects.map((project: any) => (
             <div key={project.slug.current} className="w-full">
-              <Link href={`/work/${project.slug.current}`}>
+              <Link
+                href={`/work/${project.category.title}/${project.slug.current}`}
+              >
                 <div className="mb-[7px] px-4">
                   <h2>{project.title}</h2>
                   {project.subtitle && <h3>{project.subtitle}</h3>}

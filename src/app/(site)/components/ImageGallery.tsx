@@ -1,12 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
 import Image from 'next/image';
 import useEmblaCarousel from 'embla-carousel-react';
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 import { urlForImage } from '../../../../sanity/lib/image';
-import useHorizontalScroll from '../hooks/useHorizontalScroll';
 
 interface ImageGalleryProps {
   images: any[];

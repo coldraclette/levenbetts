@@ -1,10 +1,8 @@
-import ProjectInformationMobile from '@/app/(site)/components/project/ProjectInformationMobile';
-import ProjectTopArea from '@/app/(site)/components/project/ProjectTopArea';
-
 import {
   getProjectNavigation,
   getSingleProjectData,
 } from '../../../../../sanity/sanity.query';
+import ProjectDetail from '../../components/project/ProjectDetail';
 import NotFound from '../../not-found';
 import ResearchPage from '../researchPage';
 
@@ -32,10 +30,5 @@ export default async function Page({ params }: PageProps) {
     project.category._id
   );
 
-  return (
-    <>
-      <ProjectTopArea project={project} prev={prev} next={next} />
-      <ProjectInformationMobile text={project.text} specs={project.specs} />
-    </>
-  );
+  return <ProjectDetail project={project} prev={prev} next={next} />;
 }

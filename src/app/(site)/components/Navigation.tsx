@@ -43,7 +43,7 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="relative z-10 grid h-auto grid-cols-[2fr_1fr] lg:grid-cols-[minmax(200px,_615px)_1fr] p-4 lg:p-[22px]">
+    <nav className="relative z-10 grid h-auto grid-cols-[2fr_1fr] p-4 lg:grid-cols-[minmax(200px,_615px)_1fr] lg:p-[22px]">
       <div className="grid grid-cols-2">
         <div>
           <h1>
@@ -56,7 +56,7 @@ export default function Navigation() {
             <div className="mb-1">
               <Link href="/office">office</Link>
             </div>
-            <div className="flex gap-1 lg:gap-5">
+            <div className="flex flex-col lg:flex-row gap-1 lg:gap-5">
               {activeOfficeCategory && (
                 <div>
                   <Link
@@ -94,8 +94,8 @@ export default function Navigation() {
           className="group inline-block cursor-pointer"
           onClick={() => toggleWorkMenu()}
         >
-          <div className='mb-1'>work</div>
-          <div className="flex flex-col lg:flex-row gap-5 gap-y-1">
+          <div className="mb-1">work</div>
+          <div className="flex flex-col gap-5 gap-y-1 lg:flex-row">
             {activeCategory && (
               <div>
                 <Link
@@ -112,7 +112,7 @@ export default function Navigation() {
               }
             >
               <div
-                className={`work-nav flex flex-wrap flex-col lg:flex-row gap-5 gap-y-1 ${
+                className={`work-nav flex flex-col flex-wrap gap-5 gap-y-1 lg:flex-row ${
                   isWorkOpen ? 'work-active ' : ''
                 }
                 ${workClicked ? 'work-clicked' : ''}
@@ -126,7 +126,11 @@ export default function Navigation() {
 
                   return (
                     !isActiveCategory && (
-                      <Link key={_id} href={`/work/${title}`} className='w-full'>
+                      <Link
+                        key={_id}
+                        href={`/work/${title}`}
+                        className="w-full lg:w-auto"
+                      >
                         {title}
                       </Link>
                     )
