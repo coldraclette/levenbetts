@@ -43,6 +43,7 @@ export default async function Page({ params }: any) {
     },
   };
 
+  console.log('projects', data.projects);
   return (
     <>
       <div className="flex flex-col items-center gap-[14px] md:hidden">

@@ -17,11 +17,14 @@ export const revalidate = 60;
 export default async function Page({ params }: PageProps) {
   const { slug } = params;
 
+  console.log('slug', slug);
+
   if (slug[0] === 'research') {
     return <ResearchPage />;
   }
 
   const project = await getSingleProjectData(slug[1]);
+  console.log('project', project);
 
   if (!project) {
     return <NotFound />;

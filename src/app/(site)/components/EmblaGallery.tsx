@@ -43,6 +43,7 @@ export default function EmblaGallery({ projects, options }: EmblaGalleryProps) {
 
   if (!projects) return null;
 
+  console.log('projects', projects);
   return (
     <div ref={emblaRef} className={options.styling.emblaWrapper}>
       <div className={options.styling.emblaContainer}>
