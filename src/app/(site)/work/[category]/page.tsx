@@ -4,10 +4,11 @@ import Link from 'next/link';
 import { urlForImage } from '../../../../../sanity/lib/image';
 import { getProjectsOverviewWithCategoryData } from '../../../../../sanity/sanity.query';
 import EmblaGallery from '../../components/EmblaGallery';
-import OverviewImageGallery from '../../components/OverviewImageGallery';
 import NotFound from '../../not-found';
 import { OptionsProps } from '../../types/types';
 import ResearchPage from '../researchPage';
+
+export const revalidate = 60;
 
 export default async function Page({ params }: any) {
   if (params.category === 'research') {
