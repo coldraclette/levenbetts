@@ -1,3 +1,4 @@
+import { landingPage } from './../../../../sanity/schema/landingPage';
 export interface TextProps {
   style: string;
   _key: string;
@@ -17,6 +18,7 @@ export interface ProjectNavigationItemProps {
 
 export interface OptionsProps {
   setAutoplay: boolean;
+  landingPage: boolean,
   embla: {
     loop: boolean;
     inViewThreshold?: number;

@@ -138,6 +138,7 @@ export async function getLandingPageData() {
           slug,
           projectImage,
           landingPageImage,
+          landingPageMobileImage,
           category->{
             _id,
             title

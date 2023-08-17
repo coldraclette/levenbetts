@@ -51,7 +51,6 @@ export const project = {
       initialValue: 'current',
     },
     {
-      // boolean field "create project page" yes and no
       title: 'Create project page',
       name: 'createProjectPage',
       type: 'boolean',
@@ -163,32 +162,22 @@ export const project = {
     {
       title: 'Landing Page Image',
       name: 'landingPageImage',
-      type: 'array',
+      type: 'image',
       group: 'projectGroup',
       description:
         'This image will be used in the landing page, if it has to be different then the Project Overview Image.',
-      of: [
+      fields: [
         {
-          type: 'image',
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description:
+            'Important for SEO and accessiblity. Describe what the image is about.',
+          validation: (Rule: any) =>
+            Rule.error('You have to fill out the alternative text.').required(),
           options: {
-            hotspot: true,
+            isHighlighted: true,
           },
-          fields: [
-            {
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative text',
-              description:
-                'Important for SEO and accessiblity. Describe what the image is about.',
-              validation: (Rule: any) =>
-                Rule.error(
-                  'You have to fill out the alternative text.'
-                ).required(),
-              options: {
-                isHighlighted: true,
-              },
-            },
-          ],
         },
       ],
       hidden: ({ parent }: any) =>

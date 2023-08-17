@@ -18,7 +18,7 @@ export default function OverviewImageGallery({ projects }: ImageGalleryProps) {
   };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, dragFree: true },
+    { loop: false, dragFree: true },
     [WheelGesturesPlugin(wheelGesturesOptions)]
   );
 
@@ -27,27 +27,26 @@ export default function OverviewImageGallery({ projects }: ImageGalleryProps) {
   }
 
   return (
-    <div
-      ref={emblaRef}
-      className={`embla-carousel absolute bottom-0 overflow-hidden`}
-    >
-      <div className="flex gap-[15px]">
+    <div ref={emblaRef} className={`embla-carousel relative overflow-hidden`}>
+      <div className="grid auto-cols-[80%] grid-flow-col gap-[15px]">
         {projects.map((project) => {
           return (
             <Link
               href={`${project.category.title}/${project.slug.current}`}
               key={project._id}
-              className="relative h-full flex-shrink-0"
+              className="relative h-full "
             >
               <h2 className="mb-3">{project.title}</h2>
-              <Image
-                src={urlForImage(project.projectImage)}
-                alt={project.projectImage.alt}
-                width={1200}
-                height={800}
-                priority
-                className={`h-[83vh] w-auto object-contain`}
-              />
+              <div className="relative">
+                <Image
+                  src={urlForImage(project.projectImage)}
+                  alt={project.projectImage.alt}
+                  width={1200}
+                  height={800}
+                  priority
+                  className={`object-cover`}
+                />
+              </div>
             </Link>
           );
         })}

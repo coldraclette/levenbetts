@@ -46,6 +46,6 @@ body {
   @apply text-black;
 }
 
-.embla-carousel a:first-of-type h2 {
+.embla-carousel a:first-of-type .first-slide {
   @apply pl-5;
 }

@@ -12,6 +12,7 @@ export default async function Page() {
 
   const options: OptionsProps = {
     setAutoplay: true,
+    landingPage: true,
     embla: {
       loop: true,
       inViewThreshold: 0.2,
