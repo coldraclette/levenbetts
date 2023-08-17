@@ -82,30 +82,34 @@ export default function ProjectDetail({
       {detailsOpen && (
         <ProjectInformationDesktop text={project.text} specs={project.specs} />
       )}
-      <div className="hidden lg:block">
-        <ImageGallery
-          onImageClick={() => setDetailsOpen(false)}
-          images={project.images}
-          detailsOpen={detailsOpen}
-        />
-      </div>
-      <div className="mt-2 flex flex-col gap-[15px] lg:hidden">
-        {project.images.map((image): any => {
-          return (
-            <div key={image._key} className="relative">
-              <Image
-                src={urlForImage(image)}
-                alt={image.alt}
-                width={1200}
-                height={800}
-                priority
-                sizes="(max-width: 768px) 100vw, 768px"
-                className="object-cover"
-              />
-            </div>
-          );
-        })}
-      </div>
+      {project.images && (
+        <>
+          <div className="hidden lg:block">
+            <ImageGallery
+              onImageClick={() => setDetailsOpen(false)}
+              images={project.images}
+              detailsOpen={detailsOpen}
+            />
+          </div>
+          <div className="mt-2 flex flex-col gap-[15px] lg:hidden">
+            {project.images.map((image): any => {
+              return (
+                <div key={image._key} className="relative">
+                  <Image
+                    src={urlForImage(image)}
+                    alt={image.alt}
+                    width={1200}
+                    height={800}
+                    priority
+                    sizes="(max-width: 768px) 100vw, 768px"
+                    className="object-cover"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
       <ProjectInformationMobile
         text={project.text}
         specs={project.specs}
