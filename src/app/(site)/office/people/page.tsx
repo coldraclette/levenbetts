@@ -5,7 +5,7 @@ import { getPeoplePageData } from '../../../../../sanity/sanity.query';
 import SmallerImageGallery from '../../components/SmallerImageGallery';
 import TextContent from '../../components/TextContent';
 
-export const revalidate = 60;
+export const revalidate = 120;
 
 export default async function Page() {
   const data = await getPeoplePageData();

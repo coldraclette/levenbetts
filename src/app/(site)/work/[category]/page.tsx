@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { groq } from 'next-sanity';
 
+import { client } from '../../../../../sanity/lib/client';
 import { urlForImage } from '../../../../../sanity/lib/image';
 import { getProjectsOverviewWithCategoryData } from '../../../../../sanity/sanity.query';
 import EmblaGallery from '../../components/EmblaGallery';
@@ -8,7 +10,19 @@ import NotFound from '../../not-found';
 import { OptionsProps } from '../../types/types';
 import ResearchPage from '../researchPage';
 
-export const revalidate = 60;
+export const revalidate = 120;
+
+export async function generateStaticParams() {
+  const query = groq`*[_type == "category"] {
+    title
+}`;
+
+  const categories = await client.fetch(query);
+
+  return categories.map((category: any) => ({
+    category: category.title,
+  }));
+}
 
 export default async function Page({ params }: any) {
   if (params.category === 'research') {
@@ -43,7 +57,6 @@ export default async function Page({ params }: any) {
     },
   };
 
-  console.log('projects', data.projects);
   return (
     <>
       <div className="flex flex-col items-center gap-[14px] md:hidden">

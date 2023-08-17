@@ -5,7 +5,7 @@ import { getOfficePageData } from '../../../../sanity/sanity.query';
 import SmallerImageGallery from '../components/SmallerImageGallery';
 import TextContent from '../components/TextContent';
 
-export const revalidate = 60;
+export const revalidate = 120;
 
 export default async function Page() {
   const data = await getOfficePageData();
@@ -32,7 +32,7 @@ export default async function Page() {
         <SmallerImageGallery images={data.images} />
       </div>
       <div className="md:hidden">
-        <div className='px-4'>
+        <div className="px-4">
           <TextContent text={data.text} />
           <TextContent text={data.additionalText} />
         </div>

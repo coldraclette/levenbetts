@@ -2,7 +2,7 @@ import { getLandingPageData } from '../../../sanity/sanity.query';
 import EmblaGallery from './components/EmblaGallery';
 import { OptionsProps } from './types/types';
 
-export const revalidate = 60;
+export const revalidate = 120;
 
 export default async function Page() {
   const data = await getLandingPageData();
