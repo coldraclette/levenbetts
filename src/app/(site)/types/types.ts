@@ -1,4 +1,5 @@
-import { landingPage } from './../../../../sanity/schema/landingPage';
+import type { Image } from 'sanity';
+
 export interface TextProps {
   style: string;
   _key: string;
@@ -18,7 +19,7 @@ export interface ProjectNavigationItemProps {
 
 export interface OptionsProps {
   setAutoplay: boolean;
-  landingPage: boolean,
+  landingPage: boolean;
   embla: {
     loop: boolean;
     inViewThreshold?: number;
@@ -35,5 +36,21 @@ export interface OptionsProps {
     emblaContainer: string;
     emblaSlide: string;
     emblaSlideInner: string;
-  }
+  };
+}
+
+export interface ProjectProps {
+  _id: string;
+  slug: {
+    current: string;
+    _type: string;
+  };
+  title: string;
+  subtitle: string;
+  category: {
+    title: string;
+  };
+  text: TextProps[];
+  specs: TextProps[];
+  images: Image[];
 }

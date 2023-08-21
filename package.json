@@ -27,6 +27,7 @@
     "embla-carousel-wheel-gestures": "^8.0.0-rc04",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
+    "framer-motion": "^10.16.0",
     "next": "^13.0.0",
     "next-sanity": "4.3.3",
     "postcss": "8.4.24",

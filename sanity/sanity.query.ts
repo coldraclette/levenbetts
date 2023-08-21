@@ -53,9 +53,9 @@ export async function getProjectNavigation(slug: string, categoryRef: string) {
     { categoryRef }
   );
 
-  const currentIndex = projects.findIndex(
-    (project: any) => project.slug.current === slug
-  );
+  const currentIndex = projects.findIndex((project: any) => {
+    return project.slug.current === slug;
+  });
 
   const prevIndex =
     currentIndex - 1 >= 0 ? currentIndex - 1 : projects.length - 1;
@@ -101,7 +101,6 @@ export async function getPeoplePageData() {
   return peoplePage;
 }
 
-// function to fetch all projects and group them under complete or current
 export async function getProjectListData() {
   const projects = await client.fetch(
     `*[_type == "project"] | order(_createdAt asc) {

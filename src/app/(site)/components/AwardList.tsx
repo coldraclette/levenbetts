@@ -36,7 +36,7 @@ export default function AwardList({ awards }: AwardListProps) {
       </div>
       <div
         ref={scrollContainerRef}
-        className="hidden overflow-x-auto md:block "
+        className="scrollbar hidden overflow-x-auto md:block"
       >
         <div
           className="w-max max-w-[615px] space-y-4 p-4 pl-0"

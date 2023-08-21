@@ -1,34 +1,41 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function SplashScreen() {
-//   useEffect(() => {
-//     const splash = document.getElementById('splash-screen');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-//     const handleScroll = () => {
-//       if (!splash) return;
+  useEffect(() => {
+    setTimeout(() => {
+      document.body.style.cursor = 'default';
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
-//       splash.style.transform = 'translateX(-100%)'; // Slide it to the left
+  const slideRight = {
+    initial: {
+      x: '0',
+    },
+    exit: {
+      x: '-300vh',
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+    },
+  };
 
-//       // After sliding, remove the splash screen after a short duration to free up resources
-//       setTimeout(() => {
-//         splash.remove();
-//       }, 500); // Assuming 500ms is the duration of your slide animation
-//     };
-
-//     window.addEventListener('scroll', handleScroll, { once: true }); // The listener will remove itself after firing once
-
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
   return (
-    <div
-      className="text-white fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black transition-transform duration-500 ease-in-out"
-      id="splash-screen"
-    >
-      LEVENBETTS
-    </div>
+    <AnimatePresence mode="wait">
+      {isLoading && (
+        <motion.div
+          variants={slideRight}
+          initial="initial"
+          exit="exit"
+          className="text-white fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black text-4xl lg:text-9xl font-bold"
+        >
+          <h1>LEVENBETTS</h1>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

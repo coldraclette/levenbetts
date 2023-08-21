@@ -37,13 +37,8 @@ export default function Navigation() {
     pathname.includes(`/office/${cat.slug}`)
   );
 
-  const toggleWorkMenu = () => {
-    setIsWorkOpen(!isWorkOpen);
-    setWorkClicked(!workClicked);
-  };
-
   return (
-    <nav className="relative z-10 grid h-auto grid-cols-[2fr_1fr] p-4 lg:grid-cols-[minmax(200px,_615px)_1fr] lg:p-[22px]">
+    <nav className="relative z-10 grid h-[8vh] grid-cols-[2fr_1fr] p-4 lg:grid-cols-[minmax(200px,_615px)_1fr] lg:p-[22px]">
       <div className="grid grid-cols-2">
         <div>
           <h1>
@@ -52,11 +47,11 @@ export default function Navigation() {
         </div>
 
         <div className="relative">
-          <div className="group inline-block cursor-pointer">
+          <div className="group cursor-pointer pb-5">
             <div className="mb-1">
               <Link href="/office">office</Link>
             </div>
-            <div className="flex flex-col lg:flex-row gap-1 lg:gap-5">
+            <div className="flex flex-col gap-1 lg:flex-row lg:gap-5">
               {activeOfficeCategory && (
                 <div>
                   <Link
@@ -90,11 +85,10 @@ export default function Navigation() {
       </div>
 
       <div className="relative">
-        <div
-          className="group inline-block cursor-pointer"
-          onClick={() => toggleWorkMenu()}
-        >
-          <div className="mb-1">work</div>
+        <div className="group cursor-pointer pb-5">
+          <div className="mb-1" onClick={() => setIsWorkOpen(!isWorkOpen)}>
+            work
+          </div>
           <div className="flex flex-col gap-5 gap-y-1 lg:flex-row">
             {activeCategory && (
               <div>
@@ -130,6 +124,7 @@ export default function Navigation() {
                         key={_id}
                         href={`/work/${title}`}
                         className="w-full lg:w-auto"
+                        onClick={() => setIsWorkOpen(false)}
                       >
                         {title}
                       </Link>

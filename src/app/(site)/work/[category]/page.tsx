@@ -50,7 +50,7 @@ export default async function Page({ params }: any) {
       forceWheelAxis: 'y',
     },
     styling: {
-      emblaWrapper: 'embla-carousel relative h-full w-full overflow-hidden',
+      emblaWrapper: 'embla-carousel relative h-full w-full overflow-x-scroll',
       emblaContainer: 'flex h-full gap-[15px]',
       emblaSlide: 'relative min-w-0 flex-[0_0_80%]',
       emblaSlideInner: 'h-full w-full object-cover',
@@ -77,6 +77,7 @@ export default async function Page({ params }: any) {
                   height={768}
                   sizes="(max-width: 768px) 100vw, 768px"
                   quality={90}
+                  priority
                 />
               </Link>
             </div>

@@ -1,7 +1,9 @@
 import Image from 'next/image';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { urlForImage } from '../../../../../sanity/lib/image';
 import { getPeoplePageData } from '../../../../../sanity/sanity.query';
+import PeopleDesktop from '../../components/people/PeopleDesktop';
 import SmallerImageGallery from '../../components/SmallerImageGallery';
 import TextContent from '../../components/TextContent';
 
@@ -16,26 +18,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="hidden md:block">
-        <div className="mt-5 hidden  px-4 md:flex md:px-[22px]">
-          <div className="grid h-full max-h-full w-full grid-cols-3 gap-4 overflow-auto">
-            <div
-              style={{
-                columnCount: 2,
-                columnFill: 'auto',
-              }}
-              className="col-span-2 h-[58vh]"
-            >
-              <TextContent text={data.text} />
-            </div>
-
-            <div className="h-full overflow-auto">
-              <TextContent text={data.additionalText} />
-            </div>
-          </div>
-        </div>
-        <SmallerImageGallery images={data.images} />
-      </div>
+      <PeopleDesktop data={data} />
       <div className="md:hidden">
         <div className="px-4">
           <TextContent text={data.text} />

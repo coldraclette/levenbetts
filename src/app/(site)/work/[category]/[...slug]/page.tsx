@@ -46,7 +46,7 @@ export default async function Page({ params }: PageProps) {
   }
 
   const { prev, next } = await getProjectNavigation(
-    slug[1],
+    slug[0],
     project.category._id
   );
 

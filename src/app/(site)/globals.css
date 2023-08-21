@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  @apply h-full w-full font-sans text-[15px] leading-[17px] text-black md:text-lg md:leading-5;
+  @apply h-full w-full cursor-wait font-sans text-[15px] leading-[17px] text-black md:text-[16px] md:leading-[18px] 2xl:text-lg 2xl:leading-5;
 }
 
 @media screen and (min-width: 768px) {
@@ -46,6 +46,12 @@ body {
   @apply text-black;
 }
 
-.embla-carousel a:first-of-type .first-slide {
+.embla-carousel a:first-of-type .slide {
   @apply pl-5;
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome, Safari and Opera */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in IE 11 */
 }

@@ -1,6 +1,6 @@
 import { TextProps } from '@/app/(site)/types/types';
 
-import TextContent from '../TextContent';
+import TextContent from '../../TextContent';
 
 interface ProjectInformationMobileProps {
   text: TextProps[];
