@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  @apply h-full w-full cursor-wait font-sans text-[15px] leading-[17px] text-black md:text-[16px] md:leading-[18px] 2xl:text-lg 2xl:leading-5;
+  @apply h-full w-full cursor-wait font-sans text-[15px] leading-[17px] text-black md:text-[16px] md:leading-[18px] 3xl:text-lg 3xl:leading-5;
 }
 
 @media screen and (min-width: 768px) {
