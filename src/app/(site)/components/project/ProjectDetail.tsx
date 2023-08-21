@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 import useWindowSize from '../../hooks/useWindowSize';
 import { ProjectNavigationItemProps, ProjectProps } from '../../types/types';
@@ -51,12 +52,25 @@ export default function ProjectDetail({
             prev={prev}
             next={next}
           />
-          <ProjectImagesMobile images={project.images} />
-          <ProjectInformationMobile
-            text={project.text}
-            specs={project.specs}
-            informationRef={informationRef}
-          />
+          <motion.div
+            initial={{ x: '100%', opacity: 0 }}
+            animate={{
+              x: '0%',
+              opacity: 1,
+              transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
+            }}
+            exit={{
+              x: '-100%',
+              opacity: 0,
+            }}
+          >
+            <ProjectImagesMobile images={project.images} />
+            <ProjectInformationMobile
+              text={project.text}
+              specs={project.specs}
+              informationRef={informationRef}
+            />
+          </motion.div>
         </>
       ) : (
         <>

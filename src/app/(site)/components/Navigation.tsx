@@ -63,7 +63,7 @@ export default function Navigation() {
                 </div>
               )}
               <div className="hidden group-hover:block">
-                <div className="flex flex-col flex-wrap gap-1 text-grey lg:flex-row lg:gap-5">
+                <div className="flex flex-col flex-wrap gap-1 lg:text-grey lg:flex-row lg:gap-5">
                   {officeCategories.map((cat) => {
                     if (cat.slug !== activeOfficeCategory?.slug) {
                       return (
