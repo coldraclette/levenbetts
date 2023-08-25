@@ -17,28 +17,6 @@ export interface ProjectNavigationItemProps {
   title: string;
 }
 
-export interface OptionsProps {
-  setAutoplay: boolean;
-  landingPage: boolean;
-  embla: {
-    loop: boolean;
-    inViewThreshold?: number;
-  };
-  autoplay: {
-    delay: number;
-  };
-  wheelGestures: {
-    wheelDraggingClass: string;
-    forceWheelAxis: 'x' | 'y';
-  };
-  styling: {
-    emblaWrapper: string;
-    emblaContainer: string;
-    emblaSlide: string;
-    emblaSlideInner: string;
-  };
-}
-
 export interface ProjectProps {
   _id: string;
   slug: {
@@ -53,4 +31,15 @@ export interface ProjectProps {
   text: TextProps[];
   specs: TextProps[];
   images: Image[];
+}
+
+export interface Project {
+  _id: string;
+  slug: { current: string };
+  landingPageImage?: Image;
+  landingPageMobileImage?: Image;
+  title?: string;
+  subtitle?: string;
+  projectImage: Image;
+  category: any;
 }

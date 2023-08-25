@@ -11,7 +11,7 @@ interface PeopleDesktopProps {
 
 export default function PeopleDesktop({ data }: PeopleDesktopProps) {
   return (
-    <div className="hidden md:block">
+    <div className="hidden lg:block">
       <div className="mt-5 grid h-full max-h-full w-full grid-cols-[minmax(200px,_593px)_minmax(200px,_593px)_2fr] gap-4 overflow-auto px-[22px]">
         <AnimatePresence mode="wait">
           <>

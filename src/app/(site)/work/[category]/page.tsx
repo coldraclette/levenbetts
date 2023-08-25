@@ -5,9 +5,8 @@ import { groq } from 'next-sanity';
 import { client } from '../../../../../sanity/lib/client';
 import { urlForImage } from '../../../../../sanity/lib/image';
 import { getProjectsOverviewWithCategoryData } from '../../../../../sanity/sanity.query';
-import EmblaGallery from '../../components/EmblaGallery';
+import SwiperOverview from '../../components/SwiperOverview';
 import NotFound from '../../not-found';
-import { OptionsProps } from '../../types/types';
 import ResearchPage from '../researchPage';
 
 export const revalidate = 120;
@@ -34,28 +33,6 @@ export default async function Page({ params }: any) {
   if (!data) {
     return <NotFound />;
   }
-
-  const options: OptionsProps = {
-    setAutoplay: false,
-    landingPage: false,
-    embla: {
-      loop: false,
-      inViewThreshold: 0.2,
-    },
-    autoplay: {
-      delay: 4000,
-    },
-    wheelGestures: {
-      wheelDraggingClass: '',
-      forceWheelAxis: 'y',
-    },
-    styling: {
-      emblaWrapper: 'embla-carousel relative h-full w-full overflow-x-scroll',
-      emblaContainer: 'flex h-full gap-[15px]',
-      emblaSlide: 'relative min-w-0 flex-[0_0_80%]',
-      emblaSlideInner: 'h-full w-full object-cover',
-    },
-  };
 
   return (
     <>
@@ -84,7 +61,7 @@ export default async function Page({ params }: any) {
           ))}
       </div>
       <div className="hidden h-full md:flex">
-        <EmblaGallery projects={data.projects} options={options} />
+        <SwiperOverview projects={data.projects} />
       </div>
     </>
   );

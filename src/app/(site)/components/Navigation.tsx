@@ -38,7 +38,11 @@ export default function Navigation() {
   );
 
   return (
-    <nav className="relative z-10 grid lg:h-[8vh] grid-cols-[2fr_1fr] p-4 lg:grid-cols-[minmax(200px,_615px)_1fr] lg:p-[22px]">
+    <nav
+      className={`fixed z-20 grid w-full grid-cols-[2fr_1fr] lg:relative ${
+        pathname === '/' ? 'bg-none' : 'bg-white'
+      } p-4 lg:h-[8vh] lg:grid-cols-[minmax(200px,_615px)_1fr] lg:bg-none lg:p-[22px]`}
+    >
       <div className="grid grid-cols-2">
         <div>
           <h1>
@@ -63,7 +67,7 @@ export default function Navigation() {
                 </div>
               )}
               <div className="hidden group-hover:block">
-                <div className="flex flex-col flex-wrap gap-1 lg:text-grey lg:flex-row lg:gap-5">
+                <div className="flex flex-col flex-wrap gap-1 lg:flex-row lg:gap-5 lg:text-grey">
                   {officeCategories.map((cat) => {
                     if (cat.slug !== activeOfficeCategory?.slug) {
                       return (

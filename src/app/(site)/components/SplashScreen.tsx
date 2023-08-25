@@ -19,7 +19,7 @@ export default function SplashScreen() {
       x: '0',
     },
     exit: {
-      x: '-300vh',
+      x: '-600vh',
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
   };
@@ -31,7 +31,7 @@ export default function SplashScreen() {
           variants={slideRight}
           initial="initial"
           exit="exit"
-          className="text-white fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black text-4xl lg:text-9xl font-bold"
+          className="text-white fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black text-4xl lg:text-9xl font-medium"
         >
           <h1>LEVENBETTS</h1>
         </motion.div>

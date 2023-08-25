@@ -48,12 +48,27 @@ body {
   }
 }
 
-.embla-carousel a:first-of-type .slide {
-  @apply pl-5;
-}
-
 .scrollbar::-webkit-scrollbar {
   display: none; /* Hide scrollbar in Chrome, Safari and Opera */
   scrollbar-width: none; /* Hide scrollbar in Firefox */
   -ms-overflow-style: none; /* Hide scrollbar in IE 11 */
+}
+
+.modal-transition {
+  transition: top 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* swiper.js */
+.swiper-wrapper,
+.swiper-slide {
+  @apply h-full;
+}
+.project-details .swiper-slide {
+  @apply w-auto;
+}
+.category-overview .swiper-slide {
+  @apply w-4/5;
+}
+.category-overview a:first-of-type .project-title {
+  @apply pl-5;
 }

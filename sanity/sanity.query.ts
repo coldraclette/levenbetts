@@ -109,6 +109,7 @@ export async function getProjectListData() {
         subtitle,
         slug,
         status,
+        projectImage,
         category->{
           _id,
           title

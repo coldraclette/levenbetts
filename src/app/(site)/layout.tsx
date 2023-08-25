@@ -4,6 +4,7 @@ import Theinhardt from 'next/font/local';
 
 import Navigation from './components/Navigation';
 import SplashScreen from './components/SplashScreen';
+import Transition from './components/Transition';
 import { siteConfig } from './site.config';
 
 const theinhardt = Theinhardt({
@@ -60,7 +61,9 @@ export default function RootLayout({
       <body className="relative md:h-screen md:overflow-hidden">
         <SplashScreen />
         <Navigation />
-        <main className="h-full w-full">{children}</main>
+        <main className="h-full w-full pt-[70px] lg:pt-0">
+          <Transition>{children}</Transition>
+        </main>
       </body>
     </html>
   );

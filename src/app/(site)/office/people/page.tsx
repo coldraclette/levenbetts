@@ -19,12 +19,12 @@ export default async function Page() {
   return (
     <>
       <PeopleDesktop data={data} />
-      <div className="md:hidden">
-        <div className="px-4">
+      <div className="lg:hidden">
+        <div className="px-4 flex flex-col gap-4">
           <TextContent text={data.text} />
           <TextContent text={data.additionalText} />
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 mt-4">
           {data.images.map((image: any) => {
             return (
               <div key={image._key} className={`relative h-full`}>

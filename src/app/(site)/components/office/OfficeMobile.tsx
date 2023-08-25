@@ -9,12 +9,12 @@ interface OfficeMobileProps {
 
 export default function OfficeMobile({ data }: OfficeMobileProps) {
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <div className="px-4">
         <TextContent text={data.text} />
         <TextContent text={data.additionalText} />
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mt-4">
         {data.images.map((image: any) => {
           return (
             <div key={image._key} className={`relative h-full`}>

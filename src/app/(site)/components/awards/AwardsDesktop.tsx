@@ -1,7 +1,9 @@
 'use client';
 
-import useEmblaCarousel from 'embla-carousel-react';
-import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
+import 'swiper/css';
+
+import { Mousewheel } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import AwardListItem from '../AwardListItem';
 
@@ -15,14 +17,14 @@ interface AwardProps {
   awardDetails: any;
 }
 export default function AwardsDesktop({ awards }: AwardListProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: false, dragFree: true },
-    [WheelGesturesPlugin({ wheelDraggingClass: '', forceWheelAxis: 'y' })]
-  );
   return (
-    <div className="absolute bottom-0 left-0 hidden h-[90vh] w-full lg:block">
-      <div
-        ref={emblaRef}
+    <Swiper
+      mousewheel={true}
+      modules={[Mousewheel]}
+      freeMode={{ enabled: true, momentumBounce: false }}
+      className="absolute bottom-0 left-0 hidden h-[90vh] w-full lg:block"
+    >
+      <SwiperSlide
         className={`scrollbar w-full overflow-hidden overflow-x-scroll`}
       >
         <div className="flex h-full w-full gap-[15px]">
@@ -42,7 +44,7 @@ export default function AwardsDesktop({ awards }: AwardListProps) {
             );
           })}
         </div>
-      </div>
-    </div>
+      </SwiperSlide>
+    </Swiper>
   );
 }

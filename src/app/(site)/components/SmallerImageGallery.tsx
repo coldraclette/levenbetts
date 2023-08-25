@@ -1,59 +1,79 @@
 'use client';
 
-import { useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import useEmblaCarousel from 'embla-carousel-react';
-import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
-import { Image as SanityImage } from 'sanity';
+import { motion } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { urlForImage } from '../../../../sanity/lib/image';
-import useHorizontalScroll from '../hooks/useHorizontalScroll';
+
+import 'swiper/css';
+
+import { Mousewheel } from 'swiper/modules';
 
 interface ImageGalleryProps {
   images: any[];
 }
 
 export default function SmallerImageGallery({ images }: ImageGalleryProps) {
-  const galleryRef = useRef<HTMLDivElement>(null);
-
-  useHorizontalScroll(galleryRef);
-
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: false, dragFree: true },
-    [WheelGesturesPlugin({ wheelDraggingClass: '', forceWheelAxis: 'y' })]
-  );
+  const [onImagesClick, setOnImagesClick] = useState(false);
 
   if (!images) {
     return null;
   }
 
+  const containerVariants = {
+    open: {
+      height: '50vh',
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+    },
+    closed: {
+      height: '30vh',
+      transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
+    },
+  };
+  console.log(onImagesClick);
   return (
-    <div className="absolute bottom-0  hidden h-[30vh] w-full lg:block">
-      <div
-        ref={emblaRef}
-        className={`scrollbar absolute bottom-0 left-0 h-[30vh] w-full overflow-hidden overflow-x-scroll`}
+    <>
+      <motion.div
+        className={`project-details absolute bottom-0 left-0 w-full overflow-hidden`}
+        initial={onImagesClick ? 'open' : 'closed'}
+        animate={onImagesClick ? 'open' : 'closed'}
+        variants={containerVariants}
       >
-        <div className="flex h-full w-full gap-[15px]">
-          {images.map((image: SanityImage) => {
+        <Swiper
+          slidesPerView={'auto'}
+          className="absolute bottom-0 left-0 w-full overflow-hidden bg-white"
+          mousewheel={true}
+          modules={[Mousewheel]}
+          spaceBetween={15}
+          freeMode={{ enabled: true, momentumBounce: false }}
+        >
+          {images.map((image: any) => {
             return (
-              <div
-                // @ts-ignore
-                key={image._key}
-                className={`relative flex h-full flex-shrink-0 items-end`}
-              >
-                <Image
-                  src={urlForImage(image)}
-                  alt={image.alt as string}
-                  height={800}
-                  width={1200}
-                  priority
-                  className={`h-full w-full object-cover`}
-                />
-              </div>
+              <SwiperSlide key={image._key} className="w-auto ">
+                <motion.div
+                  initial={onImagesClick ? 'open' : 'closed'}
+                  animate={onImagesClick ? 'open' : 'closed'}
+                  variants={containerVariants}
+                  className={`relative cursor-pointer`}
+                  onClick={() => setOnImagesClick(!onImagesClick)}
+                >
+                  <Image
+                    src={urlForImage(image)}
+                    alt={image.alt as string}
+                    height={800}
+                    width={1200}
+                    quality={90}
+                    priority
+                    className={`h-full w-full object-contain`}
+                  />
+                </motion.div>
+              </SwiperSlide>
             );
           })}
-        </div>
-      </div>
-    </div>
+        </Swiper>
+      </motion.div>
+    </>
   );
 }
