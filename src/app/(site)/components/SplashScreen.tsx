@@ -1,27 +1,26 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 
-// Initialize the global variable
-let hasSplashScreenBeenShown = false;
+import { useSplashScreen } from '../SplashScreenContext';
 
 export default function SplashScreen() {
+  const { isFirstVisit, setFirstVisit } = useSplashScreen();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!hasSplashScreenBeenShown) {
+    if (isFirstVisit) {
       setTimeout(() => {
         document.body.style.cursor = 'default';
         setIsLoading(false);
-        hasSplashScreenBeenShown = true;
+        setFirstVisit(false); // set to false so it doesn't show up again
       }, 1000);
-    } else {
-      setIsLoading(false);
     }
-  }, []);
-  console.log('isLoading', isLoading);
-  console.log('hasSplashScreenBeenShown', hasSplashScreenBeenShown);
+  }, [isFirstVisit, setFirstVisit]);
+
+  console.log(isLoading);
 
   const slideRight = {
     initial: {
@@ -34,7 +33,7 @@ export default function SplashScreen() {
   };
 
   return (
-    <AnimatePresence mode="wait" key="splashscreen">
+    <AnimatePresence mode="wait">
       {isLoading && (
         <motion.div
           variants={slideRight}

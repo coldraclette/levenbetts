@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import SplashScreen from './components/SplashScreen';
 import Transition from './components/Transition';
 import { siteConfig } from './site.config';
+import { SplashScreenProvider } from './SplashScreenContext';
 
 const theinhardt = Theinhardt({
   variable: '--font-sans',
@@ -57,14 +58,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={theinhardt.variable}>
-      <body className="relative md:h-screen md:overflow-hidden">
-        <SplashScreen />
-        <Navigation />
-        <main className="h-full w-full pt-[70px] lg:pt-0">
-          <Transition>{children}</Transition>
-        </main>
-      </body>
-    </html>
+    <SplashScreenProvider>
+      <html lang="en" className={theinhardt.variable}>
+        <body className="relative md:h-screen md:overflow-hidden">
+          <SplashScreen />
+          <Navigation />
+          <main className="h-full w-full pt-[70px] lg:pt-0">
+            <Transition>{children}</Transition>
+          </main>
+        </body>
+      </html>
+    </SplashScreenProvider>
   );
 }
