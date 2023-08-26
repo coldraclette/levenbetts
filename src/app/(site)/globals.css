@@ -70,5 +70,5 @@ body {
   @apply w-4/5;
 }
 .category-overview a:first-of-type .project-title {
-  @apply pl-5;
+  @apply pl-[22px];
 }

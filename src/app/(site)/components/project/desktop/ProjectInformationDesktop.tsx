@@ -15,7 +15,7 @@ export default function ProjectInformationDesktop({
   detailsOpen,
 }: ProjectInformationDesktopProps) {
   return (
-    <div className="mt-5 hidden md:flex">
+    <div className="hidden md:flex">
       <div className="grid h-full max-h-full w-full grid-cols-[minmax(200px,_593px)_minmax(200px,_593px)_2fr] gap-4 overflow-auto px-[22px]">
         <AnimatePresence mode="wait">
           {detailsOpen && (

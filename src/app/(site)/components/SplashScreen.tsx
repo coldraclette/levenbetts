@@ -1,18 +1,27 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
+
+// Initialize the global variable
+let hasSplashScreenBeenShown = false;
 
 export default function SplashScreen() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      document.body.style.cursor = 'default';
+    if (!hasSplashScreenBeenShown) {
+      setTimeout(() => {
+        document.body.style.cursor = 'default';
+        setIsLoading(false);
+        hasSplashScreenBeenShown = true;
+      }, 1000);
+    } else {
       setIsLoading(false);
-    }, 1000);
+    }
   }, []);
+  console.log('isLoading', isLoading);
+  console.log('hasSplashScreenBeenShown', hasSplashScreenBeenShown);
 
   const slideRight = {
     initial: {
@@ -25,13 +34,13 @@ export default function SplashScreen() {
   };
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" key="splashscreen">
       {isLoading && (
         <motion.div
           variants={slideRight}
           initial="initial"
           exit="exit"
-          className="text-white fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black text-4xl lg:text-9xl font-medium"
+          className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black text-4xl font-medium text-white lg:text-9xl"
         >
           <h1>LEVENBETTS</h1>
         </motion.div>
