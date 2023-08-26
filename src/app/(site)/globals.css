@@ -69,6 +69,6 @@ body {
 .category-overview .swiper-slide {
   @apply w-4/5;
 }
-.category-overview a:first-of-type .project-title {
+.category-overview .swiper-slide:first-of-type .project-title {
   @apply pl-[22px];
 }

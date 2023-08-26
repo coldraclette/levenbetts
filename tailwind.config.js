@@ -13,6 +13,7 @@ module.exports = {
       black: '#11144A',
       grey: '#9595AC',
       white: '#FFFFFF',
+      blue: '#0a0a32',
     },
     screens: {
       sm: '640px',

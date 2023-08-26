@@ -34,7 +34,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
           project.landingPageMobileImage ||
           project.landingPageImage ||
           project.projectImage;
-        console.log(project);
+
         return (
           <SwiperSlide key={project._id}>
             <Link

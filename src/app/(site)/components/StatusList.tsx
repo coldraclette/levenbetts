@@ -1,17 +1,10 @@
-'use client';
-
-import { useState } from 'react';
 import Link from 'next/link';
-
-import Modal from './Modal';
 
 interface StatusListProps {
   projects: any;
 }
 
 export default function StatusList({ projects }: StatusListProps) {
-  const [modal, setModal] = useState({ active: false, index: 0 });
-
   return (
     <div className="mt-4">
       <div className="hidden overflow-x-auto md:flex">
@@ -56,18 +49,9 @@ export default function StatusList({ projects }: StatusListProps) {
           }}
         >
           <h2>Complete</h2>
-          {projects.complete.map((project: any, index: number) => {
+          {projects.complete.map((project: any) => {
             return (
-              <div
-                key={project._id}
-                className="inline-block"
-                onMouseEnter={() => {
-                  setModal({ active: true, index });
-                }}
-                onMouseLeave={() => {
-                  setModal({ active: false, index });
-                }}
-              >
+              <div key={project._id} className="inline-block">
                 {project.slug && (
                   <Link
                     href={`/work/${project.category.title}/${project.slug.current}`}
@@ -87,13 +71,12 @@ export default function StatusList({ projects }: StatusListProps) {
             );
           })}
         </div>
-        <Modal projects={projects.complete} modal={modal} />
       </div>
       <div className="md:hidden">
         <div className="flex flex-col gap-4 pb-4">
           <div>
             <h2>Current</h2>
-            {projects.current.map((project: any, index: number) => {
+            {projects.current.map((project: any) => {
               return (
                 <div key={project._id} className="">
                   {project.slug && (

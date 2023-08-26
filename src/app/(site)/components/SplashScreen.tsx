@@ -1,26 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { useSplashScreen } from '../SplashScreenContext';
-
 export default function SplashScreen() {
-  const { isFirstVisit, setFirstVisit } = useSplashScreen();
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (isFirstVisit) {
-      setTimeout(() => {
-        document.body.style.cursor = 'default';
-        setIsLoading(false);
-        setFirstVisit(false); // set to false so it doesn't show up again
-      }, 1000);
-    }
-  }, [isFirstVisit, setFirstVisit]);
-
-  console.log(isLoading);
+    setTimeout(() => {
+      document.body.style.cursor = 'default';
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
   const slideRight = {
     initial: {
@@ -39,7 +30,7 @@ export default function SplashScreen() {
           variants={slideRight}
           initial="initial"
           exit="exit"
-          className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center bg-black text-4xl font-medium text-white lg:text-9xl"
+          className="bg-blue fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center text-4xl font-medium text-white lg:text-9xl"
         >
           <h1>LEVENBETTS</h1>
         </motion.div>

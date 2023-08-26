@@ -64,6 +64,7 @@ export default function ProjectImagesDesktop({
                   height={800}
                   width={1200}
                   quality={90}
+                  sizes="(min-width: 1024px) 1200px, 100vw"
                   priority
                   className={`h-full w-full object-contain`}
                   onClick={() => setDetailsOpen(false)}
