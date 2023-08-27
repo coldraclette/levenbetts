@@ -22,7 +22,7 @@ export default function AwardList({ awards }: AwardListProps) {
 
   return (
     <>
-      <div className="flex flex-col gap-4 pb-4 md:hidden">
+      <div className="flex flex-col gap-4 pb-4 lg:hidden">
         {awards.map(({ _key, year, awardDetails }: AwardProps) => {
           return (
             <div key={_key} className="">
@@ -36,19 +36,19 @@ export default function AwardList({ awards }: AwardListProps) {
       </div>
       <div
         ref={scrollContainerRef}
-        className="scrollbar hidden overflow-x-auto md:block"
+        className="scrollbar hidden overflow-x-auto lg:block"
       >
         <div
-          className="w-max max-w-[615px] space-y-4 p-4 pl-0"
+          className="w-1/3 space-y-4 p-4 pl-0"
           style={{
-            columnWidth: '615px',
-            columnGap: '1rem',
+            columnWidth: '610px',
+            columnGap: '12px',
             height: '90vh',
           }}
         >
           {awards.map(({ _key, year, awardDetails }: AwardProps) => {
             return (
-              <div key={_key} className="break-inside-avoid pr-40">
+              <div key={_key} className="break-inside-avoid">
                 <h2>{year}</h2>
                 <ul>
                   <AwardListItem award={awardDetails} />

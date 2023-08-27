@@ -41,18 +41,16 @@ export default function Navigation() {
     <nav
       className={`fixed z-20 grid w-full grid-cols-[2fr_1fr] lg:relative ${
         pathname === '/' ? 'bg-none' : 'bg-white'
-      } p-4 lg:h-[8vh] lg:grid-cols-[minmax(200px,_615px)_1fr] lg:bg-none lg:p-[22px]`}
+      } p-4 lg:h-[8vh] lg:grid-cols-3 lg:gap-[15px] lg:bg-none lg:p-[22px]`}
     >
       <div className="grid grid-cols-2">
-        <div>
-          <h1>
-            <Link href="/">LEVENBETTS</Link>
-          </h1>
-        </div>
+        <h1>
+          <Link href="/">LEVENBETTS</Link>
+        </h1>
 
         <div className="relative">
           <div className="group cursor-pointer lg:pb-5">
-            <div className="mb-1">
+            <div>
               <Link href="/office">office</Link>
             </div>
             <div className="flex flex-col gap-1 lg:flex-row lg:gap-5">
@@ -88,11 +86,9 @@ export default function Navigation() {
         </div>
       </div>
 
-      <div className="relative">
+      <div className="relative col-span-2  w-2/3">
         <div className="group cursor-pointer lg:pb-5">
-          <div className="mb-1" onClick={() => setIsWorkOpen(!isWorkOpen)}>
-            work
-          </div>
+          <div onClick={() => setIsWorkOpen(!isWorkOpen)}>work</div>
           <div className="flex flex-col gap-5 gap-y-1 lg:flex-row">
             {activeCategory && (
               <div>

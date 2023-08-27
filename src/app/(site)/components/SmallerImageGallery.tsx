@@ -13,9 +13,13 @@ import { Mousewheel } from 'swiper/modules';
 
 interface ImageGalleryProps {
   images: any[];
+  onClickEvent: () => void;
 }
 
-export default function SmallerImageGallery({ images }: ImageGalleryProps) {
+export default function SmallerImageGallery({
+  images,
+  onClickEvent,
+}: ImageGalleryProps) {
   const [onImagesClick, setOnImagesClick] = useState(false);
 
   if (!images) {
@@ -24,15 +28,20 @@ export default function SmallerImageGallery({ images }: ImageGalleryProps) {
 
   const containerVariants = {
     open: {
-      height: '50vh',
+      height: '86vh',
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
     closed: {
-      height: '30vh',
+      height: '25vh',
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
   };
-  
+
+  const handleClick = () => {
+    setOnImagesClick(!onImagesClick);
+    onClickEvent();
+  };
+
   return (
     <>
       <motion.div
@@ -57,7 +66,7 @@ export default function SmallerImageGallery({ images }: ImageGalleryProps) {
                   animate={onImagesClick ? 'open' : 'closed'}
                   variants={containerVariants}
                   className={`relative cursor-pointer`}
-                  onClick={() => setOnImagesClick(!onImagesClick)}
+                  onClick={handleClick}
                 >
                   <Image
                     src={urlForImage(image)}

@@ -1,45 +1,28 @@
 'use client';
 
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import SmallerImageGallery from '../SmallerImageGallery';
 import TextContent from '../TextContent';
+import ThreeColumnsTextDesktop from '../ThreeColumnsTextDesktop';
 
 interface PeopleDesktopProps {
   data: any;
 }
 
 export default function PeopleDesktop({ data }: PeopleDesktopProps) {
+  const [imagesActive, setImagesActive] = useState<boolean>(false);
+
+  const onImagesClick = () => setImagesActive(!imagesActive);
+
   return (
     <div className="hidden lg:block">
-      <div className="mt-5 grid h-full max-h-full w-full grid-cols-[minmax(200px,_593px)_minmax(200px,_593px)_2fr] gap-4 overflow-auto px-[22px]">
-        <AnimatePresence mode="wait">
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0.8 } }}
-              exit={{ opacity: 0 }}
-              style={{
-                columnCount: 2,
-                columnFill: 'auto',
-              }}
-              className="col-span-2 h-[53vh]"
-            >
-              <TextContent text={data.text} />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0.8 } }}
-              exit={{ opacity: 0 }}
-              className="scrollbar ml-auto h-full min-w-[220px] overflow-auto"
-            >
-              <TextContent text={data.additionalText} />
-            </motion.div>
-          </>
-        </AnimatePresence>
-      </div>
-      <SmallerImageGallery images={data.images} />
+      <ThreeColumnsTextDesktop data={data} imagesActive={imagesActive} />
+      <SmallerImageGallery
+        images={data.images}
+        onClickEvent={() => onImagesClick()}
+      />
     </div>
   );
 }

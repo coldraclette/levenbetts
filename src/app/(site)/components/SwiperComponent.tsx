@@ -22,11 +22,8 @@ export default function SwiperComponent({ projects }: SwiperProps) {
       className="h-full"
       mousewheel={true}
       spaceBetween={15}
-      modules={[Mousewheel, Autoplay]}
+      modules={[Mousewheel]}
       loop={true}
-      autoplay={{
-        delay: 8000,
-      }}
     >
       {projects.map((project: Project) => {
         const imageUrl = project.landingPageImage || project.projectImage;
