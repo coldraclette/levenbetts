@@ -8,7 +8,7 @@ export default async function Page() {
   if (!data) return;
 
   return (
-    <div className="px-4 md:px-[22px]">
+    <div className="px-4 pt-11 lg:px-[22px] lg:pt-0">
       <StatusList projects={data} />
     </div>
   );

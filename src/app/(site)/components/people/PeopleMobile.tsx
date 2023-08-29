@@ -9,7 +9,7 @@ interface PeopleMobileProps {
 
 export default function PeopleMobile({ data }: PeopleMobileProps) {
   return (
-    <div className="lg:hidden">
+    <div className="lg:hidden pt-11">
       <div className="flex flex-col gap-4 px-4">
         <TextContent text={data.text} />
         <TextContent text={data.additionalText} />

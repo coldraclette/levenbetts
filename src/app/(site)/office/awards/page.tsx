@@ -10,7 +10,7 @@ export default async function Page() {
   }
   const { awards } = data;
   return (
-    <div className="px-4 lg:pl-[22px] lg:pr-0">
+    <div className="px-4 pt-11 lg:pt-0 lg:pl-[22px] lg:pr-0">
       <AwardList awards={awards} />
     </div>
   );

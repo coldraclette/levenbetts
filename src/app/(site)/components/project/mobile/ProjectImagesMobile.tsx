@@ -10,7 +10,7 @@ export default function ProjectImagesMobile({
   images,
 }: ProjectImagesMobileProps) {
   return (
-    <div className="mt-2 flex flex-col gap-[15px] lg:hidden">
+    <div className="pt-10 flex flex-col gap-[15px] lg:hidden">
       {images.map((image: any) => {
         return (
           <div key={image._key} className="relative">

@@ -21,7 +21,9 @@ export default function ProjectHeading({
   toggleDetails,
 }: ProjectHeadingProps) {
   return (
-    <div className={`flex h-[5vh] justify-between px-4 md:px-[22px]`}>
+    <div
+      className={`fixed z-30 bg-white lg:mt-0 flex w-full justify-between px-4 pb-2 md:px-[22px] lg:relative lg:h-[5vh]`}
+    >
       <Heading
         title={project.title}
         subtitle={project.subtitle}

@@ -9,7 +9,7 @@ interface OfficeMobileProps {
 
 export default function OfficeMobile({ data }: OfficeMobileProps) {
   return (
-    <div className="lg:hidden">
+    <div className="lg:hidden pt-11">
       <div className="px-4">
         <TextContent text={data.text} />
         <TextContent text={data.additionalText} />

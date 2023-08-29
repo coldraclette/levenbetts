@@ -28,7 +28,7 @@ export default function ProjectNavigation({
   onDetailsClick,
 }: ProjectNavigationProps) {
   return (
-    <div className="z-30 flex items-center gap-10 self-start">
+    <div className="z-30 mt-2 flex items-center gap-10 self-start lg:mt-0">
       {onDetailsClick && (
         <p
           className="hidden cursor-pointer md:block"
