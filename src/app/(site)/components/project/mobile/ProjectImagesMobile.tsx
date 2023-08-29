@@ -13,7 +13,7 @@ export default function ProjectImagesMobile({
     <div className="mt-2 flex flex-col gap-[15px] lg:hidden">
       {images.map((image: any) => {
         return (
-          <div key={image.asset?._key} className="relative">
+          <div key={image._key} className="relative">
             <Image
               src={urlForImage(image)}
               alt={image.alt as string}

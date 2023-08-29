@@ -36,7 +36,7 @@ export default async function Page({ params }: any) {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-[14px] md:hidden">
+      <div className="flex flex-col items-center gap-[14px] lg:hidden">
         {data.projects &&
           data.projects.map((project: any) => (
             <div key={project.slug.current} className="w-full">
@@ -60,7 +60,7 @@ export default async function Page({ params }: any) {
             </div>
           ))}
       </div>
-      <div className="hidden h-full md:flex">
+      <div className="hidden h-full lg:flex">
         <SwiperOverview projects={data.projects} />
       </div>
     </>

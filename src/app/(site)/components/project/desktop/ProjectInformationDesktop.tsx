@@ -15,7 +15,7 @@ export default function ProjectInformationDesktop({
   detailsOpen,
 }: ProjectInformationDesktopProps) {
   return (
-    <div className="hidden md:flex">
+    <div className="hidden lg:flex">
       <div className="grid h-full max-h-full w-full grid-cols-3 gap-4 overflow-auto px-[22px]">
         <AnimatePresence mode="wait">
           {detailsOpen && (
@@ -37,7 +37,7 @@ export default function ProjectInformationDesktop({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.8 } }}
                 exit={{ opacity: 0 }}
-                className="scrollbar ml-auto h-[68vh] overflow-auto"
+                className="scrollbar h-[68vh] overflow-auto"
               >
                 <TextContent text={specs} />
               </motion.div>

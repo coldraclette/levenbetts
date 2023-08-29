@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { getCategories } from '../../../../sanity/sanity.query';
+import useWindowSize from '../hooks/useWindowSize';
+import NavigationDesktop from './NavigationDesktop';
+import NavigationMobile from './NavigationMobile';
 
 type Category = {
   _id: string;
@@ -17,11 +19,16 @@ export default function Navigation() {
   const [workClicked, setWorkClicked] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
 
+  const windowSize = useWindowSize();
+
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);
     });
   }, []);
+
+  if (windowSize.width === undefined) return null;
+  const isMobile = windowSize.width < 1024;
 
   const officeCategories = [
     { slug: 'awards', label: 'awards' },
@@ -38,104 +45,12 @@ export default function Navigation() {
   );
 
   return (
-    <nav
-      className={`fixed z-20 grid w-full grid-cols-[2fr_1fr] lg:relative ${
-        pathname === '/' ? 'bg-none' : 'bg-white'
-      } p-4 lg:h-[8vh] lg:grid-cols-3 lg:gap-[15px] lg:bg-none lg:p-[22px]`}
-    >
-      <div className="grid grid-cols-2">
-        <h1>
-          <Link href="/">LEVENBETTS</Link>
-        </h1>
-
-        <div className="relative">
-          <div className="group cursor-pointer lg:pb-5">
-            <div>
-              <Link href="/office">office</Link>
-            </div>
-            <div className="flex flex-col gap-1 lg:flex-row lg:gap-5">
-              {activeOfficeCategory && (
-                <div>
-                  <Link
-                    href={`/office/${activeOfficeCategory.slug}`}
-                    className="hover:text-black"
-                  >
-                    {activeOfficeCategory.label}
-                  </Link>
-                </div>
-              )}
-              <div className="hidden group-hover:block">
-                <div className="flex flex-col flex-wrap gap-1 lg:flex-row lg:gap-5 lg:text-grey">
-                  {officeCategories.map((cat) => {
-                    if (cat.slug !== activeOfficeCategory?.slug) {
-                      return (
-                        <Link
-                          key={cat.slug}
-                          href={`/office/${cat.slug}`}
-                          className="hover:text-black"
-                        >
-                          {cat.label}
-                        </Link>
-                      );
-                    }
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="relative col-span-2  w-2/3">
-        <div className="group cursor-pointer lg:pb-5">
-          <div onClick={() => setIsWorkOpen(!isWorkOpen)}>work</div>
-          <div className="flex flex-col gap-5 gap-y-1 lg:flex-row">
-            {activeCategory && (
-              <div>
-                <Link
-                  href={`/work/${activeCategory.title}`}
-                  className="hover:text-black"
-                >
-                  {activeCategory.title}
-                </Link>
-              </div>
-            )}
-            <div
-              className={
-                (isWorkOpen ? 'block' : 'hidden') + ' group-hover:block'
-              }
-            >
-              <div
-                className={`work-nav flex flex-col flex-wrap gap-5 gap-y-1 lg:flex-row ${
-                  isWorkOpen ? 'work-active ' : ''
-                }
-                ${workClicked ? 'work-clicked' : ''}
-                `}
-              >
-                {categories.map(({ _id, title }) => {
-                  let isActiveCategory;
-                  if (activeCategory) {
-                    isActiveCategory = title === activeCategory.title;
-                  }
-
-                  return (
-                    !isActiveCategory && (
-                      <Link
-                        key={_id}
-                        href={`/work/${title}`}
-                        className="w-full lg:w-auto"
-                        onClick={() => setIsWorkOpen(false)}
-                      >
-                        {title}
-                      </Link>
-                    )
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <>
+      {isMobile ? (
+        <NavigationMobile categories={categories} />
+      ) : (
+        <NavigationDesktop categories={categories} />
+      )}
+    </>
   );
 }

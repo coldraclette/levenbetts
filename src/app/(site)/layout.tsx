@@ -60,7 +60,7 @@ export default function RootLayout({
       <body className="relative md:h-screen md:overflow-hidden">
         <SplashScreen />
         <Navigation />
-        <main className="h-full w-full pt-[70px] lg:pt-0">{children}</main>
+        <main className="h-full w-full lg:pt-0">{children}</main>
       </body>
     </html>
   );

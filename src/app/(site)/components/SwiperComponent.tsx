@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
-import { Autoplay, Mousewheel } from 'swiper/modules';
+import { Mousewheel } from 'swiper/modules';
 
 import { urlForImage } from '../../../../sanity/lib/image';
 import { Project } from '../types/types';
@@ -33,7 +33,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
           project.projectImage;
 
         return (
-          <SwiperSlide key={project._id}>
+          <SwiperSlide key={project._id} className="w-screen">
             <Link
               href={`/work/${project.category.title}/${project.slug.current}`}
             >

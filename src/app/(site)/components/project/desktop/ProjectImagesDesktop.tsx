@@ -36,7 +36,7 @@ export default function ProjectImagesDesktop({
 
   return (
     <motion.div
-      className={`project-details absolute bottom-0 left-0 hidden w-full  overflow-hidden lg:block`}
+      className={`project-details absolute bottom-0 left-0 hidden w-full overflow-hidden lg:block`}
       initial={detailsOpen ? 'closed' : 'open'}
       animate={detailsOpen ? 'closed' : 'open'}
       variants={containerVariants}
