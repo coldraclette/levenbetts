@@ -93,9 +93,9 @@ export default function NavigationDesktop({ categories }: any) {
         </div>
       </div>
 
-      <div className="relative col-span-2 w-2/3" ref={workAccordionRef}>
+      <div className="relative col-span-2" ref={workAccordionRef}>
         <div className="cursor-pointerpb-5 group">
-          <div onClick={() => setIsWorkOpen(!isWorkOpen)}>work</div>
+          <div onClick={() => setIsWorkOpen(!isWorkOpen)} className='cursor-pointer'>work</div>
           <div className="flex flex-row gap-5 gap-y-1">
             {activeCategory && (
               <div>
