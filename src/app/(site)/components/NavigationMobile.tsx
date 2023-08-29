@@ -98,7 +98,7 @@ export default function NavigationMobile({ categories }: any) {
             </Link>
           )}
           <div
-            className={`flex flex-col flex-wrap gap-y-1 bg-white transition-all duration-300 ease-in-out ${
+            className={`flex flex-col flex-wrap gap-y-1 transition-all duration-300 ease-in-out ${
               isWorkOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
             }`}
           >
