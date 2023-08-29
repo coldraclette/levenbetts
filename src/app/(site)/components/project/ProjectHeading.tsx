@@ -22,7 +22,7 @@ export default function ProjectHeading({
 }: ProjectHeadingProps) {
   return (
     <div
-      className={`fixed z-30 bg-white lg:mt-0 flex w-full justify-between px-4 pb-2 md:px-[22px] lg:relative lg:h-[5vh]`}
+      className={`fixed z-30 -mt-[2px] flex w-full justify-between bg-white px-4 pb-1 md:px-[22px] lg:relative lg:mt-0 lg:h-[5vh]`}
     >
       <Heading
         title={project.title}
