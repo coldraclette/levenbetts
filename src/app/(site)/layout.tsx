@@ -57,7 +57,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={theinhardt.variable}>
-      <body className="relative md:h-screen md:overflow-hidden">
+      <body className="relative lg:overflow-hidden lg:h-screen">
         <SplashScreen />
         <Navigation />
         <main className="h-full w-full lg:pt-0">{children}</main>

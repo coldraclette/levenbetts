@@ -51,7 +51,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="block h-full w-full md:hidden">
+              <div className="relative block h-full w-full md:hidden">
                 <Image
                   src={urlForImage(imageMobileUrl)}
                   alt={

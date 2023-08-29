@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 export default function NavigationMobile({ categories }: any) {
   const pathname = usePathname();
@@ -18,7 +19,7 @@ export default function NavigationMobile({ categories }: any) {
   const activeCategory = categories.find((cat: any) =>
     pathname.includes(`/work/${cat.title}`)
   );
-
+  
   const activeOfficeCategory = officeCategories.find((cat) =>
     pathname.includes(`/office/${cat.slug}`)
   );
@@ -43,7 +44,7 @@ export default function NavigationMobile({ categories }: any) {
 
   return (
     <nav
-      className={`relative z-40 grid w-full grid-cols-4 p-4 ${
+      className={`fixed z-40 grid w-full grid-cols-4 p-4 ${
         pathname === '/' ? 'bg-none' : 'bg-white'
       }  `}
     >
@@ -91,37 +92,35 @@ export default function NavigationMobile({ categories }: any) {
       <div className="relative flex flex-col" ref={workAccordionRef}>
         <div onClick={() => setIsWorkOpen(!isWorkOpen)}>work</div>
 
-        <div className="mt-1 flex flex-col gap-y-1">
-          {activeCategory && (
-            <Link href={`/work/${activeCategory.title}`}>
-              {activeCategory.title}
-            </Link>
-          )}
-          <div
-            className={`flex flex-col flex-wrap gap-y-1 transition-all duration-300 ease-in-out ${
-              isWorkOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-            }`}
-          >
-            {categories.map(({ _id, title }: any) => {
-              let isActiveCategory;
-              if (activeCategory) {
-                isActiveCategory = title === activeCategory.title;
-              }
+        {activeCategory && (
+          <Link href={`/work/${activeCategory.title}`} className="mt-1">
+            {activeCategory.title}
+          </Link>
+        )}
+        <div
+          className={`flex-col mt-1 flex-wrap gap-y-1 transition-opacity duration-300 ${
+            isWorkOpen ? 'flex' : 'hidden'
+          }`}
+        >
+          {categories.map(({ _id, title }: any) => {
+            let isActiveCategory;
+            if (activeCategory) {
+              isActiveCategory = title === activeCategory.title;
+            }
 
-              return (
-                !isActiveCategory && (
-                  <Link
-                    key={_id}
-                    href={`/work/${title}`}
-                    className=""
-                    onClick={() => setIsWorkOpen(false)}
-                  >
-                    {title}
-                  </Link>
-                )
-              );
-            })}
-          </div>
+            return (
+              !isActiveCategory && (
+                <Link
+                  key={_id}
+                  href={`/work/${title}`}
+                  className=""
+                  onClick={() => setIsWorkOpen(false)}
+                >
+                  {title}
+                </Link>
+              )
+            );
+          })}
         </div>
       </div>
     </nav>
