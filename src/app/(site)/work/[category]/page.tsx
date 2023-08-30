@@ -7,7 +7,7 @@ import { urlForImage } from '../../../../../sanity/lib/image';
 import { getProjectsOverviewWithCategoryData } from '../../../../../sanity/sanity.query';
 import SwiperOverview from '../../components/SwiperOverview';
 import NotFound from '../../not-found';
-import ResearchPage from '../researchPage';
+import ResearchPage from '../research/page';
 
 export const revalidate = 120;
 
@@ -24,9 +24,9 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: any) {
-  if (params.category === 'research') {
-    return <ResearchPage />;
-  }
+  // if (params.category === 'research') {
+  //   return <ResearchPage />;
+  // }
 
   const data = await getProjectsOverviewWithCategoryData(params.category);
 

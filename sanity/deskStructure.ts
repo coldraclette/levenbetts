@@ -21,6 +21,16 @@ export const structure = (S: any) =>
                 ),
               S.divider(),
               S.listItem()
+                .title('Research Page')
+                .icon(DocumentIcon)
+                .child(
+                  S.document()
+                    .schemaType('researchPage')
+                    .documentId('researchPage')
+                    .title('Research Page')
+                ),
+              S.divider(),
+              S.listItem()
                 .title('Office Page')
                 .icon(DocumentIcon)
                 .child(
@@ -70,6 +80,7 @@ export const structure = (S: any) =>
             'peoplePage',
             'projectListPage',
             'landingPage',
+            'researchPage',
           ].includes(listItem.getId())
       ),
     ]);

@@ -23,7 +23,12 @@ export default function Navigation() {
 
   useEffect(() => {
     getCategories().then((data) => {
-      setCategories(data);
+      const research = {
+        _id: 'research',
+        title: 'research',
+      };
+      const mergedData = [...data, research];
+      setCategories(mergedData);
     });
   }, []);
 
@@ -35,14 +40,6 @@ export default function Navigation() {
     { slug: 'people', label: 'people' },
     { slug: 'project-list', label: 'project list' },
   ];
-
-  const activeCategory = categories.find((cat) =>
-    pathname.includes(`/work/${cat.title}`)
-  );
-
-  const activeOfficeCategory = officeCategories.find((cat) =>
-    pathname.includes(`/office/${cat.slug}`)
-  );
 
   return (
     <>

@@ -7,7 +7,7 @@ import {
 } from '../../../../../../sanity/sanity.query';
 import ProjectDetail from '../../../components/project/ProjectDetail';
 import NotFound from '../../../not-found';
-import ResearchPage from '../../researchPage';
+import ResearchPage from '../../research/page';
 
 interface PageProps {
   params: {
@@ -35,9 +35,9 @@ export const revalidate = 120;
 export default async function Page({ params }: PageProps) {
   const { slug } = params;
 
-  if (slug[0] === 'research') {
-    return <ResearchPage />;
-  }
+  // if (slug[0] === 'research') {
+  //   return <ResearchPage />;
+  // }
 
   const project = await getSingleProjectData(slug[0]);
 

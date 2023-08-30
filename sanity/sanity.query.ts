@@ -197,3 +197,17 @@ export async function getCategories() {
 
   return categories;
 }
+
+export async function getResearchPageData() {
+  const researchPage = await client.fetch(
+    `*[_type == "researchPage"][0] {
+        models,
+        drawings,
+        seoTitle,
+        seoDescription,
+        seoImage
+      }`
+  );
+
+  return researchPage;
+}
