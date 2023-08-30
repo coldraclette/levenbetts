@@ -11,8 +11,9 @@ type Category = {
 export default function NavigationDesktop({ categories }: any) {
   const pathname = usePathname();
   const [isWorkOpen, setIsWorkOpen] = useState<boolean>(false);
-  const [workClicked, setWorkClicked] = useState(false);
   const workAccordionRef = useRef<HTMLDivElement>(null);
+  const [onWorkHover, setOnWorkHover] = useState(false);
+  const [hoveredWorkId, setHoveredWorkId] = useState<string | null>(null);
 
   const officeCategories = [
     { slug: 'awards', label: 'awards' },
@@ -94,49 +95,54 @@ export default function NavigationDesktop({ categories }: any) {
       </div>
 
       <div className="relative col-span-2" ref={workAccordionRef}>
-        <div className="cursor-pointerpb-5 group">
-          <div onClick={() => setIsWorkOpen(!isWorkOpen)} className='cursor-pointer'>work</div>
+        <div
+          onMouseEnter={() => setOnWorkHover(true)}
+          onMouseLeave={() => setOnWorkHover(false)}
+          className="cursor-pointer pb-2"
+        >
+          <div
+            onClick={() => setIsWorkOpen(!isWorkOpen)}
+            className="group inline-block cursor-pointer"
+          >
+            work
+          </div>
           <div className="flex flex-row gap-5 gap-y-1">
             {activeCategory && (
-              <div>
-                <Link href={`/work/${activeCategory.title}`}>
-                  {activeCategory.title}
-                </Link>
+              <Link href={`/work/${activeCategory.title}`}>
+                {activeCategory.title}
+              </Link>
+            )}
+            {(onWorkHover || isWorkOpen) && (
+              <div className="">
+                <div className={`flex flex-row flex-wrap gap-y-1`}>
+                  {categories.map(({ _id, title }: any) => {
+                    let isActiveCategory;
+                    if (activeCategory) {
+                      isActiveCategory = title === activeCategory.title;
+                    }
+
+                    return (
+                      !isActiveCategory && (
+                        <Link
+                          key={_id}
+                          href={`/work/${title}`}
+                          className={`px-[10px] transition-colors first:pl-0 ${
+                            hoveredWorkId === _id || hoveredWorkId === null
+                              ? 'w-auto text-black'
+                              : 'w-auto text-grey'
+                          }`}
+                          onClick={() => setIsWorkOpen(false)}
+                          onMouseEnter={() => setHoveredWorkId(_id)}
+                          onMouseLeave={() => setHoveredWorkId(null)}
+                        >
+                          {title}
+                        </Link>
+                      )
+                    );
+                  })}
+                </div>
               </div>
             )}
-            <div
-              className={
-                (isWorkOpen ? 'block' : 'hidden') + ' group-hover:block'
-              }
-            >
-              <div
-                className={`work-nav flex flex-row flex-wrap gap-5 gap-y-1 ${
-                  isWorkOpen ? 'work-active' : ''
-                }
-                ${workClicked ? 'work-clicked' : ''}
-                `}
-              >
-                {categories.map(({ _id, title }: any) => {
-                  let isActiveCategory;
-                  if (activeCategory) {
-                    isActiveCategory = title === activeCategory.title;
-                  }
-
-                  return (
-                    !isActiveCategory && (
-                      <Link
-                        key={_id}
-                        href={`/work/${title}`}
-                        className="w-auto"
-                        onClick={() => setIsWorkOpen(false)}
-                      >
-                        {title}
-                      </Link>
-                    )
-                  );
-                })}
-              </div>
-            </div>
           </div>
         </div>
       </div>

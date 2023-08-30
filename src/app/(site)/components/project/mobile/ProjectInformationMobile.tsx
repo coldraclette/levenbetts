@@ -16,7 +16,7 @@ export default function ProjectInformationMobile({
   return (
     <div
       ref={informationRef}
-      className="mt-[26px] flex flex-col px-4 lg:hidden"
+      className="mt-[26px] flex flex-col px-4 lg:hidden pb-4"
     >
       <TextContent text={text} />
       <TextContent text={specs} />

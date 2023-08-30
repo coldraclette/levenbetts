@@ -101,6 +101,26 @@ export async function getPeoplePageData() {
   return peoplePage;
 }
 
+function customSort(a: any, b: any) {
+  const titleA = a.title.match(/^(\d+)?(.*)/);
+  const titleB = b.title.match(/^(\d+)?(.*)/);
+
+  const numA = titleA[1] ? parseInt(titleA[1], 10) : null;
+  const numB = titleB[1] ? parseInt(titleB[1], 10) : null;
+
+  // Sort numbers first, if they exist
+  if (numA !== null && numB !== null) {
+    return numA - numB;
+  } else if (numA !== null) {
+    return -1;
+  } else if (numB !== null) {
+    return 1;
+  }
+
+  // If no numbers, sort alphabetically
+  return titleA[2].localeCompare(titleB[2]);
+}
+
 export async function getProjectListData() {
   const projects = await client.fetch(
     `*[_type == "project"] | order(_createdAt asc) {
@@ -117,12 +137,13 @@ export async function getProjectListData() {
       }`
   );
 
-  const currentProjects = projects.filter(
-    (project: any) => project.status === 'current'
-  );
-  const completeProjects = projects.filter(
-    (project: any) => project.status === 'complete'
-  );
+  const currentProjects = projects
+    .filter((project: any) => project.status === 'current')
+    .sort(customSort);
+
+  const completeProjects = projects
+    .filter((project: any) => project.status === 'complete')
+    .sort(customSort);
 
   return {
     current: currentProjects,

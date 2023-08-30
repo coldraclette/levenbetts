@@ -9,6 +9,7 @@ export default function NavigationMobile({ categories }: any) {
   const pathname = usePathname();
   const [isWorkOpen, setIsWorkOpen] = useState<boolean>(false);
   const workAccordionRef = useRef<HTMLDivElement>(null);
+  const [isOfficeOpen, setIsOfficeOpen] = useState<boolean>(false);
 
   const officeCategories = [
     { slug: 'awards', label: 'awards' },
@@ -19,7 +20,7 @@ export default function NavigationMobile({ categories }: any) {
   const activeCategory = categories.find((cat: any) =>
     pathname.includes(`/work/${cat.title}`)
   );
-  
+
   const activeOfficeCategory = officeCategories.find((cat) =>
     pathname.includes(`/office/${cat.slug}`)
   );
@@ -33,7 +34,7 @@ export default function NavigationMobile({ categories }: any) {
     }
   };
 
-  const isOfficePage = pathname.includes('/office');
+  const isOfficePage = pathname === '/office';
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
@@ -56,27 +57,22 @@ export default function NavigationMobile({ categories }: any) {
         <div>
           <Link href="/office">office</Link>
         </div>
-        {isOfficePage && (
-          <div className="mt-1 flex flex-col gap-1">
-            {activeOfficeCategory && (
-              <div>
-                <Link
-                  href={`/office/${activeOfficeCategory.slug}`}
-                  className="hover:text-black"
-                >
-                  {activeOfficeCategory.label}
-                </Link>
-              </div>
-            )}
+        <div className="flex flex-col ">
+          {activeOfficeCategory && (
+            <div onClick={() => setIsOfficeOpen(!isOfficeOpen)}>
+              {activeOfficeCategory.label}
+            </div>
+          )}
+          {(isOfficePage || isOfficeOpen) && (
             <div className="block">
-              <div className="flex flex-col flex-wrap gap-1">
+              <div className="flex flex-col flex-wrap ">
                 {officeCategories.map((cat) => {
                   if (cat.slug !== activeOfficeCategory?.slug) {
                     return (
                       <Link
                         key={cat.slug}
                         href={`/office/${cat.slug}`}
-                        className="hover:text-black"
+                        onClick={() => setIsOfficeOpen(false)}
                       >
                         {cat.label}
                       </Link>
@@ -85,20 +81,20 @@ export default function NavigationMobile({ categories }: any) {
                 })}
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <div className="relative flex flex-col" ref={workAccordionRef}>
         <div onClick={() => setIsWorkOpen(!isWorkOpen)}>work</div>
 
         {activeCategory && (
-          <Link href={`/work/${activeCategory.title}`} className="mt-1">
+          <div onClick={() => setIsWorkOpen(!isWorkOpen)}>
             {activeCategory.title}
-          </Link>
+          </div>
         )}
         <div
-          className={`flex-col mt-1 flex-wrap gap-y-1 transition-opacity duration-300 ${
+          className={`flex-col flex-wrap  transition-opacity duration-300 ${
             isWorkOpen ? 'flex' : 'hidden'
           }`}
         >
