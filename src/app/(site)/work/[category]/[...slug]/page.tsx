@@ -17,20 +17,20 @@ interface PageProps {
 
 export const revalidate = 120;
 
-export async function generateStaticParams() {
-  const query = groq`*[_type == "project"]
-  {
-      "category": category->title,
-      "slug": slug.current
-  }`;
+// export async function generateStaticParams() {
+//   const query = groq`*[_type == "project"]
+//   {
+//       "category": category->title,
+//       "slug": slug.current
+//   }`;
 
-  const projects = await client.fetch(query);
+//   const projects = await client.fetch(query);
 
-  return projects.map((project: any) => ({
-    category: project.category,
-    slug: [project.slug],
-  }));
-}
+//   return projects.map((project: any) => ({
+//     category: project.category,
+//     slug: [project.slug],
+//   }));
+// }
 
 export default async function Page({ params }: PageProps) {
   const { slug } = params;
