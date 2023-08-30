@@ -47,7 +47,7 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                     fill
                     priority
                     quality={90}
-                    className="h-full w-full object-cover pt-[24px]"
+                    className="h-full w-full object-cover"
                   />
                 </div>
               </Link>

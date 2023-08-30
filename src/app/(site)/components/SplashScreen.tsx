@@ -30,7 +30,7 @@ export default function SplashScreen() {
           variants={slideRight}
           initial="initial"
           exit="exit"
-          className="bg-blue fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center text-4xl font-medium text-white lg:text-9xl"
+          className="fixed left-0 top-0 z-[100] flex h-screen w-screen items-center justify-center bg-blue text-4xl font-medium text-white lg:text-9xl"
         >
           <h1>LEVENBETTS</h1>
         </motion.div>

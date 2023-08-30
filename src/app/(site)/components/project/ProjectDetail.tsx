@@ -33,9 +33,12 @@ export default function ProjectDetail({
 
   const scrollToInformation = () => {
     if (!isMobile) return;
-    informationRef.current?.scrollIntoView({
+    const offsetTop = 120;
+    if (!informationRef.current) return;
+    const offsetPosition = informationRef.current?.offsetTop - offsetTop;
+    window.scrollTo({
+      top: offsetPosition,
       behavior: 'smooth',
-      block: 'start',
     });
   };
 

@@ -19,7 +19,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
   const [activeType, setActiveType] = useState('drawings');
 
   return (
-    <>
+    <div className="hidden h-full lg:block">
       <div className="absolute right-[15px] top-0 z-50 flex gap-7 py-11">
         <div
           className={`cursor-pointer ${
@@ -39,42 +39,43 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
         </div>
       </div>
 
-      <div className="research">
+      <div className="research h-full">
         <Swiper
-          slidesPerView={3}
-          grid={{
-            rows: 2,
-            fill: 'row',
-          }}
+          slidesPerView={4}
           mousewheel={true}
+          grid={{ fill: 'row', rows: 2 }}
           modules={[Mousewheel, Grid]}
           freeMode={{ enabled: true, momentumBounce: false }}
         >
           {activeType === 'drawings'
             ? data.drawings.map((drawing: any) => (
                 <SwiperSlide key={drawing._key}>
-                  <Image
-                    src={urlForImage(drawing)}
-                    alt={(drawing.alt as string) || 'drawing'}
-                    height={400}
-                    width={400}
-                    quality={90}
-                  />
+                  <div className="relative h-[400px] w-full">
+                    <Image
+                      src={urlForImage(drawing)}
+                      alt={(drawing.alt as string) || 'drawing'}
+                      quality={90}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </SwiperSlide>
               ))
             : data.models.map((model: any) => (
                 <SwiperSlide key={model._key}>
-                  <Image
-                    src={urlForImage(model)}
-                    alt={(model.alt as string) || 'model'}
-                    height={400}
-                    width={400}
-                    quality={90}
-                  />
+                  <div className="relative h-[400px] w-full">
+                    <Image
+                      src={urlForImage(model)}
+                      alt={(model.alt as string) || 'model'}
+                      quality={90}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </SwiperSlide>
               ))}
         </Swiper>
       </div>
-    </>
+    </div>
   );
 }

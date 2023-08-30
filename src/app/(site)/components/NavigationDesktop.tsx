@@ -14,6 +14,8 @@ export default function NavigationDesktop({ categories }: any) {
   const workAccordionRef = useRef<HTMLDivElement>(null);
   const [onWorkHover, setOnWorkHover] = useState(false);
   const [hoveredWorkId, setHoveredWorkId] = useState<string | null>(null);
+  const [hoveredOfficeId, setHoveredOfficeId] = useState<string | null>(null);
+  const [onOfficeHover, setOnOfficeHover] = useState(false);
 
   const officeCategories = [
     { slug: 'awards', label: 'awards' },
@@ -57,7 +59,11 @@ export default function NavigationDesktop({ categories }: any) {
         </h1>
 
         <div className="relative">
-          <div className="group cursor-pointer pb-5">
+          <div
+            className="group cursor-pointer pb-5"
+            onMouseEnter={() => setOnOfficeHover(true)}
+            onMouseLeave={() => setOnOfficeHover(false)}
+          >
             <div>
               <Link href="/office">office</Link>
             </div>
@@ -80,7 +86,13 @@ export default function NavigationDesktop({ categories }: any) {
                         <Link
                           key={cat.slug}
                           href={`/office/${cat.slug}`}
-                          className="hover:text-black"
+                          className={`transition-colors first:pl-0 ${
+                            hoveredWorkId === cat.slug || hoveredWorkId === null
+                              ? 'w-auto text-black'
+                              : 'w-auto text-grey'
+                          }`}
+                          onMouseEnter={() => setHoveredWorkId(cat.slug)}
+                          onMouseLeave={() => setHoveredWorkId(null)}
                         >
                           {cat.label}
                         </Link>
