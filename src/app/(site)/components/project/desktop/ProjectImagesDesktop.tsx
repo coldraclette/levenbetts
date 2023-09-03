@@ -66,7 +66,7 @@ export default function ProjectImagesDesktop({
                   quality={90}
                   sizes="(min-width: 1024px) 1200px, 100vw"
                   priority
-                  className={`h-full w-full object-contain`}
+                  className={`h-full w-auto object-contain`}
                   onClick={() => setDetailsOpen(false)}
                 />
               </motion.div>
