@@ -11,7 +11,9 @@ export default function TextContent({ text }: TextContentProps) {
   const components: PortableTextComponents = {
     block: {
       normal: ({ children }) => (
-        <p className="mb-4 min-h-[1px] 2xl:mb-5 last-of-type:mb-0">{children}</p>
+        <p className="mb-4 min-h-[1px] break-inside-avoid last-of-type:mb-0 2xl:mb-5">
+          {children}
+        </p>
       ),
     },
     marks: {

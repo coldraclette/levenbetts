@@ -41,7 +41,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
 
       <div className="research h-full">
         <Swiper
-          slidesPerView={4}
+          slidesPerView={3}
           mousewheel={true}
           grid={{ fill: 'row', rows: 2 }}
           modules={[Mousewheel, Grid]}
@@ -49,7 +49,10 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
         >
           {activeType === 'drawings'
             ? data.drawings.map((drawing: any) => (
-                <SwiperSlide key={drawing._key}>
+                <SwiperSlide
+                  key={drawing._key}
+                  className="flex items-center justify-center"
+                >
                   <div className="relative h-[400px] w-full">
                     <Image
                       src={urlForImage(drawing)}
@@ -62,7 +65,10 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                 </SwiperSlide>
               ))
             : data.models.map((model: any) => (
-                <SwiperSlide key={model._key}>
+                <SwiperSlide
+                  key={model._key}
+                  className="flex items-center justify-center"
+                >
                   <div className="relative h-[400px] w-full">
                     <Image
                       src={urlForImage(model)}

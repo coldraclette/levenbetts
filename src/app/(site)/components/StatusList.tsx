@@ -6,7 +6,7 @@ interface StatusListProps {
 
 export default function StatusList({ projects }: StatusListProps) {
   return (
-    <div className="mt-4">
+    <div className="lg:mt-4">
       <div className="hidden overflow-x-auto lg:flex">
         <div
           className="w-1/3 pb-4 pl-0 pr-[15px] pt-4"

@@ -53,3 +53,12 @@ body {
 .research .swiper-slide {
   @apply m-0;
 }
+@media screen and (min-width: 768px) {
+  .research .swiper-wrapper {
+    height: 90vh;
+  }
+
+  .research .swiper-slide {
+    @apply flex;
+  }
+}
