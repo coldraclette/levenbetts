@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 
-import { Mousewheel } from 'swiper/modules';
+import { Autoplay, Mousewheel } from 'swiper/modules';
 
 import { urlForImage } from '../../../../sanity/lib/image';
 import { Project } from '../types/types';
@@ -22,8 +22,14 @@ export default function SwiperComponent({ projects }: SwiperProps) {
       className="h-full"
       mousewheel={true}
       spaceBetween={15}
-      modules={[Mousewheel]}
+      modules={[Mousewheel, Autoplay]}
+      autoplay={{
+        delay: 8000,
+        disableOnInteraction: false,
+      }}
       loop={true}
+      preventInteractionOnTransition={true}
+      speed={600}
     >
       {projects.map((project: Project) => {
         const imageUrl = project.landingPageImage || project.projectImage;
