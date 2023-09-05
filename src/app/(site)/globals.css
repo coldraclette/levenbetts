@@ -28,6 +28,10 @@ body {
   transition: top 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
+.text-content-p {
+  widows: 3;
+}
+
 /* swiper.js */
 .swiper-wrapper,
 .swiper-slide {

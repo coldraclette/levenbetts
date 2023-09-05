@@ -16,7 +16,7 @@ export default function ProjectOverviewMobile({
   const { isWorkActive, setIsWorkActive } = useWorkActive();
   return (
     <div
-      className={`flex flex-col items-center gap-[14px] transition-transform lg:hidden ${
+      className={`-mt-[4px] flex flex-col items-center gap-[14px] transition-transform lg:hidden ${
         isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
       }`}
     >

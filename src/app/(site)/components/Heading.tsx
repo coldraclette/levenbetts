@@ -11,7 +11,7 @@ export default function Heading({
   onHeaderClicked,
 }: HeadingProps) {
   return (
-    <div onClick={onHeaderClicked}>
+    <div onClick={onHeaderClicked} className="col-span-3">
       <h2>{title}</h2>
       {subtitle && <h3>{subtitle}</h3>}
     </div>

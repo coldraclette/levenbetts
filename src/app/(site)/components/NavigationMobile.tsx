@@ -89,10 +89,18 @@ export default function NavigationMobile({ categories }: any) {
       <div className="relative flex flex-col" ref={workAccordionRef}>
         <div onClick={() => setIsWorkActive(!isWorkActive)}>work</div>
 
-        {activeCategory && (
+        {activeCategory && !isWorkActive && (
           <div onClick={() => setIsWorkActive(!isWorkActive)}>
             {activeCategory.title}
           </div>
+        )}
+        {activeCategory && isWorkActive && (
+          <Link
+            href={`/work/${activeCategory.title}`}
+            onClick={() => setIsWorkActive(false)}
+          >
+            {activeCategory.title}
+          </Link>
         )}
         <div
           className={`flex-col flex-wrap  transition-opacity duration-300 ${
