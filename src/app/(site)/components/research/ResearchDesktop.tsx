@@ -1,15 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/grid';
 
-import { Grid, Mousewheel } from 'swiper/modules';
-
 import { urlForImage } from '../../../../../sanity/lib/image';
+import useHorizontalScroll from '../../hooks/useHorizontalScroll';
 
 interface ResearchDesktopProps {
   data: any;
@@ -17,6 +15,8 @@ interface ResearchDesktopProps {
 
 export default function ResearchDesktop({ data }: ResearchDesktopProps) {
   const [activeType, setActiveType] = useState('drawings');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  useHorizontalScroll(scrollContainerRef);
 
   return (
     <div className="hidden h-full lg:block">
@@ -39,48 +39,39 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
         </div>
       </div>
 
-      <div className="research h-full">
-        <Swiper
-          slidesPerView={3}
-          mousewheel={true}
-          grid={{ fill: 'row', rows: 2 }}
-          modules={[Mousewheel, Grid]}
-          freeMode={{ enabled: true, momentumBounce: false }}
-        >
-          {activeType === 'drawings'
-            ? data.drawings.map((drawing: any) => (
-                <SwiperSlide
-                  key={drawing._key}
-                  className="flex items-center justify-center"
-                >
-                  <div className="relative h-[400px] w-full">
-                    <Image
-                      src={urlForImage(drawing)}
-                      alt={(drawing.alt as string) || 'drawing'}
-                      quality={90}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))
-            : data.models.map((model: any) => (
-                <SwiperSlide
-                  key={model._key}
-                  className="flex items-center justify-center"
-                >
-                  <div className="relative h-[400px] w-full">
-                    <Image
-                      src={urlForImage(model)}
-                      alt={(model.alt as string) || 'model'}
-                      quality={90}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-        </Swiper>
+      <div
+        ref={scrollContainerRef}
+        className="research scrollbar grid h-full max-h-[933px] w-full grid-flow-col grid-rows-2 gap-4 gap-y-5 overflow-x-scroll"
+      >
+        {activeType === 'drawings'
+          ? data.drawings.map((drawing: any) => (
+              <div
+                className="relative h-auto min-h-[200px] w-[460px]"
+                key={drawing._key}
+              >
+                <Image
+                  src={urlForImage(drawing)}
+                  alt={(drawing.alt as string) || 'drawing'}
+                  quality={90}
+                  fill
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            ))
+          : data.models.map((model: any) => (
+              <div
+                className="relative h-auto min-h-[200px] w-[460px]"
+                key={model._key}
+              >
+                <Image
+                  src={urlForImage(model)}
+                  alt={(model.alt as string) || 'model'}
+                  quality={90}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            ))}
       </div>
     </div>
   );
