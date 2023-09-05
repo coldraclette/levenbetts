@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
+
+import { useWorkActive } from '../WorkActiveContext';
 
 export default function NavigationMobile({ categories }: any) {
+  const { isWorkActive, setIsWorkActive } = useWorkActive();
   const pathname = usePathname();
-  const [isWorkOpen, setIsWorkOpen] = useState<boolean>(false);
   const workAccordionRef = useRef<HTMLDivElement>(null);
   const [isOfficeOpen, setIsOfficeOpen] = useState<boolean>(false);
 
@@ -30,7 +31,7 @@ export default function NavigationMobile({ categories }: any) {
       workAccordionRef.current &&
       !workAccordionRef.current.contains(event.target)
     ) {
-      setIsWorkOpen(false);
+      setIsWorkActive(false);
     }
   };
 
@@ -86,16 +87,16 @@ export default function NavigationMobile({ categories }: any) {
       </div>
 
       <div className="relative flex flex-col" ref={workAccordionRef}>
-        <div onClick={() => setIsWorkOpen(!isWorkOpen)}>work</div>
+        <div onClick={() => setIsWorkActive(!isWorkActive)}>work</div>
 
         {activeCategory && (
-          <div onClick={() => setIsWorkOpen(!isWorkOpen)}>
+          <div onClick={() => setIsWorkActive(!isWorkActive)}>
             {activeCategory.title}
           </div>
         )}
         <div
           className={`flex-col flex-wrap  transition-opacity duration-300 ${
-            isWorkOpen ? 'flex' : 'hidden'
+            isWorkActive ? 'flex' : 'hidden'
           }`}
         >
           {categories.map(({ _id, title }: any) => {
@@ -110,7 +111,7 @@ export default function NavigationMobile({ categories }: any) {
                   key={_id}
                   href={`/work/${title}`}
                   className=""
-                  onClick={() => setIsWorkOpen(false)}
+                  onClick={() => setIsWorkActive(false)}
                 >
                   {title}
                 </Link>

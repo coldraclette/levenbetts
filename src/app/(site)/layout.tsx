@@ -5,6 +5,7 @@ import Theinhardt from 'next/font/local';
 import Navigation from './components/Navigation';
 import SplashScreen from './components/SplashScreen';
 import { siteConfig } from './site.config';
+import { WorkActiveProvider } from './WorkActiveContext';
 
 const theinhardt = Theinhardt({
   variable: '--font-sans',
@@ -57,10 +58,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={theinhardt.variable}>
-      <body className="relative lg:overflow-hidden lg:h-screen">
+      <body className="relative lg:h-screen lg:overflow-hidden">
         <SplashScreen />
-        <Navigation />
-        <main className="h-full w-full pt-[70px] lg:pt-0">{children}</main>
+        <WorkActiveProvider>
+          <Navigation />
+          <main className="h-full w-full pt-[70px] lg:pt-0">{children}</main>
+        </WorkActiveProvider>
       </body>
     </html>
   );

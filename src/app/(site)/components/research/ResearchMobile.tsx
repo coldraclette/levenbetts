@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import { urlForImage } from '../../../../../sanity/lib/image';
+import { useWorkActive } from '../../WorkActiveContext';
 
 interface ResearchMobileProps {
   data: any;
@@ -11,9 +12,10 @@ interface ResearchMobileProps {
 
 export default function ResearchMobile({ data }: ResearchMobileProps) {
   const [activeType, setActiveType] = useState('drawings');
+  const { isWorkActive, setIsWorkActive } = useWorkActive();
   return (
     <div className="mt-2 lg:hidden">
-      <div className="fixed left-[15px] top-0 z-50 flex gap-4 py-11">
+      <div className="fixed left-0 top-10 z-40 flex gap-4 pb-3 pl-[15px]">
         <div
           className={`cursor-pointer ${
             activeType === 'drawings' ? 'text-black' : 'text-grey'
@@ -32,7 +34,11 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-[15px] px-[15px]">
+      <div
+        className={`grid grid-cols-2 gap-[15px] px-[15px] transition-transform ${
+          isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
+        }`}
+      >
         {activeType === 'drawings'
           ? data.drawings.map((drawing: any) => (
               <div key={drawing._key} className="relative h-[200px] w-full">

@@ -1,12 +1,21 @@
+'use client';
+
 import Link from 'next/link';
+
+import { useWorkActive } from '../WorkActiveContext';
 
 interface StatusListProps {
   projects: any;
 }
 
 export default function StatusList({ projects }: StatusListProps) {
+  const { isWorkActive, setIsWorkActive } = useWorkActive();
   return (
-    <div className="lg:mt-4">
+    <div
+      className={`transition-transform lg:mt-4 ${
+        isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
+      }`}
+    >
       <div className="hidden overflow-x-auto lg:flex">
         <div
           className="w-1/3 pb-4 pl-0 pr-[15px] pt-4"

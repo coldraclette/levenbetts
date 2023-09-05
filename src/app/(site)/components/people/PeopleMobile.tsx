@@ -1,6 +1,9 @@
+'use client';
+
 import Image from 'next/image';
 
 import { urlForImage } from '../../../../../sanity/lib/image';
+import { useWorkActive } from '../../WorkActiveContext';
 import TextContent from '../TextContent';
 
 interface PeopleMobileProps {
@@ -8,8 +11,13 @@ interface PeopleMobileProps {
 }
 
 export default function PeopleMobile({ data }: PeopleMobileProps) {
+  const { isWorkActive, setIsWorkActive } = useWorkActive();
   return (
-    <div className="lg:hidden pt-11">
+    <div
+      className={`pt-11 transition-transform lg:hidden ${
+        isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
+      }`}
+    >
       <div className="flex flex-col gap-4 px-4">
         <TextContent text={data.text} />
         <TextContent text={data.additionalText} />

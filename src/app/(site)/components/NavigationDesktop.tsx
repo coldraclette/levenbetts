@@ -79,7 +79,7 @@ export default function NavigationDesktop({ categories }: any) {
                 </div>
               )}
               <div className="hidden group-hover:block">
-                <div className="flex flex-row flex-wrap gap-5 text-grey">
+                <div className="flex flex-row flex-wrap gap-x-5 text-grey">
                   {officeCategories.map((cat) => {
                     if (cat.slug !== activeOfficeCategory?.slug) {
                       return (
@@ -126,7 +126,7 @@ export default function NavigationDesktop({ categories }: any) {
             )}
             {(onWorkHover || isWorkOpen) && (
               <div className="">
-                <div className={`flex flex-row flex-wrap gap-y-1`}>
+                <div className={`flex flex-row flex-wrap gap-y-0 gap-[10px]`}>
                   {categories.map(({ _id, title }: any) => {
                     let isActiveCategory;
                     if (activeCategory) {
@@ -138,7 +138,7 @@ export default function NavigationDesktop({ categories }: any) {
                         <Link
                           key={_id}
                           href={`/work/${title}`}
-                          className={`px-[10px] transition-colors first:pl-0 ${
+                          className={`transition-colors ${
                             hoveredWorkId === _id || hoveredWorkId === null
                               ? 'w-auto text-black'
                               : 'w-auto text-grey'

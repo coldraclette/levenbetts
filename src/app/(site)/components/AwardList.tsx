@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 
 import useHorizontalScroll from '../hooks/useHorizontalScroll';
+import { useWorkActive } from '../WorkActiveContext';
 import AwardListItem from './AwardListItem';
 
 interface AwardListProps {
@@ -17,12 +18,16 @@ interface AwardProps {
 
 export default function AwardList({ awards }: AwardListProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
+  const { isWorkActive, setIsWorkActive } = useWorkActive();
   useHorizontalScroll(scrollContainerRef);
 
   return (
     <>
-      <div className="flex flex-col gap-4 pb-4 lg:hidden">
+      <div
+        className={`flex flex-col gap-4 pb-4 transition-transform lg:hidden ${
+          isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
+        }`}
+      >
         {awards.map(({ _key, year, awardDetails }: AwardProps) => {
           return (
             <div key={_key} className="">

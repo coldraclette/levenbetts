@@ -1,10 +1,10 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
 
 import useWindowSize from '../../hooks/useWindowSize';
 import { ProjectNavigationItemProps, ProjectProps } from '../../types/types';
+import { useWorkActive } from '../../WorkActiveContext';
 import ProjectImagesDesktop from './desktop/ProjectImagesDesktop';
 import ProjectInformationDesktop from './desktop/ProjectInformationDesktop';
 import ProjectImagesMobile from './mobile/ProjectImagesMobile';
@@ -23,7 +23,7 @@ export default function ProjectDetail({
   next,
 }: ProjectTopAreaProps) {
   const windowSize = useWindowSize();
-
+  const { isWorkActive, setIsWorkActive } = useWorkActive();
   const informationRef = useRef<HTMLDivElement>(null);
   const [detailsOpen, setDetailsOpen] = useState<boolean>(false);
 
@@ -48,7 +48,11 @@ export default function ProjectDetail({
   return (
     <div className="h-full">
       {isMobile ? (
-        <>
+        <div
+          className={`transition-transform ${
+            isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
+          }`}
+        >
           <ProjectHeading
             project={project}
             onHeaderClicked={scrollToInformation}
@@ -62,7 +66,7 @@ export default function ProjectDetail({
             specs={project.specs}
             informationRef={informationRef}
           />
-        </>
+        </div>
       ) : (
         <>
           <ProjectHeading
