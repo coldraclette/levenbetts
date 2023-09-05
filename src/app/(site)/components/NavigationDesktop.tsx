@@ -67,7 +67,7 @@ export default function NavigationDesktop({ categories }: any) {
             <div>
               <Link href="/office">office</Link>
             </div>
-            <div className="flex flex-row gap-5">
+            <div className="flex flex-row gap-[10px]">
               {activeOfficeCategory && (
                 <div>
                   <Link
@@ -79,7 +79,7 @@ export default function NavigationDesktop({ categories }: any) {
                 </div>
               )}
               <div className="hidden group-hover:block">
-                <div className="flex flex-row flex-wrap gap-x-5 text-grey">
+                <div className="flex flex-row flex-wrap gap-x-[10px] text-grey">
                   {officeCategories.map((cat) => {
                     if (cat.slug !== activeOfficeCategory?.slug) {
                       return (
@@ -118,7 +118,7 @@ export default function NavigationDesktop({ categories }: any) {
           >
             work
           </div>
-          <div className="flex flex-row gap-5 gap-y-1">
+          <div className="flex flex-row gap-[10px] gap-y-1">
             {activeCategory && (
               <Link href={`/work/${activeCategory.title}`}>
                 {activeCategory.title}
@@ -126,7 +126,7 @@ export default function NavigationDesktop({ categories }: any) {
             )}
             {(onWorkHover || isWorkOpen) && (
               <div className="">
-                <div className={`flex flex-row flex-wrap gap-y-0 gap-[10px]`}>
+                <div className={`flex flex-row flex-wrap gap-[10px] gap-y-0`}>
                   {categories.map(({ _id, title }: any) => {
                     let isActiveCategory;
                     if (activeCategory) {
