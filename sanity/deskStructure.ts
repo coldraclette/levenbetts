@@ -57,15 +57,6 @@ export const structure = (S: any) =>
                     .documentId('peoplePage')
                     .title('People Page')
                 ),
-              S.listItem()
-                .title('Project List Page')
-                .icon(DocumentIcon)
-                .child(
-                  S.document()
-                    .schemaType('projectListPage')
-                    .documentId('projectListPage')
-                    .title('Project List Page')
-                ),
             ])
         ),
 
