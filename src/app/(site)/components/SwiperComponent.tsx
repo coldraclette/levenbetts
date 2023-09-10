@@ -24,7 +24,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
       spaceBetween={15}
       modules={[Mousewheel, Autoplay]}
       autoplay={{
-        delay: 8000,
+        delay: 4000,
         disableOnInteraction: false,
       }}
       loop={true}
