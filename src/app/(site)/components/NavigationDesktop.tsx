@@ -14,7 +14,6 @@ export default function NavigationDesktop({ categories }: any) {
   const workAccordionRef = useRef<HTMLDivElement>(null);
   const [onWorkHover, setOnWorkHover] = useState(false);
   const [hoveredWorkId, setHoveredWorkId] = useState<string | null>(null);
-  const [hoveredOfficeId, setHoveredOfficeId] = useState<string | null>(null);
   const [onOfficeHover, setOnOfficeHover] = useState(false);
 
   const officeCategories = [
@@ -54,9 +53,7 @@ export default function NavigationDesktop({ categories }: any) {
       }`}
     >
       <div className="grid grid-cols-2">
-        <h1>
-          <Link href="/">LEVENBETTS</Link>
-        </h1>
+        <div></div>
 
         <div className="relative">
           <div

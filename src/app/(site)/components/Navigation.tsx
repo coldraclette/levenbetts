@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 import { getCategories } from '../../../../sanity/sanity.query';
 import useWindowSize from '../hooks/useWindowSize';
@@ -14,10 +14,8 @@ type Category = {
 };
 
 export default function Navigation() {
-  const pathname = usePathname();
-  const [isWorkOpen, setIsWorkOpen] = useState<boolean>(false);
-  const [workClicked, setWorkClicked] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [showIntro, setShowIntro] = useState<boolean>(true);
 
   const windowSize = useWindowSize();
 
@@ -32,14 +30,14 @@ export default function Navigation() {
     });
   }, []);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowIntro(false);
+    }, 2000);
+  }, []);
+
   if (windowSize.width === undefined) return null;
   const isMobile = windowSize.width < 1024;
-
-  const officeCategories = [
-    { slug: 'awards', label: 'awards' },
-    { slug: 'people', label: 'people' },
-    { slug: 'project-list', label: 'project list' },
-  ];
 
   return (
     <>
@@ -48,6 +46,16 @@ export default function Navigation() {
       ) : (
         <NavigationDesktop categories={categories} />
       )}
+      <Link
+        href="/"
+        className={`absolute z-50  ${
+          showIntro
+            ? 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-4xl font-medium lg:text-9xl'
+            : 'left-4 top-4 lg:left-[22px] lg:top-[22px]'
+        } transition-all duration-1000 ease-in-out`}
+      >
+        <h1>LEVENBETTS</h1>
+      </Link>
     </>
   );
 }

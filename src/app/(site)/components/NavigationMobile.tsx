@@ -50,9 +50,7 @@ export default function NavigationMobile({ categories }: any) {
         pathname === '/' ? 'bg-none' : 'bg-white'
       }  `}
     >
-      <h1 className="col-span-2">
-        <Link href="/">LEVENBETTS</Link>
-      </h1>
+      <div className="col-span-2"></div>
 
       <div className="relative">
         <div>
