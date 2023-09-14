@@ -9,6 +9,7 @@ interface ProjectHeadingProps {
   next: any;
   onHeaderClicked?: () => void | undefined;
   toggleDetails?: () => void | undefined;
+  isWorkActive?: boolean;
 }
 
 export default function ProjectHeading({
@@ -18,10 +19,13 @@ export default function ProjectHeading({
   next,
   onHeaderClicked,
   toggleDetails,
+  isWorkActive,
 }: ProjectHeadingProps) {
   return (
     <div
-      className={`fixed z-30 -mt-[4px] grid w-full grid-cols-4 bg-white px-4 pb-3 lg:relative lg:mt-0 lg:flex lg:justify-between lg:px-[22px]`}
+      className={`${
+        isWorkActive ? 'top-[240px]' : 'top-[70px]'
+      } fixed z-30 -mt-[4px] grid w-full grid-cols-4 bg-white px-4 pb-3 lg:relative lg:mt-0 lg:flex lg:justify-between lg:px-[22px]`}
     >
       <Heading
         title={project.title}

@@ -46,27 +46,29 @@ export default function ProjectDetail({
   const isMobile = windowSize.width < 1024;
 
   return (
-    <div className="h-full">
+    <div className="h-full relative">
       {isMobile ? (
-        <div
-          className={`transition-transform ${
-            isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
-          }`}
-        >
+        <>
           <ProjectHeading
             project={project}
             onHeaderClicked={scrollToInformation}
             prev={prev}
             next={next}
+            isWorkActive={isWorkActive}
           />
-
-          <ProjectImagesMobile images={project.images} />
-          <ProjectInformationMobile
-            text={project.text}
-            specs={project.specs}
-            informationRef={informationRef}
-          />
-        </div>
+          <div
+            className={`transition-transform ${
+              isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
+            }`}
+          >
+            <ProjectImagesMobile images={project.images} />
+            <ProjectInformationMobile
+              text={project.text}
+              specs={project.specs}
+              informationRef={informationRef}
+            />
+          </div>
+        </>
       ) : (
         <>
           <ProjectHeading

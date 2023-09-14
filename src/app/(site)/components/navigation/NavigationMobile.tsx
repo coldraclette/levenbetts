@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { useWorkActive } from '../WorkActiveContext';
+import { useWorkActive } from '../../WorkActiveContext';
 
 export default function NavigationMobile({ categories }: any) {
   const { isWorkActive, setIsWorkActive } = useWorkActive();

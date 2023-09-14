@@ -56,7 +56,7 @@ export default function ProjectImagesDesktop({
                 initial={detailsOpen ? 'closed' : 'open'}
                 animate={detailsOpen ? 'closed' : 'open'}
                 variants={containerVariants}
-                className={`relative `}
+                className={`relative`}
               >
                 <Image
                   src={urlForImage(image)}

@@ -2,7 +2,7 @@ import './globals.css';
 
 import Theinhardt from 'next/font/local';
 
-import Navigation from './components/Navigation';
+import Navigation from './components/navigation/Navigation';
 import { siteConfig } from './site.config';
 import { WorkActiveProvider } from './WorkActiveContext';
 

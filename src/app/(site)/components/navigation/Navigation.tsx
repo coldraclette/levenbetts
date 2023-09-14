@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import { getCategories } from '../../../../sanity/sanity.query';
-import useWindowSize from '../hooks/useWindowSize';
+import { getCategories } from '../../../../../sanity/sanity.query';
+import useWindowSize from '../../hooks/useWindowSize';
 import NavigationDesktop from './NavigationDesktop';
 import NavigationMobile from './NavigationMobile';
 
@@ -48,7 +48,7 @@ export default function Navigation() {
       )}
       <Link
         href="/"
-        className={`absolute z-50  ${
+        className={`fixed z-50 md:absolute  ${
           showIntro
             ? 'left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-4xl font-medium lg:text-9xl'
             : 'left-4 top-4 lg:left-[22px] lg:top-[22px]'
