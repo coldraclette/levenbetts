@@ -1,5 +1,3 @@
-import { usePathname } from 'next/navigation';
-
 import { Category } from '../../types/types';
 import NavigationDesktopOfficeLinks from './NavigationDesktopOfficeLinks';
 import NavigationDesktopWorkLinks from './NavigationDesktopWorkLinks';

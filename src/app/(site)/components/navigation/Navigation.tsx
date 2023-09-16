@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 
 import { getCategories } from '../../../../../sanity/sanity.query';
 import { Category } from '../../types/types';
+import { composeClassNames } from '../../utils';
 import NavigationBranding from './NavigationBranding';
 import NavigationDesktop from './NavigationDesktop';
 import NavigationMobile from './NavigationMobile';
@@ -25,7 +26,11 @@ export default function Navigation() {
   }, []);
 
   return (
-    <nav className="relative z-50 bg-white lg:h-[92px]">
+    <nav
+      className={composeClassNames('relative z-50  lg:h-[92px]', {
+        'bg-white': pathname !== '/',
+      })}
+    >
       <NavigationMobile pathname={pathname} categories={categories} />
       <NavigationDesktop pathname={pathname} categories={categories} />
       <NavigationBranding pathname={pathname} />

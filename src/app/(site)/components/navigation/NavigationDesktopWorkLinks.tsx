@@ -37,7 +37,7 @@ export default function NavigationDesktopWorkLinks({
       setIsWorkOpen(false);
     }
   };
-  
+
   return (
     <div className="relative col-span-2" ref={workAccordionRef}>
       <div

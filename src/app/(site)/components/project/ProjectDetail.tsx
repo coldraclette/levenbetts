@@ -46,7 +46,7 @@ export default function ProjectDetail({
   const isMobile = windowSize.width < 1024;
 
   return (
-    <div className="relative h-full">
+    <div className="h-full relative">
       {isMobile ? (
         <>
           <ProjectHeading
@@ -55,7 +55,6 @@ export default function ProjectDetail({
             prev={prev}
             next={next}
             isWorkActive={isWorkActive}
-            isMobile={isMobile}
           />
           <div
             className={`transition-transform ${
@@ -78,7 +77,6 @@ export default function ProjectDetail({
             prev={prev}
             next={next}
             toggleDetails={toggleDetails}
-            isMobile={isMobile}
           />
           <ProjectInformationDesktop
             text={project.text}
