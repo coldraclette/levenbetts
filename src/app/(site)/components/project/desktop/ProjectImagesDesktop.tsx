@@ -21,11 +21,13 @@ export default function ProjectImagesDesktop({
 }: ProjectImagesDesktopProps) {
   const containerVariants = {
     open: {
-      height: '88vh',
+      height: `calc(88vh + 92px)`,
+      translateY: -16,
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
     closed: {
-      height: '25vh',
+      height: 'calc(25vh + 92px)',
+      translateY: -40,
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
   };
@@ -36,22 +38,22 @@ export default function ProjectImagesDesktop({
 
   return (
     <motion.div
-      className={`project-details absolute bottom-0 left-0 hidden w-full overflow-hidden lg:block`}
+      className={`project-details absolute bottom-0 left-0 hidden w-full lg:block`}
       initial={detailsOpen ? 'closed' : 'open'}
       animate={detailsOpen ? 'closed' : 'open'}
       variants={containerVariants}
     >
       <Swiper
         slidesPerView={'auto'}
-        className="scrollbar absolute bottom-0 left-0 w-full overflow-hidden"
+        className="scrollbar absolute bottom-0 left-0 w-full bg-white"
         mousewheel={true}
         modules={[Mousewheel]}
         spaceBetween={15}
         freeMode={{ enabled: true, momentumBounce: false }}
       >
-        {images.map((image: any) => {
+        {images.map((image: any, index: number) => {
           return (
-            <SwiperSlide key={image._key} className="w-auto ">
+            <SwiperSlide key={image._key} className="w-auto">
               <motion.div
                 initial={detailsOpen ? 'closed' : 'open'}
                 animate={detailsOpen ? 'closed' : 'open'}
@@ -65,9 +67,11 @@ export default function ProjectImagesDesktop({
                   width={1200}
                   quality={90}
                   sizes="(min-width: 1024px) 1200px, 100vw"
-                  priority
                   className={`h-full w-auto object-contain`}
                   onClick={() => setDetailsOpen(false)}
+                  placeholder="blur"
+                  blurDataURL={image.asset.metadata.lqip}
+                  priority={index === 0}
                 />
               </motion.div>
             </SwiperSlide>

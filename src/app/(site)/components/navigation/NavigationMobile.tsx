@@ -1,14 +1,19 @@
-'use client';
-
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
+import { Category } from '../../types/types';
 import { useWorkActive } from '../../WorkActiveContext';
 
-export default function NavigationMobile({ categories }: any) {
+interface NavigationMobileProps {
+  pathname: string;
+  categories: Category[];
+}
+
+export default function NavigationMobile({
+  pathname,
+  categories,
+}: NavigationMobileProps) {
   const { isWorkActive, setIsWorkActive } = useWorkActive();
-  const pathname = usePathname();
   const workAccordionRef = useRef<HTMLDivElement>(null);
   const [isOfficeOpen, setIsOfficeOpen] = useState<boolean>(false);
 
@@ -45,8 +50,8 @@ export default function NavigationMobile({ categories }: any) {
   }, []);
 
   return (
-    <nav
-      className={`fixed z-40 grid w-full grid-cols-4 p-4 ${
+    <div
+      className={`fixed z-40 grid w-full grid-cols-4 p-4 lg:hidden ${
         pathname === '/' ? 'bg-none' : 'bg-white'
       }  `}
     >
@@ -88,9 +93,12 @@ export default function NavigationMobile({ categories }: any) {
         <div onClick={() => setIsWorkActive(!isWorkActive)}>work</div>
 
         {activeCategory && !isWorkActive && (
-          <div onClick={() => setIsWorkActive(!isWorkActive)}>
+          <Link
+            href={`/work/${activeCategory.title}`}
+            onClick={() => setIsWorkActive(true)}
+          >
             {activeCategory.title}
-          </div>
+          </Link>
         )}
         {activeCategory && isWorkActive && (
           <Link
@@ -126,6 +134,6 @@ export default function NavigationMobile({ categories }: any) {
           })}
         </div>
       </div>
-    </nav>
+    </div>
   );
 }

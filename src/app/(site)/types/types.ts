@@ -36,10 +36,15 @@ export interface ProjectProps {
 export interface Project {
   _id: string;
   slug: { current: string };
-  landingPageImage?: Image;
-  landingPageMobileImage?: Image;
+  landingPageImage?: any;
+  landingPageMobileImage?: any;
   title?: string;
   subtitle?: string;
-  projectImage: Image;
+  projectImage: any;
   category: any;
 }
+
+export type Category = {
+  _id: string;
+  title: string;
+};

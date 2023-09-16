@@ -26,12 +26,14 @@ export default function SmallerImageGallery({ images }: ImageGalleryProps) {
           className="absolute bottom-0 left-0 w-full overflow-hidden bg-white"
           mousewheel={true}
           modules={[Mousewheel]}
-          spaceBetween={15}
           freeMode={{ enabled: true, momentumBounce: false }}
         >
-          {images.map((image: any) => {
+          {images.map((image: any, index: number) => {
             return (
-              <SwiperSlide key={image._key} className="w-auto ">
+              <SwiperSlide
+                key={image._key}
+                className="mr-[15px] w-auto last-of-type:mr-0"
+              >
                 <div className="relative h-[24vh]">
                   <Image
                     src={urlForImage(image)}
@@ -39,8 +41,10 @@ export default function SmallerImageGallery({ images }: ImageGalleryProps) {
                     height={800}
                     width={1200}
                     quality={90}
-                    priority
+                    priority={index === 0}
                     className={`h-full w-auto object-contain`}
+                    placeholder="blur"
+                    blurDataURL={image.asset.metadata.lqip}
                   />
                 </div>
               </SwiperSlide>

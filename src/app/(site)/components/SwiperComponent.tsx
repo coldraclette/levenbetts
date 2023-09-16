@@ -55,6 +55,8 @@ export default function SwiperComponent({ projects }: SwiperProps) {
                   priority
                   quality={90}
                   className="h-full w-full object-cover"
+                  placeholder="blur"
+                  blurDataURL={imageUrl.asset.metadata.lqip}
                 />
               </div>
               <div className="relative block h-full w-full md:hidden">
@@ -70,6 +72,8 @@ export default function SwiperComponent({ projects }: SwiperProps) {
                   priority
                   className="h-full w-full object-cover"
                   quality={90}
+                  placeholder="blur"
+                  blurDataURL={imageMobileUrl.asset.metadata.lqip}
                 />
               </div>
             </Link>

@@ -1,4 +1,5 @@
 import { ProjectProps } from '../../types/types';
+import { composeClassNames } from '../../utils';
 import Heading from '../Heading';
 import ProjectNavigation from './ProjectNavigation';
 
@@ -10,6 +11,7 @@ interface ProjectHeadingProps {
   onHeaderClicked?: () => void | undefined;
   toggleDetails?: () => void | undefined;
   isWorkActive?: boolean;
+  isMobile?: boolean;
 }
 
 export default function ProjectHeading({
@@ -20,12 +22,17 @@ export default function ProjectHeading({
   onHeaderClicked,
   toggleDetails,
   isWorkActive,
+  isMobile,
 }: ProjectHeadingProps) {
   return (
     <div
-      className={`${
-        isWorkActive ? 'top-[240px]' : 'top-[70px]'
-      } fixed z-30 -mt-[4px] grid w-full grid-cols-4 bg-white px-4 pb-3 lg:relative lg:mt-0 lg:flex lg:justify-between lg:px-[22px]`}
+      className={composeClassNames(
+        'fixed z-30 -mt-[4px] grid w-full grid-cols-4 bg-white px-4 pb-3 lg:relative lg:mt-0 lg:flex lg:justify-between lg:px-[22px]',
+        {
+          'top-[240px]': isWorkActive && isMobile,
+          'top-[70px]': !isWorkActive && isMobile,
+        }
+      )}
     >
       <Heading
         title={project.title}

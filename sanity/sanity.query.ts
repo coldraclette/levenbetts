@@ -8,7 +8,13 @@ export async function getProjectsOverviewWithCategoryData(category: string) {
           title,
           subtitle,
           slug,
-          projectImage,
+          projectImage {
+            alt,
+            asset->{
+              ...,
+              metadata
+            }
+          },
           category->{
             _id,
             title
@@ -27,7 +33,14 @@ export async function getSingleProjectData(slug: string) {
           subtitle,
           text,
           specs,
-          images,
+          "images": images[] {
+            _key,
+            "alt": alt,
+            "asset": asset->{
+              ...,
+              metadata
+            }
+          },
           category->{
             _id,
             title
@@ -72,7 +85,14 @@ export async function getOfficePageData() {
     `*[_type == "officePage"][0] {
         text,
         additionalText,
-        images,
+        "images": images[] {
+          _key,
+          "alt": alt,
+          "asset": asset->{
+            ...,
+            metadata
+          }
+        },
       }`
   );
 
@@ -94,7 +114,14 @@ export async function getPeoplePageData() {
     `*[_type == "peoplePage"][0] {
         text,
         additionalText,
-        images,
+        "images": images[] {
+          _key,
+          "alt": alt,
+          "asset": asset->{
+            ...,
+            metadata
+          }
+        },
       }`
   );
 
@@ -129,7 +156,6 @@ export async function getProjectListData() {
         subtitle,
         slug,
         status,
-        projectImage,
         category->{
           _id,
           title
@@ -157,9 +183,27 @@ export async function getLandingPageData() {
         projects[]->{
           _id,
           slug,
-          projectImage,
-          landingPageImage,
-          landingPageMobileImage,
+          projectImage {
+            alt,
+            asset->{
+              ...,
+              metadata
+            }
+          },
+          landingPageImage {
+            alt,
+            asset->{
+              ...,
+              metadata
+            }
+          },
+          landingPageMobileImage {
+            alt,
+            asset->{
+              ...,
+              metadata
+            }
+          },
           category->{
             _id,
             title

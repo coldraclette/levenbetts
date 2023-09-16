@@ -60,7 +60,9 @@ export default function RootLayout({
       <body className="relative lg:h-screen lg:overflow-hidden">
         <WorkActiveProvider>
           <Navigation />
-          <main className="h-full w-full pt-[70px] lg:pt-0">{children}</main>
+          <main className="h-full w-full pt-[70px] lg:pt-0">
+            {children}
+          </main>
         </WorkActiveProvider>
       </body>
     </html>

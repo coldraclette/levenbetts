@@ -4,7 +4,7 @@ import 'swiper/css';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Autoplay, Mousewheel } from 'swiper/modules';
+import { Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { urlForImage } from '../../../../sanity/lib/image';
@@ -20,7 +20,6 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
       slidesPerView="auto"
       className="category-overview h-full w-full"
       mousewheel={true}
-      spaceBetween={15}
       modules={[Mousewheel]}
       freeMode={{ enabled: true, momentumBounce: false }}
     >
@@ -28,7 +27,10 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
         projects.map((project: Project) => {
           const imageUrl = project.landingPageImage || project.projectImage;
           return (
-            <SwiperSlide key={project._id}>
+            <SwiperSlide
+              key={project._id}
+              className="mr-[15px] last-of-type:mr-0"
+            >
               <Link
                 href={`/work/${project.category.title}/${project.slug.current}`}
               >
@@ -48,6 +50,8 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                     priority
                     quality={90}
                     className="h-full w-full object-cover"
+                    placeholder="blur"
+                    blurDataURL={imageUrl.asset.metadata.lqip}
                   />
                 </div>
               </Link>
