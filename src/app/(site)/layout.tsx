@@ -57,12 +57,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={theinhardt.variable}>
-      <body className="relative lg:h-screen lg:overflow-hidden">
+      <body className="relative lg:flex lg:h-screen lg:flex-col lg:overflow-hidden">
         <WorkActiveProvider>
           <Navigation />
-          <main className="h-full w-full pt-[70px] lg:pt-0">
-            {children}
-          </main>
+          <main className="h-full w-full pt-[70px] lg:pt-0">{children}</main>
         </WorkActiveProvider>
       </body>
     </html>

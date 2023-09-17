@@ -21,13 +21,11 @@ export default function ProjectImagesDesktop({
 }: ProjectImagesDesktopProps) {
   const containerVariants = {
     open: {
-      height: `calc(88vh + 92px)`,
-      translateY: -16,
+      height: '90vh',
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
     closed: {
-      height: 'calc(25vh + 92px)',
-      translateY: -40,
+      height: '25vh',
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
   };
@@ -38,7 +36,7 @@ export default function ProjectImagesDesktop({
 
   return (
     <motion.div
-      className={`project-details absolute bottom-0 left-0 hidden w-full lg:block`}
+      className={`project-details absolute bottom-0 left-0 hidden w-full lg:flex`}
       initial={detailsOpen ? 'closed' : 'open'}
       animate={detailsOpen ? 'closed' : 'open'}
       variants={containerVariants}

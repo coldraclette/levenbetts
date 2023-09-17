@@ -245,8 +245,38 @@ export async function getCategories() {
 export async function getResearchPageData() {
   const researchPage = await client.fetch(
     `*[_type == "researchPage"][0] {
-        models,
-        drawings,
+        "models_first_row": models_first_row[] {
+          _key,
+          "alt": alt,
+          "asset": asset->{
+            ...,
+            metadata
+          }
+        },
+        "models_second_row": models_second_row[] {
+          _key,
+          "alt": alt,
+          "asset": asset->{
+            ...,
+            metadata
+          }
+        },
+        "drawings_first_row": drawings_first_row[] {
+          _key,
+          "alt": alt,
+          "asset": asset->{
+            ...,
+            metadata
+          }
+        },
+        "drawings_second_row": drawings_second_row[] {
+          _key,
+          "alt": alt,
+          "asset": asset->{
+            ...,
+            metadata
+          }
+        },
         seoTitle,
         seoDescription,
         seoImage

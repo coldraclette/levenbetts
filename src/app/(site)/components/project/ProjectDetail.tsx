@@ -46,7 +46,7 @@ export default function ProjectDetail({
   const isMobile = windowSize.width < 1024;
 
   return (
-    <div className="h-full relative">
+    <div className="relative flex h-full flex-col">
       {isMobile ? (
         <>
           <ProjectHeading

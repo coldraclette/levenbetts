@@ -18,8 +18,8 @@ export const researchPage = {
   ],
   fields: [
     {
-      name: 'models',
-      title: 'Models',
+      name: 'models_first_row',
+      title: 'Models first row',
       description: 'The models that are shown on the research page.',
       group: 'modelGroup',
       type: 'array',
@@ -30,8 +30,32 @@ export const researchPage = {
       ],
     },
     {
-      name: 'drawings',
-      title: 'Drawings',
+      name: 'models_second_row',
+      title: 'Models second row',
+      description: 'The models that are shown on the research page.',
+      group: 'modelGroup',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+        },
+      ],
+    },
+    {
+      name: 'drawings_first_row',
+      title: 'Drawings first row',
+      description: 'The drawings that are shown on the research page.',
+      group: 'drawingGroup',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+        },
+      ],
+    },
+    {
+      name: 'drawings_second_row',
+      title: 'Drawings second row',
       description: 'The drawings that are shown on the research page.',
       group: 'drawingGroup',
       type: 'array',

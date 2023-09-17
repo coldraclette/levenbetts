@@ -15,7 +15,7 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
   const { isWorkActive, setIsWorkActive } = useWorkActive();
   return (
     <div className="mt-2 lg:hidden">
-      <div className="fixed left-0 top-10 z-40 flex gap-4 pb-3 pl-[15px]">
+      <div className="fixed left-0 top-10 z-50 flex gap-4 pb-3 pl-[15px]">
         <div
           className={`cursor-pointer ${
             activeType === 'drawings' ? 'text-black' : 'text-grey'
@@ -34,35 +34,95 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
         </div>
       </div>
 
-      <div
-        className={`grid grid-cols-2 gap-[15px] px-[15px] transition-transform ${
-          isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
-        }`}
-      >
-        {activeType === 'drawings'
-          ? data.drawings.map((drawing: any) => (
-              <div key={drawing._key} className="relative h-[200px] w-full">
-                <Image
-                  src={urlForImage(drawing)}
-                  alt={(drawing.alt as string) || 'drawing'}
-                  fill
-                  quality={90}
-                  className="object-contain"
-                />
-              </div>
-            ))
-          : data.models.map((model: any) => (
-              <div key={model._key} className="relative h-[200px] w-full">
-                <Image
+      <div className="grid grid-cols-2 gap-[15px] px-[15px]">
+        <div
+          className={`grid grid-cols-1 gap-[15px]  transition-transform ${
+            isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
+          }`}
+        >
+          {activeType === 'drawings'
+            ? data.drawings_first_row.map((drawing: any, index: number) => (
+                <div
+                  key={drawing._key}
+                  className="relative aspect-square h-[165px] w-full"
+                >
+                  <Image
+                    src={urlForImage(drawing)}
+                    alt={(drawing.alt as string) || 'drawing'}
+                    fill
+                    quality={90}
+                    className="object-contain"
+                    sizes="(min-width: 400px) 400px, 50vw"
+                    placeholder="blur"
+                    blurDataURL={drawing.asset.metadata.lqip}
+                    priority={index === 0}
+                  />
+                </div>
+              ))
+            : data.models_first_row.map((model: any, index: number) => (
+                <div
                   key={model._key}
-                  src={urlForImage(model)}
-                  alt={(model.alt as string) || 'model'}
-                  fill
-                  quality={90}
-                  className="object-cover"
-                />
-              </div>
-            ))}
+                  className="relative aspect-square h-[165px] w-full"
+                >
+                  <Image
+                    key={model._key}
+                    src={urlForImage(model)}
+                    alt={(model.alt as string) || 'model'}
+                    fill
+                    quality={90}
+                    className="object-contain"
+                    sizes="(min-width: 400px) 400px, 50vw"
+                    placeholder="blur"
+                    blurDataURL={model.asset.metadata.lqip}
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+        </div>
+        <div
+          className={`grid grid-cols-1 gap-[15px] transition-transform ${
+            isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
+          }`}
+        >
+          {activeType === 'drawings'
+            ? data.drawings_second_row.map((drawing: any, index: number) => (
+                <div
+                  key={drawing._key}
+                  className="relative aspect-square h-[165px] w-full"
+                >
+                  <Image
+                    src={urlForImage(drawing)}
+                    alt={(drawing.alt as string) || 'drawing'}
+                    fill
+                    quality={90}
+                    className="object-contain"
+                    sizes="(min-width: 400px) 400px, 50vw"
+                    placeholder="blur"
+                    blurDataURL={drawing.asset.metadata.lqip}
+                    priority={index === 0}
+                  />
+                </div>
+              ))
+            : data.models_second_row.map((model: any, index: number) => (
+                <div
+                  key={model._key}
+                  className="relative aspect-square h-[165px] w-full"
+                >
+                  <Image
+                    key={model._key}
+                    src={urlForImage(model)}
+                    alt={(model.alt as string) || 'model'}
+                    fill
+                    quality={90}
+                    className="object-contain"
+                    sizes="(min-width: 400px) 400px, 50vw"
+                    placeholder="blur"
+                    blurDataURL={model.asset.metadata.lqip}
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+        </div>
       </div>
     </div>
   );

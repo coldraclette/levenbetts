@@ -13,7 +13,7 @@ export default function NavigationDesktop({
 }: NavigationDesktopProps) {
   return (
     <div
-      className={`absolute z-40 hidden w-full grid-cols-3 gap-[15px] p-[22px] lg:grid ${
+      className={`absolute z-40 hidden w-full grid-cols-3 gap-[15px] pt-[22px] lg:grid ${
         pathname === '/' ? 'bg-none' : 'bg-white'
       }`}
     >
