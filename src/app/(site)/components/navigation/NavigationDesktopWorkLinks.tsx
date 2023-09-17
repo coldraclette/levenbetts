@@ -39,7 +39,7 @@ export default function NavigationDesktopWorkLinks({
   };
 
   return (
-    <div className="relative col-span-2" ref={workAccordionRef}>
+    <div className="relative col-span-2 pl-[9px]" ref={workAccordionRef}>
       <div
         onMouseEnter={() => setOnWorkHover(true)}
         onMouseLeave={() => setOnWorkHover(false)}

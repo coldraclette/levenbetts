@@ -20,7 +20,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
 
   return (
     <div className="hidden h-full lg:flex">
-      <div className="absolute right-[15px] top-0 z-50 flex gap-7 py-11">
+      <div className="absolute right-[15px] top-4 z-50 flex gap-7 py-11">
         <div
           className={`cursor-pointer ${
             activeType === 'drawings' ? 'text-black' : 'text-grey'
@@ -47,7 +47,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
           {activeType === 'drawings'
             ? data.drawings_first_row.map((drawing: any, index: number) => (
                 <div
-                  className="relative aspect-square h-[44vh] w-auto"
+                  className="relative aspect-square h-[42vh] w-auto"
                   key={drawing._key}
                 >
                   <Image
@@ -65,7 +65,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
               ))
             : data.models_first_row.map((model: any, index: number) => (
                 <div
-                  className="relative aspect-square h-[44vh] w-auto"
+                  className="relative aspect-square h-[42vh] w-auto"
                   key={model._key}
                 >
                   <Image
@@ -86,7 +86,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
           {activeType === 'drawings'
             ? data.drawings_second_row.map((drawing: any, index: number) => (
                 <div
-                  className="relative aspect-square h-[44vh] w-auto"
+                  className="relative aspect-square h-[42vh] w-auto"
                   key={drawing._key}
                 >
                   <Image
@@ -104,7 +104,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
               ))
             : data.models_second_row.map((model: any, index: number) => (
                 <div
-                  className="relative aspect-square h-[44vh] w-auto"
+                  className="relative aspect-square h-[42vh] w-auto"
                   key={model._key}
                 >
                   <Image
