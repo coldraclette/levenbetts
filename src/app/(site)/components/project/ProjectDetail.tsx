@@ -1,6 +1,8 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useSwipeable } from 'react-swipeable';
 
 import useWindowSize from '../../hooks/useWindowSize';
 import { ProjectNavigationItemProps, ProjectProps } from '../../types/types';
@@ -26,6 +28,7 @@ export default function ProjectDetail({
   const { isWorkActive, setIsWorkActive } = useWorkActive();
   const informationRef = useRef<HTMLDivElement>(null);
   const [detailsOpen, setDetailsOpen] = useState<boolean>(false);
+  const router = useRouter();
 
   const toggleDetails = () => {
     setDetailsOpen(!detailsOpen);
@@ -42,13 +45,20 @@ export default function ProjectDetail({
     });
   };
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () =>
+      router.push(`/work/${project.category}/${prev.slug.current}`),
+    onSwipedRight: () =>
+      router.push(`/work/${project.category}/${next.slug.current}`),
+  });
+
   if (windowSize.width === undefined) return null;
   const isMobile = windowSize.width < 1024;
 
   return (
     <div className="relative flex h-full flex-col">
       {isMobile ? (
-        <>
+        <div {...handlers}>
           <ProjectHeading
             project={project}
             onHeaderClicked={scrollToInformation}
@@ -68,7 +78,7 @@ export default function ProjectDetail({
               informationRef={informationRef}
             />
           </div>
-        </>
+        </div>
       ) : (
         <>
           <ProjectHeading
