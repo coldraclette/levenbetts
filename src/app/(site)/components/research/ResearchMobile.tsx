@@ -34,8 +34,8 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
   });
 
   return (
-    <div className="mt-2 lg:hidden">
-      <div className="fixed left-0 top-10 z-50 flex gap-4 pb-3 pl-[15px]">
+    <div className="lg:mt-2 lg:hidden">
+      <div className="relative left-0 lg:top-10 z-50 flex gap-4 pb-3 pl-[15px] lg:fixed">
         <div
           className={`cursor-pointer ${
             activeType === 'drawings' ? 'text-black' : 'text-grey'
