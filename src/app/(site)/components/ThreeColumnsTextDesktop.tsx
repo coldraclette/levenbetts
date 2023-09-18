@@ -8,7 +8,7 @@ export default function ThreeColumnsTextDesktop({
   data,
 }: ThreeColumnsTextDesktopProps) {
   return (
-    <div className="mt-5 grid h-full max-h-full w-full grid-cols-3 gap-4 overflow-auto px-[22px]">
+    <div className="mt-4 grid h-full max-h-full w-full grid-cols-3 gap-4 overflow-auto px-[22px]">
       <div
         style={{
           columnCount: 2,
