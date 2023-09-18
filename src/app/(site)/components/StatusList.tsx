@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 
+import { useSwipeHook } from '../hooks/useSwipeHook';
 import { useWorkActive } from '../WorkActiveContext';
 
 interface StatusListProps {
@@ -10,6 +11,8 @@ interface StatusListProps {
 
 export default function StatusList({ projects }: StatusListProps) {
   const { isWorkActive, setIsWorkActive } = useWorkActive();
+  const handlers = useSwipeHook();
+
   return (
     <div
       className={`transition-transform lg:mt-4 ${
@@ -85,7 +88,7 @@ export default function StatusList({ projects }: StatusListProps) {
           </div>
         </div>
       </div>
-      <div className="lg:hidden">
+      <div {...handlers} className="lg:hidden">
         <div className="flex flex-col gap-4 pb-4">
           <div>
             <h2>Current</h2>

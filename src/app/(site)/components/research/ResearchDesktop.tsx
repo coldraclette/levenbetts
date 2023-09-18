@@ -20,7 +20,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
 
   return (
     <div className="hidden h-full lg:flex">
-      <div className="absolute right-[15px] top-4 z-50 flex gap-7 py-11">
+      <div className="absolute left-[22px] top-[58px] z-50 flex gap-7">
         <div
           className={`cursor-pointer ${
             activeType === 'drawings' ? 'text-black' : 'text-grey'

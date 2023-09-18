@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 
 import useHorizontalScroll from '../hooks/useHorizontalScroll';
+import { useSwipeHook } from '../hooks/useSwipeHook';
 import { useWorkActive } from '../WorkActiveContext';
 import AwardListItem from './AwardListItem';
 
@@ -20,10 +21,12 @@ export default function AwardList({ awards }: AwardListProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { isWorkActive, setIsWorkActive } = useWorkActive();
   useHorizontalScroll(scrollContainerRef);
+  const handlers = useSwipeHook();
 
   return (
     <>
       <div
+        {...handlers}
         className={`flex flex-col gap-4 pb-4 transition-transform lg:hidden ${
           isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
         }`}

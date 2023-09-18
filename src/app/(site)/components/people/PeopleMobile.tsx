@@ -3,6 +3,7 @@
 import Image from 'next/image';
 
 import { urlForImage } from '../../../../../sanity/lib/image';
+import { useSwipeHook } from '../../hooks/useSwipeHook';
 import { useWorkActive } from '../../WorkActiveContext';
 import TextContent from '../TextContent';
 
@@ -12,8 +13,12 @@ interface PeopleMobileProps {
 
 export default function PeopleMobile({ data }: PeopleMobileProps) {
   const { isWorkActive, setIsWorkActive } = useWorkActive();
+
+  const handlers = useSwipeHook();
+
   return (
     <div
+      {...handlers}
       className={`pt-11 transition-transform lg:hidden ${
         isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
       }`}

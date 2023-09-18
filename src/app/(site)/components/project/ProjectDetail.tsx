@@ -47,9 +47,9 @@ export default function ProjectDetail({
 
   const handlers = useSwipeable({
     onSwipedLeft: () =>
-      router.push(`/work/${project.category}/${prev.slug.current}`),
+      router.push(`/work/${project.category.title}/${prev.slug.current}`),
     onSwipedRight: () =>
-      router.push(`/work/${project.category}/${next.slug.current}`),
+      router.push(`/work/${project.category.title}/${next.slug.current}`),
   });
 
   if (windowSize.width === undefined) return null;

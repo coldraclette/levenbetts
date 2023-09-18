@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import router from 'next/router';
+import { useSwipeable } from 'react-swipeable';
 
 import { urlForImage } from '../../../../../sanity/lib/image';
 import { useWorkActive } from '../../WorkActiveContext';
@@ -13,6 +15,24 @@ interface ResearchMobileProps {
 export default function ResearchMobile({ data }: ResearchMobileProps) {
   const [activeType, setActiveType] = useState('drawings');
   const { isWorkActive, setIsWorkActive } = useWorkActive();
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      if (activeType === 'drawings') {
+        setActiveType('models');
+      } else {
+        setActiveType('drawings');
+      }
+    },
+    onSwipedRight: () => {
+      if (activeType === 'drawings') {
+        setActiveType('models');
+      } else {
+        setActiveType('drawings');
+      }
+    },
+  });
+
   return (
     <div className="mt-2 lg:hidden">
       <div className="fixed left-0 top-10 z-50 flex gap-4 pb-3 pl-[15px]">
@@ -34,7 +54,7 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-[15px] px-[15px]">
+      <div {...handlers} className="grid grid-cols-2 gap-[15px] px-[15px]">
         <div
           className={`grid grid-cols-1 gap-[15px]  transition-transform ${
             isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
