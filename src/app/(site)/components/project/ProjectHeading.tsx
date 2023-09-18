@@ -27,10 +27,12 @@ export default function ProjectHeading({
   return (
     <div
       className={composeClassNames(
-        'fixed z-30 -mt-[4px] grid w-full grid-cols-4 bg-white px-4 pb-3 lg:relative lg:mt-0 lg:flex lg:justify-between lg:px-[22px]',
+        'fixed z-50 -mt-[4px] grid w-full grid-cols-4 bg-white px-4 pb-3 lg:relative lg:mt-0 lg:flex lg:justify-between lg:px-[22px]',
+        {
+          'top-[70px]': !isWorkActive && isMobile,
+        },
         {
           'top-[240px]': isWorkActive && isMobile,
-          'top-[70px]': !isWorkActive && isMobile,
         }
       )}
     >

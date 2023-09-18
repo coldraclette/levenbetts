@@ -65,6 +65,7 @@ export default function ProjectDetail({
             prev={prev}
             next={next}
             isWorkActive={isWorkActive}
+            isMobile={isMobile}
           />
           <div
             className={`transition-transform ${
