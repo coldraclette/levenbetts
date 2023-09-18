@@ -15,7 +15,7 @@ export default function StatusList({ projects }: StatusListProps) {
 
   return (
     <div
-      className={`transition-transform lg:mt-4 ${
+      className={`transition-transform h-full lg:mt-4 ${
         isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
       }`}
     >
@@ -88,7 +88,7 @@ export default function StatusList({ projects }: StatusListProps) {
           </div>
         </div>
       </div>
-      <div {...handlers} className="lg:hidden">
+      <div {...handlers} className="h-full w-full lg:hidden">
         <div className="flex flex-col gap-4 pb-4">
           <div>
             <h2>Current</h2>
