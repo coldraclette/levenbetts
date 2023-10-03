@@ -185,6 +185,7 @@ export async function getLandingPageData() {
           slug,
           projectImage {
             alt,
+            position,
             asset->{
               ...,
               metadata
@@ -192,6 +193,7 @@ export async function getLandingPageData() {
           },
           landingPageImage {
             alt,
+            position,
             asset->{
               ...,
               metadata

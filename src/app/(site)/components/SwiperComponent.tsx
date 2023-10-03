@@ -10,6 +10,7 @@ import { Autoplay, Mousewheel } from 'swiper/modules';
 
 import { urlForImage } from '../../../../sanity/lib/image';
 import { Project } from '../types/types';
+import { composeClassNames } from '../utils';
 
 interface SwiperProps {
   projects: Project[];
@@ -54,7 +55,13 @@ export default function SwiperComponent({ projects }: SwiperProps) {
                   fill
                   priority
                   quality={90}
-                  className="h-full w-full object-cover"
+                  className={composeClassNames('h-full w-full object-cover', {
+                    'object-bottom':
+                      project.landingPageImage?.position === 'bottom',
+                    'object-top': project.landingPageImage?.position === 'top',
+                    'object-center':
+                      project.landingPageImage?.position === 'center',
+                  })}
                   placeholder="blur"
                   blurDataURL={imageUrl.asset.metadata.lqip}
                 />

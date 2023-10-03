@@ -110,6 +110,9 @@ export const project = {
       group: 'projectGroup',
       description: 'This image will be used in the work overview pages.',
       hidden: ({ parent }: any) => !parent.createProjectPage,
+      options: {
+        hotspot: true,
+      },
       fields: [
         {
           name: 'alt',
@@ -120,6 +123,21 @@ export const project = {
           validation: (Rule: any) =>
             Rule.error('You have to fill out the alternative text.').required(),
           options: {
+            isHighlighted: true,
+          },
+        },
+        {
+          name: 'position',
+          type: 'string',
+          title: 'Position',
+          description: 'Position of the image',
+          options: {
+            list: [
+              { title: 'Center', value: 'center' },
+              { title: 'Top', value: 'top' },
+              { title: 'Bottom', value: 'bottom' },
+            ],
+            layout: 'radio',
             isHighlighted: true,
           },
         },
@@ -166,6 +184,9 @@ export const project = {
       group: 'projectGroup',
       description:
         'This image will be used in the landing page, if it has to be different then the Project Overview Image.',
+      options: {
+        hotspot: true,
+      },
       fields: [
         {
           name: 'alt',
@@ -176,6 +197,21 @@ export const project = {
           validation: (Rule: any) =>
             Rule.error('You have to fill out the alternative text.').required(),
           options: {
+            isHighlighted: true,
+          },
+        },
+        {
+          name: 'position',
+          type: 'string',
+          title: 'Position',
+          description: 'Position of the image',
+          options: {
+            list: [
+              { title: 'Center', value: 'center' },
+              { title: 'Top', value: 'top' },
+              { title: 'Bottom', value: 'bottom' },
+            ],
+            layout: 'radio',
             isHighlighted: true,
           },
         },
