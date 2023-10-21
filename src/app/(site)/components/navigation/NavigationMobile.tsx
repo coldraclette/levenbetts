@@ -89,7 +89,7 @@ export default function NavigationMobile({
         </div>
       </div>
 
-      <div className="relative flex flex-col" ref={workAccordionRef}>
+      <div className="relative flex flex-col lowercase" ref={workAccordionRef}>
         <div onClick={() => setIsWorkActive(!isWorkActive)}>work</div>
 
         {activeCategory && !isWorkActive && (

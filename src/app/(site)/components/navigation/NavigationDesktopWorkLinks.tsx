@@ -43,7 +43,7 @@ export default function NavigationDesktopWorkLinks({
       <div
         onMouseEnter={() => setOnWorkHover(true)}
         onMouseLeave={() => setOnWorkHover(false)}
-        className="cursor-pointer pb-2"
+        className="cursor-pointer pb-2 lowercase"
       >
         <div
           onClick={() => setIsWorkOpen(!isWorkOpen)}

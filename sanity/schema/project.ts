@@ -1,5 +1,6 @@
 import { PackageIcon } from '@sanity/icons';
 
+import { isUniqueWithinCategory } from '../lib/isUniqueWithinCategory';
 import { category } from './category';
 
 export const project = {
@@ -60,6 +61,15 @@ export const project = {
       initialValue: false,
     },
     {
+      title: 'Category',
+      name: 'category',
+      type: 'reference',
+      group: 'projectGroup',
+      description: 'The category of the project.',
+      to: [{ type: 'category' }],
+      hidden: ({ parent }: any) => !parent.createProjectPage,
+    },
+    {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
@@ -74,16 +84,8 @@ export const project = {
             .replace(/\s+/g, '-')
             .replace(/[^a-z0-9-]/g, '')
             .slice(0, 200),
+        isUnique: isUniqueWithinCategory,
       },
-    },
-    {
-      title: 'Category',
-      name: 'category',
-      type: 'reference',
-      group: 'projectGroup',
-      description: 'The category of the project.',
-      to: [{ type: 'category' }],
-      hidden: ({ parent }: any) => !parent.createProjectPage,
     },
     {
       title: 'Text',
@@ -122,9 +124,6 @@ export const project = {
             'Important for SEO and accessiblity. Describe what the image is about.',
           validation: (Rule: any) =>
             Rule.error('You have to fill out the alternative text.').required(),
-          options: {
-            isHighlighted: true,
-          },
         },
         {
           name: 'position',
@@ -138,7 +137,6 @@ export const project = {
               { title: 'Bottom', value: 'bottom' },
             ],
             layout: 'radio',
-            isHighlighted: true,
           },
         },
       ],
@@ -160,9 +158,6 @@ export const project = {
             'Important for SEO and accessiblity. Describe what the image is about.',
           validation: (Rule: any) =>
             Rule.error('You have to fill out the alternative text.').required(),
-          options: {
-            isHighlighted: true,
-          },
         },
       ],
     },
@@ -196,9 +191,6 @@ export const project = {
             'Important for SEO and accessiblity. Describe what the image is about.',
           validation: (Rule: any) =>
             Rule.error('You have to fill out the alternative text.').required(),
-          options: {
-            isHighlighted: true,
-          },
         },
         {
           name: 'position',
@@ -212,7 +204,6 @@ export const project = {
               { title: 'Bottom', value: 'bottom' },
             ],
             layout: 'radio',
-            isHighlighted: true,
           },
         },
       ],
@@ -246,9 +237,6 @@ export const project = {
                 Rule.error(
                   'You have to fill out the alternative text.'
                 ).required(),
-              options: {
-                isHighlighted: true,
-              },
             },
           ],
         },

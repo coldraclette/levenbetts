@@ -58,9 +58,6 @@ export const officePage = {
                 Rule.error(
                   'You have to fill out the alternative text.'
                 ).required(),
-              options: {
-                isHighlighted: true,
-              },
             },
           ],
         },
