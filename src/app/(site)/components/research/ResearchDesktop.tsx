@@ -53,7 +53,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                   <Image
                     src={urlForImage(drawing)}
                     alt={(drawing.alt as string) || 'drawing'}
-                    quality={90}
+                    quality={80}
                     fill
                     className="h-full w-full object-contain"
                     sizes="(min-width: 1024px) 1200px, 100vw"
@@ -71,7 +71,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                   <Image
                     src={urlForImage(model)}
                     alt={(model.alt as string) || 'model'}
-                    quality={90}
+                    quality={80}
                     fill
                     className="h-full w-full object-contain"
                     sizes="(min-width: 1024px) 1200px, 100vw"
@@ -92,7 +92,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                   <Image
                     src={urlForImage(drawing)}
                     alt={(drawing.alt as string) || 'drawing'}
-                    quality={90}
+                    quality={80}
                     fill
                     className="h-full w-full object-contain"
                     sizes="(min-width: 1024px) 1200px, 100vw"
@@ -110,7 +110,7 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                   <Image
                     src={urlForImage(model)}
                     alt={(model.alt as string) || 'model'}
-                    quality={90}
+                    quality={80}
                     fill
                     className="h-full w-full object-contain"
                     sizes="(min-width: 1024px) 1200px, 100vw"

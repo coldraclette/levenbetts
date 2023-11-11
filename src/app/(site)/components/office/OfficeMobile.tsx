@@ -35,6 +35,7 @@ export default function OfficeMobile({ data }: OfficeMobileProps) {
                 alt={image.alt}
                 width={1200}
                 height={800}
+                quality={80}
                 sizes="(max-width: 768px) 100vw, 768px"
                 priority
                 className="h-full w-full object-cover"

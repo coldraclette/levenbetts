@@ -63,7 +63,7 @@ export default function ProjectImagesDesktop({
                   alt={image.alt as string}
                   height={800}
                   width={1200}
-                  quality={90}
+                  quality={80}
                   sizes="(min-width: 1024px) 1200px, 100vw"
                   className={`h-full w-auto object-contain`}
                   onClick={() => setDetailsOpen(false)}

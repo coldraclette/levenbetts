@@ -22,7 +22,7 @@ export default function ProjectImagesMobile({
               priority={index === 0}
               sizes="(max-width: 768px) 100vw, 768px"
               className="object-cover"
-              quality={90}
+              quality={80}
               placeholder="blur"
               blurDataURL={image.asset.metadata.lqip}
             />

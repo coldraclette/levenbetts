@@ -48,7 +48,7 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                     sizes="(max-width: 2400px) 100vw"
                     fill
                     priority
-                    quality={90}
+                    quality={80}
                     className="h-full w-full object-cover"
                     placeholder="blur"
                     blurDataURL={imageUrl.asset.metadata.lqip}

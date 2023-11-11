@@ -36,7 +36,7 @@ export default function ProjectOverviewMobile({
                 width={1024}
                 height={768}
                 sizes="(max-width: 768px) 100vw, 768px"
-                quality={90}
+                quality={80}
                 priority
               />
             </Link>

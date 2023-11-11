@@ -70,7 +70,7 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                     src={urlForImage(drawing)}
                     alt={(drawing.alt as string) || 'drawing'}
                     fill
-                    quality={90}
+                    quality={80}
                     className="object-contain"
                     sizes="(min-width: 400px) 400px, 50vw"
                     placeholder="blur"
@@ -89,7 +89,7 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                     src={urlForImage(model)}
                     alt={(model.alt as string) || 'model'}
                     fill
-                    quality={90}
+                    quality={80}
                     className="object-contain"
                     sizes="(min-width: 400px) 400px, 50vw"
                     placeholder="blur"
@@ -114,7 +114,7 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                     src={urlForImage(drawing)}
                     alt={(drawing.alt as string) || 'drawing'}
                     fill
-                    quality={90}
+                    quality={80}
                     className="object-contain"
                     sizes="(min-width: 400px) 400px, 50vw"
                     placeholder="blur"
@@ -133,7 +133,7 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                     src={urlForImage(model)}
                     alt={(model.alt as string) || 'model'}
                     fill
-                    quality={90}
+                    quality={80}
                     className="object-contain"
                     sizes="(min-width: 400px) 400px, 50vw"
                     placeholder="blur"
