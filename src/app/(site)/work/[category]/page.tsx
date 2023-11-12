@@ -1,14 +1,9 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { groq } from 'next-sanity';
 
 import { client } from '../../../../../sanity/lib/client';
-import { urlForImage } from '../../../../../sanity/lib/image';
 import { getProjectsOverviewWithCategoryData } from '../../../../../sanity/sanity.query';
-import ProjectOverviewMobile from '../../components/project/ProjectOverviewMobile';
-import SwiperOverview from '../../components/SwiperOverview';
+import ProjectOverview from '../../components/project/ProjectOverview';
 import NotFound from '../../not-found';
-import ResearchPage from '../research/page';
 
 export const revalidate = 120;
 
@@ -31,12 +26,5 @@ export default async function Page({ params }: any) {
     return <NotFound />;
   }
 
-  return (
-    <>
-      <ProjectOverviewMobile projects={data.projects} />
-      <div className="hidden h-full lg:flex">
-        <SwiperOverview projects={data.projects} />
-      </div>
-    </>
-  );
+  return <ProjectOverview data={data} />;
 }

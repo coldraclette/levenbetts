@@ -45,7 +45,7 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                       (project.landingPageImage?.alt as string) ||
                       (project.projectImage?.alt as string)
                     }
-                    sizes="(max-width: 2400px) 100vw"
+                    sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
                     fill
                     priority
                     quality={80}
