@@ -54,7 +54,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
               {isMobile ? (
                 <div className="relative block h-full w-full md:hidden">
                   <Image
-                    src={urlForImage(imageMobileUrl)}
+                    src={urlForImage(imageMobileUrl, 768)}
                     alt={
                       (project.landingPageMobileImage?.alt as string) ||
                       (project.landingPageImage?.alt as string) ||
@@ -64,7 +64,6 @@ export default function SwiperComponent({ projects }: SwiperProps) {
                     fill
                     priority
                     className="h-full w-full object-cover"
-                    quality={90}
                     placeholder="blur"
                     blurDataURL={imageMobileUrl.asset.metadata.lqip}
                   />
@@ -72,7 +71,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
               ) : (
                 <div className="relative hidden h-full w-full md:block">
                   <Image
-                    src={urlForImage(imageUrl)}
+                    src={urlForImage(imageUrl, 2400)}
                     alt={
                       (project.landingPageImage?.alt as string) ||
                       (project.projectImage?.alt as string)
@@ -80,7 +79,6 @@ export default function SwiperComponent({ projects }: SwiperProps) {
                     sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
                     fill
                     priority
-                    quality={80}
                     className={composeClassNames('h-full w-full object-cover', {
                       'object-bottom':
                         project.landingPageImage?.position === 'bottom',

@@ -31,12 +31,11 @@ export default function ProjectOverviewMobile({
                 {project.subtitle && <h3>{project.subtitle}</h3>}
               </div>
               <Image
-                src={urlForImage(project.projectImage)}
+                src={urlForImage(project.projectImage, 800)}
                 alt={project.projectImage.alt}
                 width={1024}
                 height={768}
                 sizes="(max-width: 768px) 100vw, 768px"
-                quality={80}
                 priority
               />
             </Link>

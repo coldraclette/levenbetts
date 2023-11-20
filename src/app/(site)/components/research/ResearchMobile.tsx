@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import router from 'next/router';
 import { useSwipeable } from 'react-swipeable';
 
 import { urlForImage } from '../../../../../sanity/lib/image';
@@ -67,10 +66,9 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                   className="relative aspect-square h-[165px] w-full"
                 >
                   <Image
-                    src={urlForImage(drawing)}
+                    src={urlForImage(drawing, 600)}
                     alt={(drawing.alt as string) || 'drawing'}
                     fill
-                    quality={80}
                     className="object-contain"
                     sizes="(min-width: 400px) 400px, 50vw"
                     placeholder="blur"
@@ -86,10 +84,9 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                 >
                   <Image
                     key={model._key}
-                    src={urlForImage(model)}
+                    src={urlForImage(model, 600)}
                     alt={(model.alt as string) || 'model'}
                     fill
-                    quality={80}
                     className="object-contain"
                     sizes="(min-width: 400px) 400px, 50vw"
                     placeholder="blur"
@@ -111,10 +108,9 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                   className="relative aspect-square h-[165px] w-full"
                 >
                   <Image
-                    src={urlForImage(drawing)}
+                    src={urlForImage(drawing, 600)}
                     alt={(drawing.alt as string) || 'drawing'}
                     fill
-                    quality={80}
                     className="object-contain"
                     sizes="(min-width: 400px) 400px, 50vw"
                     placeholder="blur"
@@ -130,10 +126,9 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                 >
                   <Image
                     key={model._key}
-                    src={urlForImage(model)}
+                    src={urlForImage(model, 600)}
                     alt={(model.alt as string) || 'model'}
                     fill
-                    quality={80}
                     className="object-contain"
                     sizes="(min-width: 400px) 400px, 50vw"
                     placeholder="blur"

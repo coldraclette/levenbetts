@@ -32,11 +32,10 @@ export default function PeopleMobile({ data }: PeopleMobileProps) {
           return (
             <div key={image._key} className={`relative h-full`}>
               <Image
-                src={urlForImage(image)}
+                src={urlForImage(image, 600)}
                 alt={image.alt}
                 width={1200}
                 height={800}
-                quality={80}
                 sizes="(max-width: 768px) 100vw, 768px"
                 priority
                 className="h-full w-full object-cover"

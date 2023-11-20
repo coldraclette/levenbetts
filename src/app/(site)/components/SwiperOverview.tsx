@@ -40,7 +40,7 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                 </div>
                 <div className="relative h-full w-full">
                   <Image
-                    src={urlForImage(imageUrl)}
+                    src={urlForImage(imageUrl, 2400)}
                     alt={
                       (project.landingPageImage?.alt as string) ||
                       (project.projectImage?.alt as string)
@@ -48,7 +48,6 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                     sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
                     fill
                     priority
-                    quality={80}
                     className="h-full w-full object-cover"
                     placeholder="blur"
                     blurDataURL={imageUrl.asset.metadata.lqip}

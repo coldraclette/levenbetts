@@ -36,11 +36,10 @@ export default function SmallerImageGallery({ images }: ImageGalleryProps) {
               >
                 <div className="relative h-[24vh]">
                   <Image
-                    src={urlForImage(image)}
+                    src={urlForImage(image, 2400)}
                     alt={image.alt as string}
                     height={800}
                     width={1200}
-                    quality={80}
                     priority={index === 0}
                     className={`h-full w-auto object-contain`}
                     placeholder="blur"

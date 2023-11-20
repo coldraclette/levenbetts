@@ -51,9 +51,8 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                   key={drawing._key}
                 >
                   <Image
-                    src={urlForImage(drawing)}
+                    src={urlForImage(drawing, 1200)}
                     alt={(drawing.alt as string) || 'drawing'}
-                    quality={80}
                     fill
                     className="h-full w-full object-contain"
                     sizes="(min-width: 1024px) 1200px, 100vw"
@@ -69,9 +68,8 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                   key={model._key}
                 >
                   <Image
-                    src={urlForImage(model)}
+                    src={urlForImage(model, 1200)}
                     alt={(model.alt as string) || 'model'}
-                    quality={80}
                     fill
                     className="h-full w-full object-contain"
                     sizes="(min-width: 1024px) 1200px, 100vw"
@@ -90,9 +88,8 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                   key={drawing._key}
                 >
                   <Image
-                    src={urlForImage(drawing)}
+                    src={urlForImage(drawing, 1200)}
                     alt={(drawing.alt as string) || 'drawing'}
-                    quality={80}
                     fill
                     className="h-full w-full object-contain"
                     sizes="(min-width: 1024px) 1200px, 100vw"
@@ -108,9 +105,8 @@ export default function ResearchDesktop({ data }: ResearchDesktopProps) {
                   key={model._key}
                 >
                   <Image
-                    src={urlForImage(model)}
+                    src={urlForImage(model, 1200)}
                     alt={(model.alt as string) || 'model'}
-                    quality={80}
                     fill
                     className="h-full w-full object-contain"
                     sizes="(min-width: 1024px) 1200px, 100vw"

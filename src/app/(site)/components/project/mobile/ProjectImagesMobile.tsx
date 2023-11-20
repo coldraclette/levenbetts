@@ -15,14 +15,13 @@ export default function ProjectImagesMobile({
         return (
           <div key={image._key} className="relative">
             <Image
-              src={urlForImage(image)}
+              src={urlForImage(image, 600)}
               alt={image.alt as string}
               width={1200}
               height={800}
               priority={index === 0}
               sizes="(max-width: 768px) 100vw, 768px"
               className="object-cover"
-              quality={80}
               placeholder="blur"
               blurDataURL={image.asset.metadata.lqip}
             />
