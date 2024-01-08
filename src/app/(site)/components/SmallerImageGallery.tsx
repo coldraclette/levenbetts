@@ -34,7 +34,6 @@ export default function SmallerImageGallery({ images }: ImageGalleryProps) {
                 key={image._key}
                 className="mr-[15px] w-auto last-of-type:mr-0"
               >
-                
                 <div className="relative h-[24vh]">
                   <Image
                     src={urlForImage(image, 2400)}
