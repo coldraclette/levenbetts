@@ -1,9 +1,11 @@
 'use client';
 
+import path from 'path';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { getCategories } from '../../../../../sanity/sanity.query';
+import useStore from '../../store/store';
 import { Category } from '../../types/types';
 import { composeClassNames } from '../../utils';
 import NavigationBranding from './NavigationBranding';
@@ -13,6 +15,8 @@ import NavigationMobile from './NavigationMobile';
 export default function Navigation() {
   const [categories, setCategories] = useState<Category[]>([]);
   const pathname = usePathname();
+  const showNavigation = useStore((state) => state.showNavigation);
+  const setShowNavigation = useStore((state) => state.setShowNavigation);
 
   useEffect(() => {
     getCategories().then((data) => {
@@ -25,14 +29,28 @@ export default function Navigation() {
     });
   }, []);
 
+  useEffect(() => {
+    if (pathname !== '/') {
+      setShowNavigation(true);
+    }
+  }, []);
+
   return (
     <nav
       className={composeClassNames('relative z-50  lg:h-[92px]', {
         'bg-white': pathname !== '/',
       })}
     >
-      <NavigationMobile pathname={pathname} categories={categories} />
-      <NavigationDesktop pathname={pathname} categories={categories} />
+      <div
+        className={composeClassNames(
+          'transition-opacity delay-300 ease-in opacity-100',
+          { 'opacity-0': !showNavigation },
+          { 'opacity-100': showNavigation }
+        )}
+      >
+        <NavigationMobile pathname={pathname} categories={categories} />
+        <NavigationDesktop pathname={pathname} categories={categories} />
+      </div>
       <NavigationBranding pathname={pathname} />
     </nav>
   );

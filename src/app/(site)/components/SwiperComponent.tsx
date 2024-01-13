@@ -10,6 +10,7 @@ import { Autoplay, Mousewheel } from 'swiper/modules';
 
 import { urlForImage } from '../../../../sanity/lib/image';
 import useWindowSize from '../hooks/useWindowSize';
+import useStore from '../store/store';
 import { Project } from '../types/types';
 import { composeClassNames } from '../utils';
 
@@ -19,6 +20,7 @@ interface SwiperProps {
 
 export default function SwiperComponent({ projects }: SwiperProps) {
   const windowSize = useWindowSize();
+  const showNavigation = useStore((state) => state.showNavigation);
 
   if (windowSize.width === undefined) return null;
 
@@ -27,7 +29,12 @@ export default function SwiperComponent({ projects }: SwiperProps) {
   return (
     <Swiper
       slides-per-view="1"
-      className="h-full"
+      className={composeClassNames(
+        'h-full transition-[filter] delay-300 ease-out',
+        {
+          'blur-lg': !showNavigation,
+        }
+      )}
       mousewheel={true}
       spaceBetween={15}
       modules={[Mousewheel, Autoplay]}

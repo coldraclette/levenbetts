@@ -5,7 +5,6 @@ export const useSwipeHook = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  console.log('pathname', pathname);
   const officeCategories = [
     { slug: '/office', label: 'office' },
     { slug: '/office/awards', label: 'awards' },
@@ -17,14 +16,11 @@ export const useSwipeHook = () => {
     const currentCategoryIndex = officeCategories.findIndex(
       (category) => category.slug === pathname
     );
-    console.log('currentCategoryIndex', currentCategoryIndex);
 
     // Use modulo to cycle back to the beginning/end of the array as needed
     const nextCategoryIndex =
       (currentCategoryIndex + offset + officeCategories.length) %
       officeCategories.length;
-
-    console.log('nextCategoryIndex', nextCategoryIndex);
 
     router.push(officeCategories[nextCategoryIndex].slug);
   };

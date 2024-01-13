@@ -55,7 +55,11 @@ export default function NavigationMobile({
         pathname === '/' ? 'bg-none' : 'bg-white'
       }  `}
     >
-      <div className="col-span-2"></div>
+      <div className="col-span-2">
+        <Link href="/" className="pl-[22px]">
+          LEVENBETTS
+        </Link>
+      </div>
 
       <div className="relative">
         <div>

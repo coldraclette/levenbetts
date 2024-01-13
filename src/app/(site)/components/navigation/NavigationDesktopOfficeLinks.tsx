@@ -26,7 +26,9 @@ export default function NavigationDesktopOfficeLinks({
   );
   return (
     <div className="grid grid-cols-2">
-      <div></div>
+      <Link href="/" className="pl-[22px]">
+        LEVENBETTS
+      </Link>
 
       <div className="relative">
         <div className="group cursor-pointer">
