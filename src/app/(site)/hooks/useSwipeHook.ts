@@ -17,7 +17,6 @@ export const useSwipeHook = () => {
       (category) => category.slug === pathname
     );
 
-    // Use modulo to cycle back to the beginning/end of the array as needed
     const nextCategoryIndex =
       (currentCategoryIndex + offset + officeCategories.length) %
       officeCategories.length;
