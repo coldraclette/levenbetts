@@ -25,6 +25,6 @@ export default async function Page({ params }: any) {
   if (!data) {
     return <NotFound />;
   }
-
+  
   return <ProjectOverview data={data} />;
 }

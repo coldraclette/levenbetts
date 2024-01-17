@@ -27,6 +27,8 @@ export default function ProjectNavigation({
   detailsOpen,
   onDetailsClick,
 }: ProjectNavigationProps) {
+  console.log('prev', prev);
+  console.log('next', next);
   return (
     <div className="z-30 flex items-center gap-10 self-start">
       {onDetailsClick && (
@@ -38,12 +40,16 @@ export default function ProjectNavigation({
         </p>
       )}
       <div className="flex gap-5">
-        <Link href={`/work/${category}/${prev.slug.current}`}>
-          <ArrowLeft />
-        </Link>
-        <Link href={`/work/${category}/${next.slug.current}`}>
-          <ArrowRight />
-        </Link>
+        {prev?.slug?.current && (
+          <Link href={`/work/${category}/${prev.slug.current}`}>
+            <ArrowLeft />
+          </Link>
+        )}
+        {next?.slug?.current && (
+          <Link href={`/work/${category}/${next.slug.current}`}>
+            <ArrowRight />
+          </Link>
+        )}
       </div>
     </div>
   );

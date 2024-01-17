@@ -62,16 +62,15 @@ export const structure = (S: any) =>
 
       S.divider(),
 
-      ...S.documentTypeListItems().filter(
-        (listItem: any) =>
-          ![
-            'houses',
-            'officePage',
-            'awardsPage',
-            'peoplePage',
-            'projectListPage',
-            'landingPage',
-            'researchPage',
-          ].includes(listItem.getId())
-      ),
+      S.listItem()
+        .title('Projects')
+        .icon(DocumentIcon)
+        .schemaType('project')
+        .child(S.documentTypeList('project').title('Projects')),
+
+      S.listItem()
+        .title('Categories')
+        .icon(DocumentIcon)
+        .schemaType('category')
+        .child(S.documentTypeList('category').title('Categories')),
     ]);

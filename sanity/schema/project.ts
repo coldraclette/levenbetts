@@ -86,6 +86,19 @@ export const project = {
             .slice(0, 200),
         isUnique: isUniqueWithinCategory,
       },
+      validation: (Rule: any) =>
+        Rule.custom(
+          (
+            slug: { current: string } | undefined,
+            context: { document: { createProjectPage: boolean } }
+          ) => {
+            const hasProjectPage = context.document.createProjectPage;
+            if (hasProjectPage && !slug) {
+              return 'Slug is required when project page is created';
+            }
+            return true;
+          }
+        ),
     },
     {
       title: 'Text',

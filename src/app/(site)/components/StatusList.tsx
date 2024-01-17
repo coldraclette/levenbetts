@@ -15,13 +15,13 @@ export default function StatusList({ projects }: StatusListProps) {
 
   return (
     <div
-      className={`transition-transform h-full lg:mt-4 ${
+      className={`h-full transition-transform lg:mt-4 ${
         isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
       }`}
     >
       <div className="hidden overflow-x-auto lg:flex">
         <div
-          className="w-1/3 pb-4 pl-0 pr-[15px] pt-4"
+          className="w-1/3 pb-4 pl-0 pr-[15px]"
           style={{
             columnWidth: '615px',
             columnGap: '15px',
@@ -44,7 +44,7 @@ export default function StatusList({ projects }: StatusListProps) {
                   )}
                   {!project.slug && (
                     <p className="break-inside-avoid">
-                      {project.title}{' '}
+                      {project.title}
                       {project.subtitle && `, ${project.subtitle}`}
                     </p>
                   )}
@@ -55,7 +55,7 @@ export default function StatusList({ projects }: StatusListProps) {
         </div>
 
         <div
-          className="w-1/3 p-4 pl-[5px]"
+          className="w-1/3 p-4 pl-[5px] pt-0"
           style={{
             columnWidth: '610px',
             columnGap: '12px',
@@ -67,7 +67,7 @@ export default function StatusList({ projects }: StatusListProps) {
             {projects.complete.map((project: any) => {
               return (
                 <div key={project._id} className="inline-block">
-                  {project.category.title && project.slug && (
+                  {project.category?.title && project.slug && (
                     <Link
                       href={`/work/${project.category.title}/${project.slug.current}`}
                       className="break-inside-avoid"
@@ -96,7 +96,7 @@ export default function StatusList({ projects }: StatusListProps) {
               {projects.current.map((project: any) => {
                 return (
                   <div key={project._id} className="">
-                    {project.category.title && project.slug && (
+                    {project.category?.title && project.slug && (
                       <Link
                         href={`/work/${project.category.title}/${project.slug.current}`}
                         className="inline-block pl-4 -indent-4"
@@ -124,7 +124,7 @@ export default function StatusList({ projects }: StatusListProps) {
               {projects.complete.map((project: any) => {
                 return (
                   <div key={project._id} className="">
-                    {project.category.title && project.slug && (
+                    {project.category?.title && project.slug && (
                       <Link
                         href={`/work/${project.category?.title}/${project.slug?.current}`}
                         className="inline-block pl-4 -indent-4"

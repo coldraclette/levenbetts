@@ -56,7 +56,7 @@ export default function NavigationMobile({
       }  `}
     >
       <div className="col-span-2">
-        <Link href="/" className="pl-[22px]">
+        <Link href="/">
           LEVENBETTS
         </Link>
       </div>

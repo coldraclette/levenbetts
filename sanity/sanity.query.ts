@@ -26,9 +26,9 @@ export async function getProjectsOverviewWithCategoryData(category: string) {
   return projectsOverview;
 }
 
-export async function getSingleProjectData(slug: string) {
+export async function getSingleProjectData(categoryRef: string, slug: string) {
   const project = await client.fetch(
-    `*[_type == "project" && slug.current == $slug][0] {
+    `*[_type == "project" && slug.current == $slug && category._ref == $categoryRef][0] {
           title,
           subtitle,
           text,
@@ -46,7 +46,7 @@ export async function getSingleProjectData(slug: string) {
             title
           }
       }`,
-    { slug }
+    { categoryRef, slug }
   );
 
   if (!project || !project.category || !project.category._id) {
@@ -58,7 +58,7 @@ export async function getSingleProjectData(slug: string) {
 
 export async function getProjectNavigation(slug: string, categoryRef: string) {
   const projects = await client.fetch(
-    `*[_type == "project" && category._ref == $categoryRef] | order(_createdAt asc) {
+    `*[_type == "project" && category._ref == $categoryRef && createProjectPage == true] | order(_createdAt asc) {
       _id,
       slug,
       title
@@ -67,6 +67,7 @@ export async function getProjectNavigation(slug: string, categoryRef: string) {
   );
 
   const currentIndex = projects.findIndex((project: any) => {
+    if (!project.slug || !project.slug.current) return false;
     return project.slug.current === slug;
   });
 
@@ -242,6 +243,19 @@ export async function getCategories() {
   });
 
   return categories;
+}
+
+export async function getCategoryID(categoryName: string) {
+  const category = await client.fetch(
+    `*[_type == "category" && title == $categoryName][0] {
+      _id
+    }`,
+    { categoryName }
+  );
+
+  console.log(category);
+
+  return category?._id || null;
 }
 
 export async function getResearchPageData() {
