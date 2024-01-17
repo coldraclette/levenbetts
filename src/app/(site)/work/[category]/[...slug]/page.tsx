@@ -13,7 +13,7 @@ interface PageProps {
   };
 }
 
-export const revalidate = 120;
+export const revalidate = 60;
 
 export default async function Page({ params }: PageProps) {
   const category = params.category;

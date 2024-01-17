@@ -5,7 +5,7 @@ import { getProjectsOverviewWithCategoryData } from '../../../../../sanity/sanit
 import ProjectOverview from '../../components/project/ProjectOverview';
 import NotFound from '../../not-found';
 
-export const revalidate = 120;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const query = groq`*[_type == "category"] {

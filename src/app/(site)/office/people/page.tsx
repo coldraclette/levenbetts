@@ -2,7 +2,7 @@ import { getPeoplePageData } from '../../../../../sanity/sanity.query';
 import PeopleDesktop from '../../components/people/PeopleDesktop';
 import PeopleMobile from '../../components/people/PeopleMobile';
 
-export const revalidate = 120;
+export const revalidate = 60;
 
 export default async function Page() {
   const data = await getPeoplePageData();

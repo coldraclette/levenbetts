@@ -6,7 +6,7 @@ const SwiperComponent = dynamic(() => import('./components/SwiperComponent'), {
   ssr: false,
 });
 
-export const revalidate = 120;
+export const revalidate = 60;
 
 export default async function Page() {
   const data = await getLandingPageData();
