@@ -21,7 +21,7 @@ export default function StatusList({ projects }: StatusListProps) {
     >
       <div className="hidden overflow-x-auto lg:flex">
         <div
-          className="w-1/3 pb-4 pl-0 pr-[15px]"
+          className="w-1/3 pb-4 pl-0 pr-[15px] pt-2"
           style={{
             columnWidth: '615px',
             columnGap: '15px',
@@ -55,7 +55,7 @@ export default function StatusList({ projects }: StatusListProps) {
         </div>
 
         <div
-          className="w-1/3 p-4 pl-[5px] pt-0"
+          className="w-1/3 p-4 pl-[5px] pt-2"
           style={{
             columnWidth: '610px',
             columnGap: '12px',
