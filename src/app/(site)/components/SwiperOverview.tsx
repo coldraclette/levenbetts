@@ -33,8 +33,8 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                 <Link
                   href={`/work/${project.category.title}/${project.slug.current}`}
                 >
-                  <div className="relative flex h-full flex-col justify-end">
-                    <div className="project-title mb-[14px]">
+                  <div className="relative">
+                    <div className="project-title pb-[14px]">
                       <h2>{project.title}</h2>
                       {project.subtitle && <h3>{project.subtitle}</h3>}
                     </div>
