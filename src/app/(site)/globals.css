@@ -44,6 +44,9 @@ body {
 .category-overview {
   height: calc(100vh - 85px);
 }
+.category-overview-image {
+  height: calc(100vh - 85px - 54px);
+}
 .category-overview .swiper-slide:first-of-type .project-title {
   @apply pl-[22px];
 }

@@ -37,14 +37,14 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                     <h2>{project.title}</h2>
                     {project.subtitle && <h3>{project.subtitle}</h3>}
                   </div>
-                  <div className="category-overview">
+                  <div className="category-overview-image relative">
                     <Image
                       src={urlForImage(imageUrl, 2400)}
                       alt={
                         (project.landingPageImage?.alt as string) ||
                         (project.projectImage?.alt as string)
                       }
-                      sizes="(min-width: 1620px) 1536px, calc(95.08vw + 15px)"
+                      sizes="(min-width: 1024px) 1200px, 100vw"
                       height={800}
                       width={1200}
                       priority
