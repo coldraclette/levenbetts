@@ -37,11 +37,12 @@ body {
 .swiper-slide {
   @apply h-full;
 }
-.project-details .swiper-slide {
+.project-details .swiper-slide,
+.category-overview .swiper-slide {
   @apply w-auto;
 }
-.category-overview .swiper-slide {
-  @apply w-4/5;
+.category-overview {
+  height: calc(100vh - 85px);
 }
 .category-overview .swiper-slide:first-of-type .project-title {
   @apply pl-[22px];
