@@ -26,7 +26,7 @@ export default function ProjectOverviewMobile({
             <Link
               href={`/work/${project.category.title}/${project.slug.current}`}
             >
-              <div className="mb-[7px] px-4">
+              <div className="mb-3 px-4">
                 <h2>{project.title}</h2>
                 {project.subtitle && <h3>{project.subtitle}</h3>}
               </div>

@@ -15,17 +15,17 @@ export default function StatusList({ projects }: StatusListProps) {
 
   return (
     <div
-      className={`h-full transition-transform lg:mt-4 ${
+      className={`h-full transition-transform ${
         isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
       }`}
     >
       <div className="hidden overflow-x-auto lg:flex">
         <div
-          className="w-1/3 pb-4 pl-0 pr-[15px] pt-2"
+          className="w-1/3 pb-4 pl-0 pr-[15px] pt-4"
           style={{
             columnWidth: '615px',
             columnGap: '15px',
-            height: '90vh',
+            height: 'calc(100vh - 85px)',
           }}
         >
           <h2>Current</h2>
@@ -55,11 +55,11 @@ export default function StatusList({ projects }: StatusListProps) {
         </div>
 
         <div
-          className="w-1/3 p-4 pl-[5px] pt-2"
+          className="w-1/3 p-4 pl-[5px]"
           style={{
             columnWidth: '610px',
             columnGap: '12px',
-            height: '90vh',
+            height: 'calc(100vh - 85px)',
           }}
         >
           <h2>Complete</h2>

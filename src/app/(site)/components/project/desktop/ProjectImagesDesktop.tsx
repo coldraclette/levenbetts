@@ -21,7 +21,7 @@ export default function ProjectImagesDesktop({
 }: ProjectImagesDesktopProps) {
   const containerVariants = {
     open: {
-      height: '90vh',
+      height: 'calc(100vh - 85px - 50px)',
       transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 },
     },
     closed: {

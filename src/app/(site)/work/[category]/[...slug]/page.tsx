@@ -19,10 +19,6 @@ export default async function Page({ params }: PageProps) {
   const category = params.category;
   const name = params.slug[0];
 
-  console.log('params', params);
-  console.log('category', category);
-  console.log('name', name);
-
   const categoryId = await getCategoryID(category);
 
   if (!categoryId) {

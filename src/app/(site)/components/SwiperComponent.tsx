@@ -73,6 +73,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
                     className="h-full w-full object-cover"
                     placeholder="blur"
                     blurDataURL={imageMobileUrl.asset.metadata.lqip}
+                    quality={100}
                   />
                 </div>
               ) : (
@@ -96,6 +97,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
                     })}
                     placeholder="blur"
                     blurDataURL={imageUrl.asset.metadata.lqip}
+                    quality={100}
                   />
                 </div>
               )}

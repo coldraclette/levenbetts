@@ -51,7 +51,7 @@ export default function AwardList({ awards }: AwardListProps) {
           style={{
             columnWidth: '610px',
             columnGap: '12px',
-            height: '90vh',
+            height: 'calc(100vh - 85px)',
           }}
         >
           {awards.map(({ _key, year, awardDetails }: AwardProps) => {

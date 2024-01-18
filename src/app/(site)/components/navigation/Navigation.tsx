@@ -37,13 +37,13 @@ export default function Navigation() {
 
   return (
     <nav
-      className={composeClassNames('relative z-50  lg:h-[92px]', {
+      className={composeClassNames('relative z-50', {
         'bg-white': pathname !== '/',
       })}
     >
       <div
         className={composeClassNames(
-          'transition-opacity delay-300 ease-in opacity-100',
+          'h-full w-full opacity-100 transition-opacity delay-300 ease-in lg:h-[85px]',
           { 'opacity-0': !showNavigation },
           { 'opacity-100': showNavigation }
         )}

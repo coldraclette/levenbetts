@@ -253,8 +253,6 @@ export async function getCategoryID(categoryName: string) {
     { categoryName }
   );
 
-  console.log(category);
-
   return category?._id || null;
 }
 

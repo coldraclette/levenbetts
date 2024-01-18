@@ -27,8 +27,6 @@ export default function ProjectNavigation({
   detailsOpen,
   onDetailsClick,
 }: ProjectNavigationProps) {
-  console.log('prev', prev);
-  console.log('next', next);
   return (
     <div className="z-30 flex items-center gap-10 self-start">
       {onDetailsClick && (
