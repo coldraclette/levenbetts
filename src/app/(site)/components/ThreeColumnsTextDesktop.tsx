@@ -14,7 +14,7 @@ export default function ThreeColumnsTextDesktop({
           columnCount: 2,
           columnFill: 'auto',
         }}
-        className="col-span-2 h-[61vh]"
+        className="col-span-2 three-columns-text-height"
       >
         <TextContent text={data.text} />
       </div>

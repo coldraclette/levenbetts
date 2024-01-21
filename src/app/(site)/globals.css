@@ -56,6 +56,10 @@ body {
   max-height: calc(75vh - 145px);
 }
 
+.three-columns-text-height {
+  max-height: calc(76vh - 145px);
+}
+
 .research .swiper-wrapper {
   display: grid;
   grid-template-rows: repeat(2, 1fr);

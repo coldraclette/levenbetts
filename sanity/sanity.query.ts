@@ -1,3 +1,5 @@
+import { Project } from '@/app/(site)/types/types';
+
 import { client } from './lib/client';
 
 export async function getProjectsOverviewWithCategoryData(category: string) {
@@ -57,8 +59,9 @@ export async function getSingleProjectData(categoryRef: string, slug: string) {
 }
 
 export async function getProjectNavigation(slug: string, categoryRef: string) {
-  const projects = await client.fetch(
-    `*[_type == "project" && category._ref == $categoryRef && createProjectPage == true] | order(_createdAt asc) {
+  // Fetch the projects in the custom order (as they appear in the overview)
+  const orderedProjects = await client.fetch(
+    `*[_type == "category" && _id == $categoryRef][0].projects[]->{
       _id,
       slug,
       title
@@ -66,21 +69,23 @@ export async function getProjectNavigation(slug: string, categoryRef: string) {
     { categoryRef }
   );
 
-  const currentIndex = projects.findIndex((project: any) => {
-    if (!project.slug || !project.slug.current) return false;
-    return project.slug.current === slug;
-  });
+  // Find the index of the current project
+  const currentIndex = orderedProjects.findIndex(
+    (project: Project) => project.slug && project.slug.current === slug
+  );
 
+  // Calculate the indices for the previous and next projects
   const prevIndex =
-    currentIndex - 1 >= 0 ? currentIndex - 1 : projects.length - 1;
-  const nextIndex = currentIndex + 1 < projects.length ? currentIndex + 1 : 0;
+    currentIndex - 1 >= 0 ? currentIndex - 1 : orderedProjects.length - 1;
+  const nextIndex =
+    currentIndex + 1 < orderedProjects.length ? currentIndex + 1 : 0;
 
+  // Return the previous and next projects
   return {
-    prev: projects[prevIndex],
-    next: projects[nextIndex],
+    prev: orderedProjects[prevIndex],
+    next: orderedProjects[nextIndex],
   };
 }
-
 export async function getOfficePageData() {
   const officePage = await client.fetch(
     `*[_type == "officePage"][0] {
