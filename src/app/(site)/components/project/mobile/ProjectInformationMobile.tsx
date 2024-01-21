@@ -19,7 +19,7 @@ export default function ProjectInformationMobile({
       className="mt-[26px] flex flex-col px-4 pb-4 lg:hidden"
     >
       <TextContent text={text} />
-      <div className="mt-4">
+      <div className="mt-8">
         <TextContent text={specs} />
       </div>
     </div>
