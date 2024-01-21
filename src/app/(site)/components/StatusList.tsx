@@ -33,7 +33,7 @@ export default function StatusList({ projects }: StatusListProps) {
             {projects.current.map((project: any) => {
               return (
                 <div key={project._id} className="inline-block">
-                  {project.category.title && project.slug && (
+                  {project.category?.title && project.slug && (
                     <Link
                       href={`/work/${project.category?.title}/${project.slug?.current}`}
                       className="break-inside-avoid"
@@ -98,7 +98,7 @@ export default function StatusList({ projects }: StatusListProps) {
                   <div key={project._id} className="">
                     {project.category?.title && project.slug && (
                       <Link
-                        href={`/work/${project.category.title}/${project.slug.current}`}
+                        href={`/work/${project.category?.title}/${project.slug?.current}`}
                         className="inline-block pl-4 -indent-4"
                       >
                         <div className="flex">
