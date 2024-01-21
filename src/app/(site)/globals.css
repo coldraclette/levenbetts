@@ -48,7 +48,6 @@ body {
   height: calc(100vh - 85px - 48px);
 }
 .category-overview .swiper-slide:first-of-type .project-title {
-  height: 50px;
   @apply pl-[22px];
 }
 
