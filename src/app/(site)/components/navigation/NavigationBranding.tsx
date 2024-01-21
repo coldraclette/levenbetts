@@ -25,7 +25,7 @@ export default function NavigationBranding({ pathname }: NavigationBranding) {
   if (windowSize.width === undefined) return null;
 
   if (!showIntro) return null;
-  
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
