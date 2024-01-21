@@ -34,7 +34,7 @@ export default function NavigationBranding({ pathname }: NavigationBranding) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-        className={`fixed left-1/2 top-1/2 z-50 h-auto w-[280px] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ease-in-out md:w-[1000px]`}
+        className={`fixed left-1/2 top-1/2 z-50 h-auto w-[280px] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 ease-in-out md:w-[600px] lg:w-[1000px]`}
       >
         <LevenbettsLogo />
       </motion.div>
