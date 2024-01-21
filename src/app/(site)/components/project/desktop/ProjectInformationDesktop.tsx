@@ -28,7 +28,7 @@ export default function ProjectInformationDesktop({
                   columnCount: 2,
                   columnFill: 'auto',
                 }}
-                className="col-span-2 max-h-[50vh] min-h-[40vh]"
+                className="col-span-2 project-information-height min-h-[40vh]"
               >
                 <TextContent text={text} />
               </motion.div>
@@ -37,7 +37,7 @@ export default function ProjectInformationDesktop({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.8 } }}
                 exit={{ opacity: 0 }}
-                className="scrollbar max-h-[50vh] min-h-[40vh] overflow-auto"
+                className="scrollbar project-information-height min-h-[40vh] overflow-auto"
               >
                 <TextContent text={specs} />
               </motion.div>
