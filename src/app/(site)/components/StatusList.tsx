@@ -77,7 +77,7 @@ export default function StatusList({ projects }: StatusListProps) {
                     </Link>
                   )}
                   {!project.slug && (
-                    <p className="reak-inside-avoid">
+                    <p className="break-inside-avoid">
                       {project.title}
                       {project.subtitle && `, ${project.subtitle}`}
                     </p>

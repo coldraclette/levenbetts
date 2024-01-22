@@ -25,10 +25,10 @@ export default function ProjectDetail({
   next,
 }: ProjectTopAreaProps) {
   const windowSize = useWindowSize();
-  const { isWorkActive, setIsWorkActive } = useWorkActive();
   const informationRef = useRef<HTMLDivElement>(null);
   const [detailsOpen, setDetailsOpen] = useState<boolean>(false);
   const router = useRouter();
+  const { isWorkActive } = useWorkActive();
 
   const toggleDetails = () => {
     setDetailsOpen(!detailsOpen);
@@ -68,9 +68,10 @@ export default function ProjectDetail({
             isMobile={isMobile}
           />
           <div
-            className={`transition-transform ${
-              isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
-            }`}
+            style={{
+              transform: isWorkActive ? `translateY(132px)` : 'translateY(0px)',
+            }}
+            className="transition-transform"
           >
             <ProjectImagesMobile images={project.images} />
             <ProjectInformationMobile
