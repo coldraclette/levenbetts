@@ -1,6 +1,6 @@
 import { getResearchPageData } from '../../../../../sanity/sanity.query';
-import ResearchDesktop from '../../components/research/ResearchDesktop';
-import ResearchMobile from '../../components/research/ResearchMobile';
+import ResearchDesktop from '../../components/representation/ResearchDesktop';
+import ResearchMobile from '../../components/representation/ResearchMobile';
 
 export default async function Page() {
   const data = await getResearchPageData();
