@@ -21,8 +21,8 @@ export default function Navigation() {
   useEffect(() => {
     getCategories().then((data) => {
       const research = {
-        _id: 'research',
-        title: 'research',
+        _id: 'representation',
+        title: 'representation',
       };
       const mergedData = [...data, research];
       setCategories(mergedData);
