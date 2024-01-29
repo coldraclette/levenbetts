@@ -119,6 +119,7 @@ export async function getPeoplePageData() {
   const peoplePage = await client.fetch(
     `*[_type == "peoplePage"][0] {
         text,
+        text2,
         additionalText,
         "images": images[] {
           _key,

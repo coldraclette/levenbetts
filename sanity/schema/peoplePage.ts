@@ -16,11 +16,19 @@ export const peoplePage = {
   ],
   fields: [
     {
-      title: 'Text',
+      title: 'First Column',
       name: 'text',
       type: 'array',
       group: 'peoplePageGroup',
-      description: 'The text of the project.',
+      description: 'First column',
+      of: [{ type: 'block' }],
+    },
+    {
+      title: 'Second Column',
+      name: 'text2',
+      type: 'array',
+      group: 'peoplePageGroup',
+      description: 'Second column',
       of: [{ type: 'block' }],
     },
     {

@@ -25,6 +25,7 @@ export default function PeopleMobile({ data }: PeopleMobileProps) {
     >
       <div className="flex flex-col gap-4 px-4">
         <TextContent text={data.text} />
+        <TextContent text={data.text2} />
         <TextContent text={data.additionalText} />
       </div>
       <div className="mt-4 flex flex-col gap-4">
