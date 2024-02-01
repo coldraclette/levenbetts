@@ -61,7 +61,7 @@ export default function SwiperComponent({ projects }: SwiperProps) {
               {isMobile ? (
                 <div className="relative block h-full w-full md:hidden">
                   <Image
-                    src={urlForImage(imageMobileUrl, 768)}
+                    src={urlForImage(imageMobileUrl, 2400)}
                     alt={
                       (project.landingPageMobileImage?.alt as string) ||
                       (project.landingPageImage?.alt as string) ||
