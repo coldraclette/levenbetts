@@ -22,7 +22,7 @@ export default function OfficeMobile({ data }: OfficeMobileProps) {
         isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
       }`}
     >
-      <div className="px-4">
+      <div className="px-4 flex flex-col gap-4">
         <TextContent text={data.text} />
         <TextContent text={data.additionalText} />
       </div>
