@@ -51,7 +51,7 @@ export default function NavigationMobile({
 
   return (
     <div
-      className={`fixed z-40 grid w-full grid-cols-4 p-4 lg:hidden ${
+      className={`fixed z-40 grid w-full grid-cols-4 p-4 pr-8 lg:hidden ${
         pathname === '/' ? 'bg-none' : 'bg-white'
       }  `}
     >
