@@ -305,3 +305,32 @@ export async function getResearchPageData() {
 
   return researchPage;
 }
+
+export async function getWorkPageData() {
+  const workPage = await client.fetch(
+    `*[_type == "workPage"][0] {
+        featuredProjects[]->{
+          _id,
+          title,
+          subtitle,
+          slug,
+          projectImage {
+            alt,
+            asset->{
+              ...,
+              metadata
+            }
+          },
+          category->{
+            _id,
+            title
+          }
+        },
+        seoTitle,
+        seoDescription,
+        seoImage
+      }`
+  );
+
+  return workPage;
+}

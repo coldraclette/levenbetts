@@ -8,6 +8,7 @@ import { peoplePage } from './schema/peoplePage';
 import { project } from './schema/project';
 import { projectListPage } from './schema/projectListPage';
 import { researchPage } from './schema/researchPage';
+import { workPage } from './schema/workPage';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +20,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     projectListPage,
     landingPage,
     researchPage,
+    workPage
   ],
 };

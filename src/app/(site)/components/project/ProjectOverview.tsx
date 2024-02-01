@@ -18,10 +18,12 @@ export default function ProjectOverview({ data }: ProjectOverviewProps) {
   return (
     <>
       {isMobile ? (
-        <ProjectOverviewMobile projects={data.projects} />
+        <ProjectOverviewMobile
+          projects={data.projects || data.featuredProjects}
+        />
       ) : (
         <div className="hidden h-full lg:flex">
-          <SwiperOverview projects={data.projects} />
+          <SwiperOverview projects={data.projects || data.featuredProjects} />
         </div>
       )}
     </>

@@ -45,12 +45,13 @@ export default function NavigationDesktopWorkLinks({
         onMouseLeave={() => setOnWorkHover(false)}
         className="cursor-pointer pb-2 lowercase"
       >
-        <div
+        <Link
+          href="/work"
           onClick={() => setIsWorkOpen(!isWorkOpen)}
           className="group inline-block cursor-pointer"
         >
           work
-        </div>
+        </Link>
         <div className="flex flex-row gap-[10px] gap-y-1">
           {activeCategory && (
             <Link href={`/work/${activeCategory.title}`}>

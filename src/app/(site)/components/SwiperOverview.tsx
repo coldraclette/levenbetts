@@ -27,7 +27,9 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
       >
         {projects &&
           projects.map((project: Project) => {
-            const imageUrl = project.landingPageImage || project.projectImage;
+            if (!project) return null;
+            if (!project.projectImage) return null;
+            if (!project.category) return null;
             return (
               <SwiperSlide key={project._id} className="w-auto">
                 <Link
@@ -40,7 +42,7 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                     </div>
                     <div className="category-overview-image relative">
                       <Image
-                        src={urlForImage(imageUrl, 2400)}
+                        src={urlForImage(project.projectImage, 2400)}
                         alt={
                           (project.landingPageImage?.alt as string) ||
                           (project.projectImage?.alt as string)
@@ -51,7 +53,7 @@ export default function SwiperOverview({ projects }: SwiperOverviewProps) {
                         priority
                         className="h-full w-auto object-contain"
                         placeholder="blur"
-                        blurDataURL={imageUrl.asset.metadata.lqip}
+                        blurDataURL={project.projectImage.asset.metadata.lqip}
                       />
                     </div>
                   </div>

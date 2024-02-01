@@ -56,9 +56,7 @@ export default function NavigationMobile({
       }  `}
     >
       <div className="col-span-2">
-        <Link href="/">
-          LEVENBETTS
-        </Link>
+        <Link href="/">LEVENBETTS</Link>
       </div>
 
       <div className="relative">
@@ -94,7 +92,9 @@ export default function NavigationMobile({
       </div>
 
       <div className="relative flex flex-col lowercase" ref={workAccordionRef}>
-        <div onClick={() => setIsWorkActive(!isWorkActive)}>work</div>
+        <Link href="/work" onClick={() => setIsWorkActive(!isWorkActive)}>
+          work
+        </Link>
 
         {activeCategory && !isWorkActive && (
           <Link

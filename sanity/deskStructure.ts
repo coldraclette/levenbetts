@@ -21,6 +21,16 @@ export const structure = (S: any) =>
                 ),
               S.divider(),
               S.listItem()
+                .title('Work Page')
+                .icon(DocumentIcon)
+                .child(
+                  S.document()
+                    .schemaType('workPage')
+                    .documentId('workPage')
+                    .title('Work Page')
+                ),
+              S.divider(),
+              S.listItem()
                 .title('Research Page')
                 .icon(DocumentIcon)
                 .child(
