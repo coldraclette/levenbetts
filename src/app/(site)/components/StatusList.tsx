@@ -11,8 +11,7 @@ interface StatusListProps {
 }
 
 export default function StatusList({ projects }: StatusListProps) {
-  const { isWorkActive, setIsWorkActive } = useWorkActive();
-  const [hoveredProjectId, setHoveredProjectId] = useState(null);
+  const { isWorkActive } = useWorkActive();
   const handlers = useSwipeHook();
   return (
     <div
@@ -33,32 +32,18 @@ export default function StatusList({ projects }: StatusListProps) {
           <div className="flex flex-col">
             {projects.current.map((project: any) => {
               return (
-                <div
-                  key={project._id}
-                  onMouseEnter={() => setHoveredProjectId(project._id)}
-                  onMouseLeave={() => setHoveredProjectId(null)}
-                >
+                <div key={project._id}>
                   {project.category?.title && project.slug && (
                     <Link
                       href={`/work/${project.category?.title}/${project.slug?.current}`}
-                      className={`inline-block pl-4 -indent-4  ${
-                        hoveredProjectId && hoveredProjectId !== project._id
-                          ? 'text-grey'
-                          : 'text-black'
-                      }`}
+                      className={`inline-block pl-4 -indent-4`}
                     >
                       {project.title}
                       {project.subtitle && `, ${project.subtitle}`}
                     </Link>
                   )}
                   {!project.slug && (
-                    <p
-                      className={`inline-block pl-4 -indent-4  ${
-                        hoveredProjectId && hoveredProjectId !== project._id
-                          ? 'text-grey'
-                          : 'text-black'
-                      }`}
-                    >
+                    <p className={`inline-block pl-4 -indent-4`}>
                       {project.title}
                       {project.subtitle && `, ${project.subtitle}`}
                     </p>
@@ -81,33 +66,18 @@ export default function StatusList({ projects }: StatusListProps) {
           <div className="flex flex-col">
             {projects.complete.map((project: any) => {
               return (
-                <div
-                  key={project._id}
-                  className="inline-block"
-                  onMouseEnter={() => setHoveredProjectId(project._id)}
-                  onMouseLeave={() => setHoveredProjectId(null)}
-                >
+                <div key={project._id} className="inline-block">
                   {project.category?.title && project.slug && (
                     <Link
                       href={`/work/${project.category.title}/${project.slug.current}`}
-                      className={`inline-block pl-4 -indent-4 ${
-                        hoveredProjectId && hoveredProjectId !== project._id
-                          ? 'text-grey'
-                          : 'text-black'
-                      }`}
+                      className={`inline-block pl-4 -indent-4`}
                     >
                       {project.title}
                       {project.subtitle && `, ${project.subtitle}`}
                     </Link>
                   )}
                   {!project.slug && (
-                    <p
-                      className={`inline-block pl-4 -indent-4 ${
-                        hoveredProjectId && hoveredProjectId !== project._id
-                          ? 'text-grey'
-                          : 'text-black'
-                      }`}
-                    >
+                    <p className={`inline-block pl-4 -indent-4`}>
                       {project.title}
                       {project.subtitle && `, ${project.subtitle}`}
                     </p>
