@@ -13,7 +13,7 @@ interface ResearchMobileProps {
 
 export default function ResearchMobile({ data }: ResearchMobileProps) {
   const [activeType, setActiveType] = useState('drawings');
-  const { isWorkActive, setIsWorkActive } = useWorkActive();
+  const { isWorkActive, navHeight } = useWorkActive();
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -34,7 +34,7 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
 
   return (
     <div className="lg:mt-2 lg:hidden">
-      <div className="relative left-0 lg:top-10 z-50 flex gap-4 pb-3 pl-[15px] lg:fixed">
+      <div className="relative left-0 z-50 flex gap-4 pb-3 pl-[15px] lg:fixed lg:top-10">
         <div
           className={`cursor-pointer ${
             activeType === 'drawings' ? 'text-black' : 'text-grey'
@@ -53,12 +53,16 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
         </div>
       </div>
 
-      <div {...handlers} className="grid grid-cols-2 gap-[15px] px-[15px]">
-        <div
-          className={`grid grid-cols-1 gap-[15px]  transition-transform ${
-            isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
-          }`}
-        >
+      <div
+        {...handlers}
+        className="grid grid-cols-2 gap-[15px] px-[15px] transition-transform"
+        style={{
+          transform: isWorkActive
+            ? `translateY(${navHeight - 70}px)`
+            : 'translateY(0)',
+        }}
+      >
+        <div className={`flex flex-col gap-[15px]  `}>
           {activeType === 'drawings'
             ? data.drawings_first_row.map((drawing: any, index: number) => (
                 <div
@@ -96,11 +100,7 @@ export default function ResearchMobile({ data }: ResearchMobileProps) {
                 </div>
               ))}
         </div>
-        <div
-          className={`grid grid-cols-1 gap-[15px] transition-transform ${
-            isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
-          }`}
-        >
+        <div className={`flex flex-col gap-[15px]`}>
           {activeType === 'drawings'
             ? data.drawings_second_row.map((drawing: any, index: number) => (
                 <div
