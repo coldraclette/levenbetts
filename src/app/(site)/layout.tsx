@@ -11,12 +11,12 @@ const theinhardt = Theinhardt({
   display: 'swap',
   src: [
     {
-      path: '/fonts/Theinhardt/Theinhardt-Medium.otf',
+      path: '/fonts/Theinhardt/Theinhardt-Medium.woff',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '/fonts/Theinhardt/Theinhardt-Medium-Italic.otf',
+      path: '/fonts/Theinhardt/Theinhardt-Medium-Italic.woff',
       weight: '400',
       style: 'italic',
     },
