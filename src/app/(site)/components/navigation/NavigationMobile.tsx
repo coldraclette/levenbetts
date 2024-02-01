@@ -13,9 +13,16 @@ export default function NavigationMobile({
   pathname,
   categories,
 }: NavigationMobileProps) {
-  const { isWorkActive, setIsWorkActive } = useWorkActive();
+  const { isWorkActive, setIsWorkActive, setNavHeight } = useWorkActive();
   const workAccordionRef = useRef<HTMLDivElement>(null);
   const [isOfficeOpen, setIsOfficeOpen] = useState<boolean>(false);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (navRef.current) {
+      setNavHeight(navRef.current.clientHeight);
+    }
+  }, [isWorkActive]);
 
   const officeCategories = [
     { slug: 'awards', label: 'awards' },
@@ -51,6 +58,7 @@ export default function NavigationMobile({
 
   return (
     <div
+      ref={navRef}
       className={`fixed z-40 grid w-full grid-cols-4 p-4 pr-8 lg:hidden ${
         pathname === '/' ? 'bg-none' : 'bg-white'
       }  `}

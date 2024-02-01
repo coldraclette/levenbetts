@@ -13,12 +13,16 @@ interface ProjectOverviewMobileProps {
 export default function ProjectOverviewMobile({
   projects,
 }: ProjectOverviewMobileProps) {
-  const { isWorkActive, setIsWorkActive } = useWorkActive();
+  const { isWorkActive, navHeight } = useWorkActive();
+
   return (
     <div
-      className={`-mt-[4px] flex flex-col items-center gap-[14px] transition-transform lg:hidden ${
-        isWorkActive ? 'translate-y-[170px]' : 'translate-y-0'
-      }`}
+      className={`-mt-[4px] flex flex-col items-center gap-[14px] transition-transform lg:hidden`}
+      style={{
+        transform: isWorkActive
+          ? `translateY(${navHeight - 50}px)`
+          : 'translateY(0)',
+      }}
     >
       {projects &&
         projects.map((project: any) => {

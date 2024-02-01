@@ -5,6 +5,8 @@ import React, { createContext, ReactNode, useContext, useState } from 'react';
 interface WorkActiveContextProps {
   isWorkActive: boolean;
   setIsWorkActive: React.Dispatch<React.SetStateAction<boolean>>;
+  navHeight: number;
+  setNavHeight: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const WorkActiveContext = createContext<WorkActiveContextProps | undefined>(
@@ -27,9 +29,12 @@ export const WorkActiveProvider: React.FC<WorkActiveProviderProps> = ({
   children,
 }) => {
   const [isWorkActive, setIsWorkActive] = useState(false);
+  const [navHeight, setNavHeight] = useState(0);
 
   return (
-    <WorkActiveContext.Provider value={{ isWorkActive, setIsWorkActive }}>
+    <WorkActiveContext.Provider
+      value={{ isWorkActive, setIsWorkActive, navHeight, setNavHeight }}
+    >
       {children}
     </WorkActiveContext.Provider>
   );
