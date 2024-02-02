@@ -41,7 +41,8 @@ export default function NavigationMobile({
   const handleClickOutside = (event: any) => {
     if (
       workAccordionRef.current &&
-      !workAccordionRef.current.contains(event.target)
+      !workAccordionRef.current.contains(event.target) &&
+      window.innerWidth <= 768
     ) {
       setIsWorkActive(false);
     }

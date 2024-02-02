@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 import { Category } from '../../types/types';
+import { useWorkActive } from '../../WorkActiveContext';
 
 interface NavigationDesktopWorkLinksProps {
   pathname: string;
@@ -12,7 +13,7 @@ export default function NavigationDesktopWorkLinks({
   pathname,
   categories,
 }: NavigationDesktopWorkLinksProps) {
-  const [isWorkOpen, setIsWorkOpen] = useState<boolean>(false);
+  const { isWorkActive, setIsWorkActive } = useWorkActive();
   const [onWorkHover, setOnWorkHover] = useState<boolean>(false);
   const [hoveredWorkId, setHoveredWorkId] = useState<string | null>(null);
 
@@ -23,20 +24,12 @@ export default function NavigationDesktopWorkLinks({
   );
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
-  const handleClickOutside = (event: any) => {
-    if (
-      workAccordionRef.current &&
-      !workAccordionRef.current.contains(event.target)
-    ) {
-      setIsWorkOpen(false);
+    if (pathname !== '/work') {
+      setIsWorkActive(false);
+    } else {
+      setIsWorkActive(true);
     }
-  };
+  }, [pathname]);
 
   return (
     <div className="relative col-span-2 pl-[9px]" ref={workAccordionRef}>
@@ -45,11 +38,7 @@ export default function NavigationDesktopWorkLinks({
         onMouseLeave={() => setOnWorkHover(false)}
         className="cursor-pointer pb-2 lowercase"
       >
-        <Link
-          href="/work"
-          onClick={() => setIsWorkOpen(!isWorkOpen)}
-          className="group inline-block cursor-pointer"
-        >
+        <Link href="/work" className="group inline-block cursor-pointer">
           work
         </Link>
         <div className="flex flex-row gap-[10px] gap-y-1">
@@ -58,7 +47,7 @@ export default function NavigationDesktopWorkLinks({
               {pathname.split('/')[2]}
             </Link>
           )}
-          {(onWorkHover || isWorkOpen) && (
+          {(onWorkHover || isWorkActive) && (
             <div className="">
               <div className={`flex flex-row flex-wrap gap-[10px] gap-y-0`}>
                 {categories.map(({ _id, title }: any) => {
@@ -77,7 +66,6 @@ export default function NavigationDesktopWorkLinks({
                             ? 'w-auto text-black'
                             : 'w-auto text-grey'
                         }`}
-                        onClick={() => setIsWorkOpen(false)}
                         onMouseEnter={() => setHoveredWorkId(_id)}
                         onMouseLeave={() => setHoveredWorkId(null)}
                       >
