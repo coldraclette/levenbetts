@@ -8,7 +8,7 @@ interface PeopleDesktopProps {
 
 export default function PeopleDesktop({ data }: PeopleDesktopProps) {
   return (
-    <div className="hidden lg:block">
+    <div className="hidden h-full lg:block">
       <div className="mt-4 grid h-full max-h-full w-full grid-cols-3 gap-4 overflow-auto px-[22px]">
         <div className="three-columns-text-height">
           <TextContent text={data.text} />

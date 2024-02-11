@@ -50,7 +50,7 @@ export default function AwardList({ awards }: AwardListProps) {
           className="w-1/3 space-y-4 p-4 pl-0"
           style={{
             columnWidth: '610px',
-            columnGap: '12px',
+            columnGap: '14px',
             height: 'calc(100vh - 85px)',
           }}
         >

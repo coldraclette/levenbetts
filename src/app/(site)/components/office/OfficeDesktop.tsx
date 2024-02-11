@@ -11,7 +11,7 @@ interface OfficeDesktopProps {
 
 export default function OfficeDesktop({ data }: OfficeDesktopProps) {
   return (
-    <div className="hidden lg:block">
+    <div className="hidden h-full lg:block">
       <ThreeColumnsTextDesktop data={data} />
       <SmallerImageGallery images={data.images} />
     </div>
