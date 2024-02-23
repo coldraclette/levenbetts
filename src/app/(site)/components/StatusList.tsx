@@ -19,12 +19,12 @@ export default function StatusList({ projects }: StatusListProps) {
         isWorkActive ? 'translate-y-[126px]' : 'translate-y-0'
       }`}
     >
-      <div className="hidden overflow-x-auto lg:flex">
+      <div className="hidden overflow-x-auto scrollbar lg:flex">
         <div
-          className="w-1/3 pb-4 pl-0 pr-[15px] pt-4"
+          className="w-1/3 space-y-4 p-4 pl-0"
           style={{
-            columnWidth: '615px',
-            columnGap: '15px',
+            columnWidth: '610px',
+            columnGap: '14px',
             height: 'calc(100vh - 85px)',
           }}
         >
@@ -55,10 +55,10 @@ export default function StatusList({ projects }: StatusListProps) {
         </div>
 
         <div
-          className="w-1/3 p-4 pl-[5px]"
+          className="w-1/3 space-y-4 p-4 pl-0"
           style={{
             columnWidth: '610px',
-            columnGap: '12px',
+            columnGap: '14px',
             height: 'calc(100vh - 85px)',
           }}
         >

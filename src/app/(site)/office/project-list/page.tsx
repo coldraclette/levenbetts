@@ -7,7 +7,7 @@ export default async function Page() {
   const data = await getProjectListData();
   if (!data) return;
   return (
-    <div className="h-full px-4 pt-11 lg:px-[22px] lg:pt-0">
+    <div className="h-full px-4 pt-11 lg:px-[22px] lg:pt-0 lg:pr-0">
       <StatusList projects={data} />
     </div>
   );
